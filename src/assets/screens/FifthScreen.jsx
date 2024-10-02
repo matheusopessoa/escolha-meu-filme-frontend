@@ -1,0 +1,171 @@
+import React, { useContext, useState } from 'react';
+import { AppContext } from '../../context'; // Consumindo os filmes do contexto
+import Title from '../components/Title';
+import Subtitle from '../components/Subtitle';
+import Background2 from '../components/Background2';
+import Container from '../components/Container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+import ThankYouScreen from './ThankYouScreen'; // Importar tela de agradecimento
+
+// Estilizando os botões e o container dos filmes
+const CircleButton = styled.button`
+  background-color: ${(props) => (props.like ? 'red' : 'gray')};
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: ${(props) => (props.like ? '#ff4d4d' : '#555')};
+  }
+
+  svg {
+    font-size: 36px;
+    color: white;
+  }
+`;
+
+const MovieContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const MovieImage = styled.img`
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+`;
+
+const MovieTitle = styled.h3`
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+`;
+
+const FifthScreen = () => {
+  const { movies } = useContext(AppContext); // Pegando os filmes do contexto
+  const [currentMovieIndex, setCurrentMovieIndex] = useState(0); // Estado para rastrear o índice do filme atual
+  const [goToThankYou, setGoToThankYou] = useState(false); // Estado para controle de navegação para a tela de agradecimento
+  const [feedbacks, setFeedbacks] = useState([]); // Estado para armazenar os feedbacks
+  const [selectedMovie, setSelectedMovie] = useState(null); // Armazenar o nome e o poster do filme
+
+  const movieKeys = Object.keys(movies); // Obtenha as chaves dos filmes para indexar
+
+  // Se o estado goToThankYou for true, renderiza a tela de agradecimento e passa o filme selecionado
+  if (goToThankYou && selectedMovie) {
+    return <ThankYouScreen movie={selectedMovie} />;
+  }
+
+  const handleLikeClick = async () => {
+    const currentMovie = movies[movieKeys[currentMovieIndex]];
+    const movieId = currentMovie[0]; // Pegando o ID do filme
+    const movieTitle = movieKeys[currentMovieIndex]; // Nome do filme
+    const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL do poster
+
+    // Adicionando o feedback "like" ao array
+    setFeedbacks((prevFeedbacks) => [
+      ...prevFeedbacks,
+      { movie_id: movieId, feedback: 'like' }
+    ]);
+
+    // Armazenar o nome e o poster do filme para a tela de agradecimento
+    setSelectedMovie({ title: movieTitle, posterUrl });
+
+    // Envia o feedback ao backend
+    await sendFeedbackToBackend();
+
+    // Navegar para a tela de agradecimento
+    setGoToThankYou(true);
+  };
+
+  const handleDislikeClick = async () => {
+    const currentMovie = movies[movieKeys[currentMovieIndex]];
+    const movieId = currentMovie[0]; // Pegando o ID do filme
+
+    // Adicionando o feedback "dislike" ao array
+    setFeedbacks((prevFeedbacks) => [
+      ...prevFeedbacks,
+      { movie_id: movieId, feedback: 'dislike' }
+    ]);
+
+    // Se houver mais filmes, avança para o próximo
+    if (currentMovieIndex < movieKeys.length - 1) {
+      setCurrentMovieIndex(currentMovieIndex + 1); // Avança para o próximo filme
+    } else {
+      setCurrentMovieIndex(0); // Volta ao primeiro filme se todos os filmes forem exibidos
+    }
+  };
+
+  // Função para enviar os feedbacks ao backend
+  const sendFeedbackToBackend = async () => {
+    const feedbackBody = {
+      feedbacks: feedbacks
+    };
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(feedbackBody),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao enviar feedback');
+      }
+
+      console.log('Feedback enviado com sucesso');
+    } catch (error) {
+      console.error('Erro ao enviar feedback:', error);
+    }
+  };
+
+  // Verifica se existem filmes disponíveis
+  if (movieKeys.length === 0) {
+    return <Subtitle>Carregando filmes...</Subtitle>;
+  }
+
+  const currentMovie = movies[movieKeys[currentMovieIndex]]; // Filme atual
+  const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL da imagem
+
+  return (
+    <Background2>
+      <Container>
+        <Title>Seleção de Filmes</Title>
+        <Subtitle>Clique em "LIKE" para selecionar o filme ou "DESLIKE" para ver outro</Subtitle>
+
+        {/* Exibe o filme atual */}
+        <MovieContainer>
+          <MovieImage src={posterUrl} alt={movieKeys[currentMovieIndex]} />
+          <MovieTitle>{movieKeys[currentMovieIndex]}</MovieTitle>
+        </MovieContainer>
+
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
+          {/* Botão X (DESLIKE) à esquerda */}
+          <CircleButton onClick={handleDislikeClick}>
+            <FontAwesomeIcon icon={faTimes} />
+          </CircleButton>
+
+          {/* Botão Coração (LIKE) à direita */}
+          <CircleButton like onClick={handleLikeClick}>
+            <FontAwesomeIcon icon={faHeartRegular} />
+          </CircleButton>
+        </div>
+      </Container>
+    </Background2>
+  );
+};
+
+export default FifthScreen;

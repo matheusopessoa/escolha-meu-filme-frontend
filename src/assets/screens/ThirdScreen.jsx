@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react'; // Adiciona o useState
 import { AppContext } from '../../context'; // Verifique o caminho correto
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
@@ -6,6 +6,8 @@ import Background from '../components/Background';
 import Container from '../components/Container';
 import Button from '../components/Button';
 import styled from 'styled-components';
+import { fetchMovies } from '../services/getMovies'; // Importando a função de requisição
+import FourthScreen from './FourthScreen'; // Importa a quarta tela
 
 const genres = [
   'Ação', 'Animação', 'Aventura', 'Comédia', 'Crime', 'Documentário',
@@ -44,17 +46,44 @@ const GenreListContainer = styled.div`
 `;
 
 const ThirdScreen = () => {
-  const { selectedGenres, setSelectedGenres } = useContext(AppContext);  // Usando o contexto para armazenar gêneros
+  const { selectedService, selectedGenres, setSelectedGenres, setMovies } = useContext(AppContext);  // Usando o contexto para armazenar gêneros e filmes
+  const [goToFourthScreen, setGoToFourthScreen] = useState(false); // Estado para controlar a navegação
 
   const handleGenreClick = (genre) => {
     if (selectedGenres.includes(genre)) {
-      // Desselecionar o gênero
+      // Desselecionar o gênero se ele já estiver selecionado
       setSelectedGenres(selectedGenres.filter((g) => g !== genre));
-    } else if (selectedGenres.length < 2) {
-      // Selecionar até 2 gêneros
+    } else if (selectedGenres.length === 2) {
+      // Se já houver dois gêneros, remover o primeiro e adicionar o novo
+      setSelectedGenres([selectedGenres[1], genre]);
+    } else {
+      // Se houver menos de dois gêneros, apenas adicionar o novo
       setSelectedGenres([...selectedGenres, genre]);
     }
   };
+
+  const handleConfirmClick = async () => {
+    if (selectedGenres.length < 1) return;
+
+    try {
+      // Chama a função fetchMovies do arquivo de serviço e faz a requisição
+      const data = await fetchMovies(selectedService, selectedGenres);
+      console.log('Dados recebidos da API:', data);
+
+      // Armazenar os filmes no contexto
+      setMovies(data);
+
+      // Navegar para a quarta tela após a requisição
+      setGoToFourthScreen(true);
+    } catch (error) {
+      console.error('Erro ao fazer a requisição:', error);
+    }
+  };
+
+  // Se o estado "goToFourthScreen" for true, renderiza a quarta tela
+  if (goToFourthScreen) {
+    return <FourthScreen />;
+  }
 
   return (
     <Background>
@@ -76,7 +105,7 @@ const ThirdScreen = () => {
 
         <Button
           disabled={selectedGenres.length < 1}
-          onClick={() => console.log('Gêneros selecionados no contexto:', selectedGenres)}
+          onClick={handleConfirmClick}  // Chama a função de requisição e navega para a quarta tela
         >
           Confirmar
         </Button>
