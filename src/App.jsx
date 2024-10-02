@@ -1,11 +1,14 @@
 import React from 'react';
-import FirstScreen from './assets/screens/Home.jsx';
+import { AppProvider } from './context.jsx'; // O provedor do contexto
+import FirstScreen from './assets/screens/Home.jsx'; // Tela inicial
 
 function App() {
   return (
-    <div className="App">
-      <FirstScreen />
-    </div>
+    <AppProvider>
+      <div className="App">
+        <FirstScreen /> {/* Mantemos a lógica de renderização existente */}
+      </div>
+    </AppProvider>
   );
 }
 

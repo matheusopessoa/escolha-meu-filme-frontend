@@ -1,14 +1,14 @@
-// src/screens/SecondScreen.jsx
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AppContext } from '../../context';
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
 import Button from '../components/Button';
-import ButtonList from '../components/ButtonList'; // Importando o novo ButtonList
+import ButtonList from '../components/ButtonList';
 import Background from '../components/Background';
 import Container from '../components/Container';
 import styled from 'styled-components';
+import ThirdScreen from './ThirdScreen'; // Importa a ThirdScreen
 
-// Serviços de streaming
 const streamingServices = [
   'Netflix', 
   'Max', 
@@ -21,7 +21,6 @@ const streamingServices = [
   'Globoplay'
 ];
 
-// Estilizando cada item da lista
 const StreamingItem = styled.div`
   background-color: #2a2a2a;
   color: white;
@@ -36,7 +35,6 @@ const StreamingItem = styled.div`
   }
 `;
 
-// Container para a lista de serviços de streaming
 const ListContainer = styled.div`
   width: 100%;
   max-width: 400px;
@@ -44,11 +42,12 @@ const ListContainer = styled.div`
 `;
 
 const SecondScreen = () => {
-  const [selectedService, setSelectedService] = useState(null);  // Estado para o serviço selecionado
-  const [showStreamingList, setShowStreamingList] = useState(false);  // Estado para mostrar ou ocultar a lista
+  const { selectedService, setSelectedService } = useContext(AppContext);  // Acessa o contexto
+  const [showStreamingList, setShowStreamingList] = useState(false);
+  const [goToThirdScreen, setGoToThirdScreen] = useState(false); // Estado para controlar a navegação
 
   const handleServiceClick = (service) => {
-    setSelectedService(service);  // Armazena o serviço selecionado
+    setSelectedService(service);  // Atualiza o estado global com o serviço selecionado
     setShowStreamingList(false);  // Oculta a lista após a seleção
   };
 
@@ -57,8 +56,13 @@ const SecondScreen = () => {
   };
 
   const handleConfirmClick = () => {
-    console.log(`Serviço selecionado: ${selectedService}`);
+    setGoToThirdScreen(true);  // Muda o estado para ir para a terceira tela
   };
+
+  // Se o estado goToThirdScreen for true, renderiza a ThirdScreen
+  if (goToThirdScreen) {
+    return <ThirdScreen />;  // Renderiza a tela de seleção de gêneros
+  }
 
   return (
     <Background>
@@ -66,12 +70,10 @@ const SecondScreen = () => {
         <Title>Escolha seu Serviço de Streaming</Title>
         <Subtitle>Selecione um serviço para continuar</Subtitle>
 
-        {/* Botão para mostrar o nome do serviço selecionado ou "Escolher Serviço" */}
         <ButtonList onClick={handleToggleList}>
           {selectedService ? selectedService : 'Escolher Serviço'}
         </ButtonList>
 
-        {/* Lista de serviços de streaming aparece quando showStreamingList for true */}
         {showStreamingList && (
           <ListContainer>
             {streamingServices.map((service) => (
@@ -85,7 +87,6 @@ const SecondScreen = () => {
           </ListContainer>
         )}
 
-        {/* Botão para confirmar a escolha */}
         {selectedService && (
           <Button onClick={handleConfirmClick}>
             Confirmar

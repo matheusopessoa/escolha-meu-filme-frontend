@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <Background>
       <Container>
-        <Title>Pare de escolher <br /> Comece a assistir</Title>
+        <Title home>Pare de escolher <br /> Comece a assistir</Title>
         <Subtitle>Deixe a parte chata conosco, apenas diga o que deseja</Subtitle>
         <Button onClick={handleButtonClick}>Escolha Meu Filme</Button>
       </Container>
