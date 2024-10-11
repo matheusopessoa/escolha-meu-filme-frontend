@@ -22,8 +22,9 @@ const providers_dict = {
 
 // Função para fazer a requisição à API, com mapeamento dos gêneros e provedores
 export const fetchMovies = async (provider, selectedGenres) => {
-  const apiUrlBase = import.meta.env.VITE_API_URL;  // Usando a URL base da API a partir da variável de ambiente
-  
+  const apiUrlBase = 'https://escolha-meu-filme-production.up.railway.app';  // Usando a URL base da API a partir da variável de ambiente
+  console.log("VITE_API_URL:", apiUrlBase); // Verifique o valor aqui
+
   // Mapeando os provedores para os valores esperados pela API
   const mappedProvider = providers_dict[provider];
   

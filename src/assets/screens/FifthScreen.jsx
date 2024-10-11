@@ -131,7 +131,7 @@ const FifthScreen = () => {
     };
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL; // Lê a URL base da API do ambiente
+      const API_URL = 'https://escolha-meu-filme-production.up.railway.app'; // Lê a URL base da API do ambiente
     
       const response = await fetch(`${API_URL}/feedback`, {
         method: 'POST',
