@@ -161,6 +161,7 @@ const FifthScreen = () => {
     <Background2>
       <Container>
         <Title>Seleção de Filmes</Title>
+        <br></br>
 
         {/* Exibe o filme atual */}
         <MovieContainer>
