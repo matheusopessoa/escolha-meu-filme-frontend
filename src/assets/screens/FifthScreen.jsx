@@ -131,23 +131,28 @@ const FifthScreen = () => {
     };
 
     try {
-      const response = await fetch('escolha-meu-filme-production.up.railway.app/feedback', {
+      const API_URL = import.meta.env.VITE_API_URL; // Lê a URL base da API do ambiente
+    
+      const response = await fetch(`${API_URL}/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(feedbackBody),
       });
-
+    
       if (!response.ok) {
-        throw new Error('Erro ao enviar feedback');
+        throw new Error(`Erro: ${response.statusText}`);
       }
-
-      console.log('Feedback enviado com sucesso');
+    
+      const data = await response.json();
+      return data;
+    
     } catch (error) {
       console.error('Erro ao enviar feedback:', error);
     }
-  };
+  }
+    
 
   const currentMovie = movies[movieKeys[currentMovieIndex]]; // Filme atual
   const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL da imagem
