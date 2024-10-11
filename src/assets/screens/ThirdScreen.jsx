@@ -88,8 +88,8 @@ const ThirdScreen = () => {
   return (
     <Background>
       <Container>
-        <Title>Qual gênero de filme você quer assistir?</Title>
-        <Subtitle>Selecione até dois gêneros</Subtitle>
+        <Title>Escolha os Gêneros de Filme</Title>
+        <Subtitle>Selecione até dois gêneros para personalizar sua recomendação</Subtitle>
 
         <GenreListContainer>
           {genres.map((genre) => (

@@ -67,8 +67,8 @@ const SecondScreen = () => {
   return (
     <Background>
       <Container>
-        <Title>Escolha seu Serviço de Streaming</Title>
-        <Subtitle>Selecione um serviço para continuar</Subtitle>
+        <Title>Escolha sua Plataforma de Streaming</Title>
+        <Subtitle>Clique em uma plataforma para seguir com a seleção de filmes.</Subtitle>
 
         <ButtonList onClick={handleToggleList}>
           {selectedService ? selectedService : 'Escolher Serviço'}
