@@ -22,7 +22,7 @@ const genres_dict = {
   
   // Função para fazer a requisição à API, com mapeamento dos gêneros e provedores
   export const fetchMovies = async (provider, selectedGenres) => {
-    const apiUrlBase = 'http://127.0.0.1:5000/movies';  // URL base da API
+    const apiUrlBase = 'escolha-meu-filme-production.up.railway.app/movies';  // URL base da API
   
     // Mapeando os provedores para os valores esperados pela API
     const mappedProvider = providers_dict[provider];
