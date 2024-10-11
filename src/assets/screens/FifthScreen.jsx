@@ -1,3 +1,4 @@
+// src/screens/FifthScreen.jsx
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context'; // Consumindo os filmes do contexto
 import Title from '../components/Title';
@@ -9,6 +10,7 @@ import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import ThankYouScreen from './ThankYouScreen'; // Importar tela de agradecimento
+import SorryScreen from './SorryScreen'; // Importar tela de desculpas
 
 // Estilizando os botões e o container dos filmes
 const CircleButton = styled.button`
@@ -62,6 +64,11 @@ const FifthScreen = () => {
 
   const movieKeys = Object.keys(movies); // Obtenha as chaves dos filmes para indexar
 
+  // Verifica se existem filmes disponíveis
+  if (movieKeys.length === 0) {
+    return <SorryScreen />; // Renderiza a tela de desculpas se não houver filmes
+  }
+
   // Se o estado goToThankYou for true, renderiza a tela de agradecimento e passa o filme selecionado
   if (goToThankYou && selectedMovie) {
     return <ThankYouScreen movie={selectedMovie} />;
@@ -73,11 +80,16 @@ const FifthScreen = () => {
     const movieTitle = movieKeys[currentMovieIndex]; // Nome do filme
     const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL do poster
 
-    // Adicionando o feedback "like" ao array
-    setFeedbacks((prevFeedbacks) => [
-      ...prevFeedbacks,
-      { movie_id: movieId, feedback: 'like' }
-    ]);
+    // Adiciona o feedback "like" apenas se o filme ainda não tiver feedback registrado
+    setFeedbacks((prevFeedbacks) => {
+      if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
+        return [
+          ...prevFeedbacks,
+          { movie_id: movieId, feedback: 'like' }
+        ];
+      }
+      return prevFeedbacks;
+    });
 
     // Armazenar o nome e o poster do filme para a tela de agradecimento
     setSelectedMovie({ title: movieTitle, posterUrl });
@@ -93,11 +105,16 @@ const FifthScreen = () => {
     const currentMovie = movies[movieKeys[currentMovieIndex]];
     const movieId = currentMovie[0]; // Pegando o ID do filme
 
-    // Adicionando o feedback "dislike" ao array
-    setFeedbacks((prevFeedbacks) => [
-      ...prevFeedbacks,
-      { movie_id: movieId, feedback: 'dislike' }
-    ]);
+    // Adiciona o feedback "dislike" apenas se o filme ainda não tiver feedback registrado
+    setFeedbacks((prevFeedbacks) => {
+      if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
+        return [
+          ...prevFeedbacks,
+          { movie_id: movieId, feedback: 'dislike' }
+        ];
+      }
+      return prevFeedbacks;
+    });
 
     // Se houver mais filmes, avança para o próximo
     if (currentMovieIndex < movieKeys.length - 1) {
@@ -132,11 +149,6 @@ const FifthScreen = () => {
     }
   };
 
-  // Verifica se existem filmes disponíveis
-  if (movieKeys.length === 0) {
-    return <Subtitle>Carregando filmes...</Subtitle>;
-  }
-
   const currentMovie = movies[movieKeys[currentMovieIndex]]; // Filme atual
   const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL da imagem
 
@@ -144,7 +156,6 @@ const FifthScreen = () => {
     <Background2>
       <Container>
         <Title>Seleção de Filmes</Title>
-        <Subtitle>Clique em "LIKE" para selecionar o filme ou "DESLIKE" para ver outro</Subtitle>
 
         {/* Exibe o filme atual */}
         <MovieContainer>
@@ -153,12 +164,10 @@ const FifthScreen = () => {
         </MovieContainer>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
-          {/* Botão X (DESLIKE) à esquerda */}
           <CircleButton onClick={handleDislikeClick}>
             <FontAwesomeIcon icon={faTimes} />
           </CircleButton>
 
-          {/* Botão Coração (LIKE) à direita */}
           <CircleButton like onClick={handleLikeClick}>
             <FontAwesomeIcon icon={faHeartRegular} />
           </CircleButton>

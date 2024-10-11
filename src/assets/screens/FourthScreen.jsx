@@ -41,24 +41,23 @@ const FourthScreen = () => {
   return (
     <Background2>
       <Container>
-        <Title>Tutorial</Title>
-        <Subtitle>Aqui está como você pode escolher um filme:</Subtitle>
+        <Title>Como Escolher um Filme</Title>
 
         <p style={{ color: 'white', textAlign: 'center', maxWidth: '80%', margin: '20px auto', fontSize: '18px' }}>
           Na próxima tela, você verá uma lista de filmes recomendados.</p>
 
           <p style={{ color: 'white', textAlign: 'center', maxWidth: '80%', margin: '20px auto', fontSize: '18px' }}>
-          Se gostar de um filme, clique no ícone 
+          Se encontrar um filme de que goste, clique no ícone 
           <CircleButton like>
             <FontAwesomeIcon icon={faHeartRegular} />
           </CircleButton>
           para selecioná-lo.</p>
           <p style={{ color: 'white', textAlign: 'center', maxWidth: '80%', margin: '20px auto', fontSize: '18px' }}>
-          Caso não goste, clique no ícone
+          Se não gostar, clique no ícone
           <CircleButton>
             <FontAwesomeIcon icon={faTimes} />
           </CircleButton>
-          para pedir outra sugestão.
+          para receber outra sugestão.
         </p>
 
         <Button onClick={handleContinueClick}>Continuar</Button>
