@@ -22,6 +22,7 @@ const ThankYouScreen = ({ movie }) => {
         <p style={{ color: 'white', textAlign: 'center', fontSize: '20px' }}>
           Você selecionou o filme <strong>{movie.title}</strong>.
         </p>
+        <br></br>
 
         {/* Exibindo o poster do filme */}
         <MovieImage src={movie.posterUrl} alt={movie.title} />
