@@ -2,7 +2,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context'; // Consumindo os filmes do contexto
 import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
 import Background2 from '../components/Background2';
 import Container from '../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -49,6 +48,21 @@ const MovieImage = styled.img`
   height: 300px;
   border-radius: 10px;
   object-fit: cover;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+
+  ${(props) =>
+    props.animationDirection === 'left' &&
+    `
+    transform: translateX(-300%) rotate(-30deg);
+    opacity: 0;
+  `}
+
+  ${(props) =>
+    props.animationDirection === 'grow' &&
+    `
+    transform: scale(1.5);
+    opacity: 0;
+  `}
 `;
 
 const MovieTitle = styled.h3`
@@ -103,13 +117,16 @@ const CloseButton = styled.button`
 
 const FifthScreen = () => {
   const { movies } = useContext(AppContext); // Pegando os filmes do contexto
-  const [currentMovieIndex, setCurrentMovieIndex] = useState(0); // Estado para rastrear o índice do filme atual
-  const [goToThankYou, setGoToThankYou] = useState(false); // Estado para controle de navegação para a tela de agradecimento
-  const [feedbacks, setFeedbacks] = useState([]); // Estado para armazenar os feedbacks
-  const [selectedMovie, setSelectedMovie] = useState(null); // Armazenar o nome e o poster do filme
-  const [showSynopsis, setShowSynopsis] = useState(false); // Estado para controlar a exibição da sinopse
+  const [currentMovieIndex, setCurrentMovieIndex] = useState(0); // Índice do filme atual
+  const [goToThankYou, setGoToThankYou] = useState(false); // Controle de navegação
+  const [feedbacks, setFeedbacks] = useState([]); // Armazena os feedbacks
+  const [selectedMovie, setSelectedMovie] = useState(null); // Nome e poster do filme
+  const [showSynopsis, setShowSynopsis] = useState(false); // Controla a exibição da sinopse
+  const [animationDirection, setAnimationDirection] = useState(null); // Direção da animação
+  const [showPoster, setShowPoster] = useState(true); // Controla a exibição do cartaz
+  const [showTitle, setShowTitle] = useState(true); // Controla a exibição do título
 
-  const movieKeys = Object.keys(movies); // Obtenha as chaves dos filmes para indexar
+  const movieKeys = Object.keys(movies); // Chaves dos filmes
 
   // Verifica se existem filmes disponíveis
   if (movieKeys.length === 0) {
@@ -121,13 +138,16 @@ const FifthScreen = () => {
     return <ThankYouScreen movie={selectedMovie} />;
   }
 
-  const handleLikeClick = async () => {
+  const handleLikeClick = () => {
     const currentMovie = movies[movieKeys[currentMovieIndex]];
-    const movieId = currentMovie[0]; // Pegando o ID do filme
+    const movieId = currentMovie[0]; // ID do filme
     const movieTitle = movieKeys[currentMovieIndex]; // Nome do filme
     const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL do poster
 
-    // Adiciona o feedback "like" apenas se o filme ainda não tiver feedback registrado
+    // Armazena o nome e o poster do filme para a tela de agradecimento
+    setSelectedMovie({ title: movieTitle, posterUrl });
+
+    // Adiciona o feedback "like" se ainda não estiver registrado
     setFeedbacks((prevFeedbacks) => {
       if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
         return [...prevFeedbacks, { movie_id: movieId, feedback: 'like' }];
@@ -135,21 +155,18 @@ const FifthScreen = () => {
       return prevFeedbacks;
     });
 
-    // Armazenar o nome e o poster do filme para a tela de agradecimento
-    setSelectedMovie({ title: movieTitle, posterUrl });
+    // Inicia a animação de crescimento
+    setAnimationDirection('grow');
 
-    // Envia o feedback ao backend
-    await sendFeedbackToBackend(feedbacks);
-
-    // Navegar para a tela de agradecimento
-    setGoToThankYou(true);
+    // Oculta o título
+    setShowTitle(false);
   };
 
   const handleDislikeClick = () => {
     const currentMovie = movies[movieKeys[currentMovieIndex]];
-    const movieId = currentMovie[0]; // Pegando o ID do filme
+    const movieId = currentMovie[0]; // ID do filme
 
-    // Adiciona o feedback "dislike" apenas se o filme ainda não tiver feedback registrado
+    // Adiciona o feedback "dislike" se ainda não estiver registrado
     setFeedbacks((prevFeedbacks) => {
       if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
         return [...prevFeedbacks, { movie_id: movieId, feedback: 'dislike' }];
@@ -157,11 +174,36 @@ const FifthScreen = () => {
       return prevFeedbacks;
     });
 
-    // Se houver mais filmes, avança para o próximo
-    if (currentMovieIndex < movieKeys.length - 1) {
-      setCurrentMovieIndex(currentMovieIndex + 1); // Avança para o próximo filme
-    } else {
-      setCurrentMovieIndex(0); // Volta ao primeiro filme se todos os filmes forem exibidos
+    // Inicia a animação para a esquerda
+    setAnimationDirection('left');
+  };
+
+  const handleAnimationEnd = async () => {
+    if (animationDirection === 'grow') {
+      // Oculta o cartaz após a animação
+      setShowPoster(false);
+
+      // Envia o feedback ao backend
+      await sendFeedbackToBackend(feedbacks);
+
+      // Navega para a tela de agradecimento
+      setGoToThankYou(true);
+    } else if (animationDirection === 'left') {
+      // Após a animação, resetamos a direção e o cartaz
+      setAnimationDirection(null);
+      setShowPoster(true); // Prepara para exibir o próximo cartaz
+
+      // Avança para o próximo filme
+      if (currentMovieIndex < movieKeys.length - 1) {
+        setCurrentMovieIndex(currentMovieIndex + 1);
+      } else {
+        // Se não houver mais filmes, você pode exibir uma mensagem ou tela
+        // Aqui, vamos voltar ao primeiro filme ou exibir uma mensagem
+        // Exemplo: setCurrentMovieIndex(0);
+        // Ou, se quiser exibir uma mensagem:
+        setShowPoster(false);
+        // Opcionalmente, você pode definir um estado para exibir uma mensagem de fim de lista
+      }
     }
   };
 
@@ -173,23 +215,55 @@ const FifthScreen = () => {
     setShowSynopsis(false);
   };
 
+  // Verifica se ainda há filmes para exibir
+  if (currentMovieIndex >= movieKeys.length) {
+    return (
+      <Background2>
+        <BackHome />
+        <Container>
+          {showTitle && (
+            <>
+              <Title>Seleção de Filmes</Title>
+              <br />
+            </>
+          )}
+          <div style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>
+            <h2>Não há mais filmes para mostrar.</h2>
+          </div>
+        </Container>
+      </Background2>
+    );
+  }
+
   const currentMovie = movies[movieKeys[currentMovieIndex]]; // Filme atual
   const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL da imagem
-  const movieOverview = currentMovie[5]; // Supondo que o índice 5 é o 'overview'
+  const movieOverview = currentMovie[5]; // Sinopse do filme
 
   return (
     <Background2>
-      <BackHome/>
+      <BackHome />
       <Container>
-        <Title>Seleção de Filmes</Title>
-        <br />
+        {/* Renderiza o título apenas se showTitle for true */}
+        {showTitle && (
+          <>
+            <Title>Seleção de Filmes</Title>
+            <br />
+          </>
+        )}
 
-        {/* Exibe o filme atual */}
-        <MovieContainer>
-          <MovieImage src={posterUrl} alt={movieKeys[currentMovieIndex]} />
-          <MovieTitle>{movieKeys[currentMovieIndex]}</MovieTitle>
-          <SynopsisButton onClick={handleSynopsisClick}>Ler Sinopse</SynopsisButton>
-        </MovieContainer>
+        {/* Exibe o filme atual se showPoster for true */}
+        {showPoster && (
+          <MovieContainer>
+            <MovieImage
+              src={posterUrl}
+              alt={movieKeys[currentMovieIndex]}
+              animationDirection={animationDirection}
+              onTransitionEnd={handleAnimationEnd}
+            />
+            <MovieTitle>{movieKeys[currentMovieIndex]}</MovieTitle>
+            <SynopsisButton onClick={handleSynopsisClick}>Ler Sinopse</SynopsisButton>
+          </MovieContainer>
+        )}
 
         {/* Modal de Sinopse */}
         {showSynopsis && (
@@ -202,22 +276,25 @@ const FifthScreen = () => {
           </ModalBackground>
         )}
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '20px',
-            marginTop: '20px',
-          }}
-        >
-          <CircleButton onClick={handleDislikeClick}>
-            <FontAwesomeIcon icon={faTimes} />
-          </CircleButton>
+        {/* Botões só aparecem se o cartaz estiver sendo exibido */}
+        {showPoster && (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '20px',
+              marginTop: '20px',
+            }}
+          >
+            <CircleButton onClick={handleDislikeClick}>
+              <FontAwesomeIcon icon={faTimes} />
+            </CircleButton>
 
-          <CircleButton like onClick={handleLikeClick}>
-            <FontAwesomeIcon icon={faHeartRegular} />
-          </CircleButton>
-        </div>
+            <CircleButton like onClick={handleLikeClick}>
+              <FontAwesomeIcon icon={faHeartRegular} />
+            </CircleButton>
+          </div>
+        )}
       </Container>
     </Background2>
   );
