@@ -8,6 +8,7 @@ import Button from '../components/Button';
 import styled from 'styled-components';
 import { fetchMovies } from '../services/getMovies'; // Importando a função de requisição
 import FourthScreen from './FourthScreen'; // Importa a quarta tela
+import BackHome from '../components/BackHome';
 
 const genres = [
   'Ação', 'Animação', 'Aventura', 'Comédia', 'Crime', 'Documentário',
@@ -87,6 +88,7 @@ const ThirdScreen = () => {
 
   return (
     <Background>
+      <BackHome></BackHome>
       <Container>
         <Title>Escolha os Gêneros de Filme</Title>
         <Subtitle>Selecione até dois gêneros para personalizar sua recomendação</Subtitle>

@@ -4,6 +4,8 @@ import Background2 from '../components/Background2';
 import Container from '../components/Container';
 import Button from '../components/Button';
 import styled from 'styled-components';
+import Subtitle from '../components/Subtitle';
+import BackHome from '../components/BackHome';
 
 // Estilizando a imagem do filme
 const MovieImage = styled.img`
@@ -17,19 +19,14 @@ const MovieImage = styled.img`
 const ThankYouScreen = ({ movie }) => {
   return (
     <Background2>
+      <BackHome/>
       <Container>
         <Title>Obrigado!</Title>
-        <p style={{ color: 'white', textAlign: 'center', fontSize: '20px' }}>
-          Você selecionou o filme <strong>{movie.title}</strong>.
-        </p>
+        <Subtitle>Você selecionou o filme <strong>{movie.title}</strong></Subtitle>
         <br></br>
-
-        {/* Exibindo o poster do filme */}
         <MovieImage src={movie.posterUrl} alt={movie.title} />
+        <Subtitle>Aproveite seu filme e tenha uma boa sessão!</Subtitle>
 
-        <p style={{ color: 'white', textAlign: 'center', fontSize: '20px' }}>
-          Aproveite seu filme e tenha uma boa sessão!
-        </p>
 
         <Button onClick={() => window.location.reload()}>Voltar ao Início</Button>
       </Container>

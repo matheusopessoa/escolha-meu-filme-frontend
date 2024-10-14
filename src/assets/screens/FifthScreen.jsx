@@ -11,6 +11,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import ThankYouScreen from './ThankYouScreen'; // Importar tela de agradecimento
 import SorryScreen from './SorryScreen'; // Importar tela de desculpas
+import sendFeedbackToBackend from '../services/post'; // Importar a função do serviço
+import BackHome from '../components/BackHome';
 
 // Estilizando os botões e o container dos filmes
 const CircleButton = styled.button`
@@ -55,12 +57,57 @@ const MovieTitle = styled.h3`
   margin-top: 10px;
 `;
 
+// Estilos para o botão "Ler Sinopse"
+const SynopsisButton = styled.button`
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+// Estilos para o modal de sinopse
+const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ModalContent = styled.div`
+  background-color: #222;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+`;
+
+const CloseButton = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 const FifthScreen = () => {
   const { movies } = useContext(AppContext); // Pegando os filmes do contexto
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0); // Estado para rastrear o índice do filme atual
   const [goToThankYou, setGoToThankYou] = useState(false); // Estado para controle de navegação para a tela de agradecimento
   const [feedbacks, setFeedbacks] = useState([]); // Estado para armazenar os feedbacks
   const [selectedMovie, setSelectedMovie] = useState(null); // Armazenar o nome e o poster do filme
+  const [showSynopsis, setShowSynopsis] = useState(false); // Estado para controlar a exibição da sinopse
 
   const movieKeys = Object.keys(movies); // Obtenha as chaves dos filmes para indexar
 
@@ -83,10 +130,7 @@ const FifthScreen = () => {
     // Adiciona o feedback "like" apenas se o filme ainda não tiver feedback registrado
     setFeedbacks((prevFeedbacks) => {
       if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
-        return [
-          ...prevFeedbacks,
-          { movie_id: movieId, feedback: 'like' }
-        ];
+        return [...prevFeedbacks, { movie_id: movieId, feedback: 'like' }];
       }
       return prevFeedbacks;
     });
@@ -95,23 +139,20 @@ const FifthScreen = () => {
     setSelectedMovie({ title: movieTitle, posterUrl });
 
     // Envia o feedback ao backend
-    await sendFeedbackToBackend();
+    await sendFeedbackToBackend(feedbacks);
 
     // Navegar para a tela de agradecimento
     setGoToThankYou(true);
   };
 
-  const handleDislikeClick = async () => {
+  const handleDislikeClick = () => {
     const currentMovie = movies[movieKeys[currentMovieIndex]];
     const movieId = currentMovie[0]; // Pegando o ID do filme
 
     // Adiciona o feedback "dislike" apenas se o filme ainda não tiver feedback registrado
     setFeedbacks((prevFeedbacks) => {
       if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
-        return [
-          ...prevFeedbacks,
-          { movie_id: movieId, feedback: 'dislike' }
-        ];
+        return [...prevFeedbacks, { movie_id: movieId, feedback: 'dislike' }];
       }
       return prevFeedbacks;
     });
@@ -124,52 +165,51 @@ const FifthScreen = () => {
     }
   };
 
-  // Função para enviar os feedbacks ao backend
-  const sendFeedbackToBackend = async () => {
-    const feedbackBody = {
-      feedbacks: feedbacks
-    };
+  const handleSynopsisClick = () => {
+    setShowSynopsis(true);
+  };
 
-    try {
-      const API_URL = 'https://escolha-meu-filme-production.up.railway.app'; // Lê a URL base da API do ambiente
-    
-      const response = await fetch(`${API_URL}/feedback`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(feedbackBody),
-      });
-    
-      if (!response.ok) {
-        throw new Error(`Erro: ${response.statusText}`);
-      }
-    
-      const data = await response.json();
-      return data;
-    
-    } catch (error) {
-      console.error('Erro ao enviar feedback:', error);
-    }
-  }
-    
+  const handleCloseSynopsis = () => {
+    setShowSynopsis(false);
+  };
 
   const currentMovie = movies[movieKeys[currentMovieIndex]]; // Filme atual
   const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL da imagem
+  const movieOverview = currentMovie[5]; // Supondo que o índice 5 é o 'overview'
 
   return (
     <Background2>
+      <BackHome/>
       <Container>
         <Title>Seleção de Filmes</Title>
-        <br></br>
+        <br />
 
         {/* Exibe o filme atual */}
         <MovieContainer>
           <MovieImage src={posterUrl} alt={movieKeys[currentMovieIndex]} />
           <MovieTitle>{movieKeys[currentMovieIndex]}</MovieTitle>
+          <SynopsisButton onClick={handleSynopsisClick}>Ler Sinopse</SynopsisButton>
         </MovieContainer>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
+        {/* Modal de Sinopse */}
+        {showSynopsis && (
+          <ModalBackground onClick={handleCloseSynopsis}>
+            <ModalContent onClick={(e) => e.stopPropagation()}>
+              <h2>Sinopse</h2>
+              <p>{movieOverview}</p>
+              <CloseButton onClick={handleCloseSynopsis}>Fechar</CloseButton>
+            </ModalContent>
+          </ModalBackground>
+        )}
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '20px',
+            marginTop: '20px',
+          }}
+        >
           <CircleButton onClick={handleDislikeClick}>
             <FontAwesomeIcon icon={faTimes} />
           </CircleButton>

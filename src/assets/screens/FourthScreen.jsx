@@ -9,6 +9,7 @@ import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import FifthScreen from './FifthScreen';
 import styled from 'styled-components';
+import BackHome from '../components/BackHome';
 
 // Estilizando os botões do tutorial
 const CircleButton = styled.span`
@@ -40,6 +41,7 @@ const FourthScreen = () => {
 
   return (
     <Background2>
+      <BackHome/>
       <Container>
         <Title>Como Escolher um Filme</Title>
 

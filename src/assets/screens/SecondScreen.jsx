@@ -8,6 +8,7 @@ import Background from '../components/Background';
 import Container from '../components/Container';
 import styled from 'styled-components';
 import ThirdScreen from './ThirdScreen'; // Importa a ThirdScreen
+import BackHome from '../components/BackHome';
 
 const streamingServices = [
   'Netflix', 
@@ -65,7 +66,9 @@ const SecondScreen = () => {
   }
 
   return (
+
     <Background>
+      <BackHome/>
       <Container>
         <Title>Escolha sua Plataforma de Streaming</Title>
         <Subtitle>Clique em uma plataforma para seguir com a seleção de filmes.</Subtitle>
