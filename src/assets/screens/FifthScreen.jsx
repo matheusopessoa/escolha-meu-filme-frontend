@@ -193,17 +193,8 @@ const FifthScreen = () => {
       setAnimationDirection(null);
       setShowPoster(true); // Prepara para exibir o próximo cartaz
 
-      // Avança para o próximo filme
-      if (currentMovieIndex < movieKeys.length - 1) {
-        setCurrentMovieIndex(currentMovieIndex + 1);
-      } else {
-        // Se não houver mais filmes, você pode exibir uma mensagem ou tela
-        // Aqui, vamos voltar ao primeiro filme ou exibir uma mensagem
-        // Exemplo: setCurrentMovieIndex(0);
-        // Ou, se quiser exibir uma mensagem:
-        setShowPoster(false);
-        // Opcionalmente, você pode definir um estado para exibir uma mensagem de fim de lista
-      }
+      // Avança para o próximo filme de forma circular
+      setCurrentMovieIndex((prevIndex) => (prevIndex + 1) % movieKeys.length);
     }
   };
 
@@ -214,26 +205,6 @@ const FifthScreen = () => {
   const handleCloseSynopsis = () => {
     setShowSynopsis(false);
   };
-
-  // Verifica se ainda há filmes para exibir
-  if (currentMovieIndex >= movieKeys.length) {
-    return (
-      <Background2>
-        <BackHome />
-        <Container>
-          {showTitle && (
-            <>
-              <Title>Seleção de Filmes</Title>
-              <br />
-            </>
-          )}
-          <div style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>
-            <h2>Não há mais filmes para mostrar.</h2>
-          </div>
-        </Container>
-      </Background2>
-    );
-  }
 
   const currentMovie = movies[movieKeys[currentMovieIndex]]; // Filme atual
   const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL da imagem
