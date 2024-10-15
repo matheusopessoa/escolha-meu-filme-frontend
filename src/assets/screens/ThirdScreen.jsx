@@ -7,7 +7,7 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import styled from 'styled-components';
 import { fetchMovies } from '../services/getMovies'; // Importando a função de requisição
-import FourthScreen from './FourthScreen'; // Importa a quarta tela
+import FifthScreen from './FifthScreen'; // Importa a quarta tela
 import BackHome from '../components/BackHome';
 
 const genres = [
@@ -83,7 +83,7 @@ const ThirdScreen = () => {
 
   // Se o estado "goToFourthScreen" for true, renderiza a quarta tela
   if (goToFourthScreen) {
-    return <FourthScreen />;
+    return <FifthScreen />;
   }
 
   return (
