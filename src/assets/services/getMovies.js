@@ -24,7 +24,6 @@ const providers_dict = {
 export const fetchMovies = async (provider, selectedGenres) => {
   const apiUrlBase = 'https://escolha-meu-filme-production.up.railway.app';  // Usando a URL base da API a partir da variável de ambiente
   //const apiUrlBase = 'http://localhost:5000/'
-  console.log("VITE_API_URL:", apiUrlBase); // Verifique o valor aqui
 
   // Mapeando os provedores para os valores esperados pela API
   const mappedProvider = providers_dict[provider];
@@ -40,12 +39,10 @@ export const fetchMovies = async (provider, selectedGenres) => {
     url += `&genres=${mappedGenres[0]}&genres=${mappedGenres[1]}`;
   }
   
-  console.log("URL para a requisição:", url);  // Verifique a URL antes de fazer a requisição
   
   try {
     const response = await fetch(url);  // Fazendo a requisição GET para a API
     const data = await response.json();  // Obtendo a resposta em formato JSON
-    console.log("Dados recebidos da API:", data);
     return data;
   } catch (error) {
     console.error("Erro ao fazer a requisição:", error);
