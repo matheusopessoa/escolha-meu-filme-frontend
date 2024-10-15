@@ -6,7 +6,7 @@ const sendFeedbackToBackend = async (feedbacks) => {
   
     try {
       const API_URL = 'https://escolha-meu-filme-production.up.railway.app'; // Lê a URL base da API do ambiente
-      // const API_URL = 'http://localhost:5000/'
+      //const API_URL = 'http://localhost:5000/'
       const response = await fetch(`${API_URL}/feedback`, {
         method: 'POST',
         headers: {

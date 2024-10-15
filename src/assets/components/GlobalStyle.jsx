@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow-x: hidden; /* Evitar barras de rolagem horizontais */
+    background-color: #000000; /* Define fundo preto para evitar áreas brancas */
   }
 
   #root {
