@@ -1,9 +1,9 @@
-// src/components/BackHome.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../../context';
 // Estilizando o botão para posicioná-lo no canto superior direito
 const ButtonContainer = styled.button`
   position: fixed;
@@ -20,14 +20,20 @@ const ButtonContainer = styled.button`
   }
 `;
 
-const BackHome = ({ goHome }) => {
+const BackHome = () => {
+  const navigate = useNavigate(); // Hook deve estar dentro do componente
+  const { setSelectedService, setSelectedGenres, setMovies, setTheMovie } = useContext(AppContext); // useContext dentro do componente
+
+  const resetCache = () => {
+    setSelectedService(null);
+    setSelectedGenres([]);
+    setMovies({});
+    setTheMovie([]);
+  };
+
   const handleClick = () => {
-    if (goHome) {
-      goHome();
-    } else {
-      // Como fallback, podemos usar window.location.href para navegar para a raiz
-      window.location.href = '/';
-    }
+    resetCache();
+    navigate('/');
   };
 
   return (

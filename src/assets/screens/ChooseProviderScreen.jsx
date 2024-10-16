@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context';
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
 import ButtonList from '../components/ButtonList';
 import Background from '../components/Background';
 import Container from '../components/Container';
