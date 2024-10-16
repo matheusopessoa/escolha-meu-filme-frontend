@@ -180,7 +180,7 @@ const ChooseMovieScreen = () => {
       // Envia o feedback ao backend
       await sendFeedbackToBackend(feedbacks);
 
-      selectedMovie = true
+      setSelectedMovie(true)
     } else if (animationDirection === 'left') {
       // Após a animação, resetamos a direção e o cartaz
       setAnimationDirection(null);
@@ -211,6 +211,7 @@ const ChooseMovieScreen = () => {
         {showTitle && (
           <>
             <Title>Seleção de Filmes</Title>
+            
             <br />
           </>
         )}

@@ -20,8 +20,12 @@ const MovieImage = styled.img`
 
 const ThankYouScreen = () => {
   const navigate = useNavigate()
-  const { theMovie } = useContext(AppContext)
+  const { setSelectedService, setSelectedGenres, setMovies, theMovie, setTheMovie,  } = useContext(AppContext)
   const goHome = () => {
+    setSelectedService(null);
+    setSelectedGenres([]);
+    setMovies({});
+    setTheMovie([]);
     navigate('/');
   }
   return (

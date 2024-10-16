@@ -51,16 +51,12 @@ const ChooseProviderScreen = () => {
   const handleServiceClick = (service) => {
     setSelectedService(service);  // Atualiza o estado global com o serviço selecionado
     setShowStreamingList(false);  // Oculta a lista após a seleção
+    navigate('/generos')
   };
 
   const handleToggleList = () => {
     setShowStreamingList(!showStreamingList);  // Alterna entre mostrar e ocultar a lista
   };
-
-  const handleConfirmClick = () => {
-    navigate('/generos')
-  };
-
 
   return (
 
@@ -85,12 +81,6 @@ const ChooseProviderScreen = () => {
               </StreamingItem>
             ))}
           </ListContainer>
-        )}
-
-        {selectedService && (
-          <Button onClick={handleConfirmClick}>
-            Confirmar
-          </Button>
         )}
       </Container>
     </Background>
