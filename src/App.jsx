@@ -9,6 +9,7 @@ function App() {
       <div className="App">
         <FirstScreen /> {/* Mantemos a lógica de renderização existente */}
       </div>
+      <Analytics />
     </AppProvider>
   );
 }
