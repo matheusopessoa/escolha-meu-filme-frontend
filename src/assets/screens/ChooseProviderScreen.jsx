@@ -7,8 +7,8 @@ import ButtonList from '../components/ButtonList';
 import Background from '../components/Background';
 import Container from '../components/Container';
 import styled from 'styled-components';
-import ThirdScreen from './ThirdScreen'; // Importa a ThirdScreen
 import BackHome from '../components/BackHome';
+import { useNavigate } from 'react-router-dom';
 
 const streamingServices = [
   'Netflix', 
@@ -42,10 +42,11 @@ const ListContainer = styled.div`
   margin: 0 auto;
 `;
 
-const SecondScreen = () => {
+const ChooseProviderScreen = () => {
+  const navigate = useNavigate();
+
   const { selectedService, setSelectedService } = useContext(AppContext);  // Acessa o contexto
   const [showStreamingList, setShowStreamingList] = useState(false);
-  const [goToThirdScreen, setGoToThirdScreen] = useState(false); // Estado para controlar a navegação
 
   const handleServiceClick = (service) => {
     setSelectedService(service);  // Atualiza o estado global com o serviço selecionado
@@ -57,13 +58,9 @@ const SecondScreen = () => {
   };
 
   const handleConfirmClick = () => {
-    setGoToThirdScreen(true);  // Muda o estado para ir para a terceira tela
+    navigate('/generos')
   };
 
-  // Se o estado goToThirdScreen for true, renderiza a ThirdScreen
-  if (goToThirdScreen) {
-    return <ThirdScreen />;  // Renderiza a tela de seleção de gêneros
-  }
 
   return (
 
@@ -100,4 +97,4 @@ const SecondScreen = () => {
   );
 };
 
-export default SecondScreen;
+export default ChooseProviderScreen;

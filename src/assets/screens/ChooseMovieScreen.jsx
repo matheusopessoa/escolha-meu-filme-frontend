@@ -1,4 +1,4 @@
-// src/screens/FifthScreen.jsx
+// src/screens/ChooseMovieScreen.jsx
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context'; // Consumindo os filmes do contexto
 import Title from '../components/Title';
@@ -8,10 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import ThankYouScreen from './ThankYouScreen'; // Importar tela de agradecimento
-import SorryScreen from './SorryScreen'; // Importar tela de desculpas
 import sendFeedbackToBackend from '../services/post'; // Importar a função do serviço
 import BackHome from '../components/BackHome';
+import { useNavigate } from 'react-router-dom';
 
 // Estilizando os botões e o container dos filmes
 const CircleButton = styled.button`
@@ -115,10 +114,10 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-const FifthScreen = () => {
-  const { movies } = useContext(AppContext); // Pegando os filmes do contexto
+const ChooseMovieScreen = () => {
+  const navigate = useNavigate();
+  const { movies, setTheMovie } = useContext(AppContext); 
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0); // Índice do filme atual
-  const [goToThankYou, setGoToThankYou] = useState(false); // Controle de navegação
   const [feedbacks, setFeedbacks] = useState([]); // Armazena os feedbacks
   const [selectedMovie, setSelectedMovie] = useState(null); // Nome e poster do filme
   const [showSynopsis, setShowSynopsis] = useState(false); // Controla a exibição da sinopse
@@ -128,14 +127,8 @@ const FifthScreen = () => {
 
   const movieKeys = Object.keys(movies); // Chaves dos filmes
 
-  // Verifica se existem filmes disponíveis
-  if (movieKeys.length === 0) {
-    return <SorryScreen />; // Renderiza a tela de desculpas se não houver filmes
-  }
-
-  // Se o estado goToThankYou for true, renderiza a tela de agradecimento e passa o filme selecionado
-  if (goToThankYou && selectedMovie) {
-    return <ThankYouScreen movie={selectedMovie} />;
+  const goToThankYou = () => {
+    navigate('/obrigado');
   }
 
   const handleLikeClick = () => {
@@ -145,7 +138,7 @@ const FifthScreen = () => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${currentMovie[11]}`; // URL do poster
 
     // Armazena o nome e o poster do filme para a tela de agradecimento
-    setSelectedMovie({ title: movieTitle, posterUrl });
+    setTheMovie([ movieTitle, posterUrl ]);
 
     // Adiciona o feedback "like" se ainda não estiver registrado
     setFeedbacks((prevFeedbacks) => {
@@ -160,6 +153,7 @@ const FifthScreen = () => {
 
     // Oculta o título
     setShowTitle(false);
+    goToThankYou()
   };
 
   const handleDislikeClick = () => {
@@ -186,8 +180,7 @@ const FifthScreen = () => {
       // Envia o feedback ao backend
       await sendFeedbackToBackend(feedbacks);
 
-      // Navega para a tela de agradecimento
-      setGoToThankYou(true);
+      selectedMovie = true
     } else if (animationDirection === 'left') {
       // Após a animação, resetamos a direção e o cartaz
       setAnimationDirection(null);
@@ -271,4 +264,4 @@ const FifthScreen = () => {
   );
 };
 
-export default FifthScreen;
+export default ChooseMovieScreen;

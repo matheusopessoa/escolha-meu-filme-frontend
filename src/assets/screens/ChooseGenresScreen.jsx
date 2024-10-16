@@ -7,8 +7,8 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import styled from 'styled-components';
 import { fetchMovies } from '../services/getMovies'; // Importando a função de requisição
-import FifthScreen from './FifthScreen'; // Importa a quarta tela
 import BackHome from '../components/BackHome';
+import { useNavigate } from 'react-router-dom';
 
 const genres = [
   'Ação', 'Animação', 'Aventura', 'Comédia', 'Crime', 'Documentário',
@@ -46,9 +46,9 @@ const GenreListContainer = styled.div`
   max-width: 100%;
 `;
 
-const ThirdScreen = () => {
+const ChooseGenresScreen = () => {
+  const navigate = useNavigate();
   const { selectedService, selectedGenres, setSelectedGenres, setMovies } = useContext(AppContext);  // Usando o contexto para armazenar gêneros e filmes
-  const [goToFourthScreen, setGoToFourthScreen] = useState(false); // Estado para controlar a navegação
 
   const handleGenreClick = (genre) => {
     if (selectedGenres.includes(genre)) {
@@ -62,6 +62,13 @@ const ThirdScreen = () => {
       setSelectedGenres([...selectedGenres, genre]);
     }
   };
+  
+  const goToMovies = () => {
+    navigate('/filmes');
+  }
+  const goToSorry = () => {
+    navigate('/indisponivel')
+  }
 
   const handleConfirmClick = async () => {
     if (selectedGenres.length < 1) return;
@@ -69,22 +76,22 @@ const ThirdScreen = () => {
     try {
       // Chama a função fetchMovies do arquivo de serviço e faz a requisição
       const data = await fetchMovies(selectedService, selectedGenres);
-      console.log('Dados recebidos da API:', data);
 
       // Armazenar os filmes no contexto
       setMovies(data);
 
-      // Navegar para a quarta tela após a requisição
-      setGoToFourthScreen(true);
+      const data_length = Object.keys(data).length
+      if (data_length === 0) {
+        console.log(data_length === 0)
+        goToSorry()
+      } else if (data_length > 0) {
+        console.log(data_length > 0)
+        goToMovies()
+      }
     } catch (error) {
-      console.error('Erro ao fazer a requisição:', error);
     }
   };
 
-  // Se o estado "goToFourthScreen" for true, renderiza a quarta tela
-  if (goToFourthScreen) {
-    return <FifthScreen />;
-  }
 
   return (
     <Background>
@@ -116,4 +123,4 @@ const ThirdScreen = () => {
   );
 };
 
-export default ThirdScreen;
+export default ChooseGenresScreen;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Title from '../components/Title';
 import Background2 from '../components/Background2';
 import Container from '../components/Container';
@@ -6,6 +6,8 @@ import Button from '../components/Button';
 import styled from 'styled-components';
 import Subtitle from '../components/Subtitle';
 import BackHome from '../components/BackHome';
+import { AppContext } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 // Estilizando a imagem do filme
 const MovieImage = styled.img`
@@ -16,19 +18,24 @@ const MovieImage = styled.img`
   margin-bottom: 20px;
 `;
 
-const ThankYouScreen = ({ movie }) => {
+const ThankYouScreen = () => {
+  const navigate = useNavigate()
+  const { theMovie } = useContext(AppContext)
+  const goHome = () => {
+    navigate('/');
+  }
   return (
     <Background2>
       <BackHome/>
       <Container>
         <Title>Obrigado!</Title>
-        <Subtitle>Você selecionou o filme <strong>{movie.title}</strong></Subtitle>
+        <Subtitle>Você selecionou o filme <strong>{theMovie[0]}</strong></Subtitle>
         <br></br>
-        <MovieImage src={movie.posterUrl} alt={movie.title} />
+        <MovieImage src={theMovie[1]} alt={theMovie[0]} />
         <Subtitle>Aproveite seu filme e tenha uma boa sessão!</Subtitle>
 
 
-        <Button onClick={() => window.location.reload()}>Voltar ao Início</Button>
+        <Button onClick={() => goHome()}>Voltar ao Início</Button>
       </Container>
     </Background2>
   );

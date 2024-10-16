@@ -5,19 +5,19 @@ import Container from '../components/Container';
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
 import Button from '../components/Button'; // Importa o componente Button
-import SecondScreen from './SecondScreen'; // Importa o componente SecondScreen
+import ChooseProviderScreen from './ChooseProviderScreen'; // Importa o componente ChooseProviderScreen
 
 const SorryScreen = () => {
-  const [retry, setRetry] = useState(false); // Estado para redirecionar para a SecondScreen
+  const [retry, setRetry] = useState(false); // Estado para redirecionar para a ChooseProviderScreen
 
-  // Função para alterar o estado e renderizar a SecondScreen
+  // Função para alterar o estado e renderizar a ChooseProviderScreen
   const handleRetry = () => {
     setRetry(true);
   };
 
-  // Renderiza a SecondScreen se o botão "Tente novamente" for clicado
+  // Renderiza a ChooseProviderScreen se o botão "Tente novamente" for clicado
   if (retry) {
-    return <SecondScreen />;
+    return <ChooseProviderScreen />;
   }
 
   return (
