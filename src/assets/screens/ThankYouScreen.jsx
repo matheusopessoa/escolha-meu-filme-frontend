@@ -20,7 +20,7 @@ const MovieImage = styled.img`
 
 const ThankYouScreen = () => {
   const navigate = useNavigate()
-  const { setSelectedService, setSelectedGenres, setMovies, theMovie, setTheMovie,  } = useContext(AppContext)
+  const { setSelectedService, setSelectedGenres, selectedService  ,setMovies, theMovie, setTheMovie,  } = useContext(AppContext)
   const goHome = () => {
     setSelectedService(null);
     setSelectedGenres([]);
@@ -33,7 +33,7 @@ const ThankYouScreen = () => {
       <BackHome/>
       <Container>
         <Title>Obrigado!</Title>
-        <Subtitle>Você selecionou o filme <strong>{theMovie[0]}</strong></Subtitle>
+        <Subtitle>Você selecionou o filme <strong>{theMovie[0]}</strong><br />No Streaming <strong>{selectedService}</strong></Subtitle>
         <br></br>
         <MovieImage src={theMovie[1]} alt={theMovie[0]} />
         <Subtitle>Aproveite seu filme e tenha uma boa sessão!</Subtitle>
