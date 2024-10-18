@@ -21,9 +21,9 @@ const providers_dict = {
 };
 
 // Função para fazer a requisição à API, com mapeamento dos gêneros e provedores
-export const fetchMovies = async (provider, selectedGenres) => {
-  const apiUrlBase = 'https://escolha-meu-filme-production.up.railway.app';  // Usando a URL base da API a partir da variável de ambiente
-  //const apiUrlBase = 'http://localhost:5000/'
+export const fetchMovies = async (provider, selectedGenresn, runtime, release_year) => {
+  //const apiUrlBase = 'https://escolha-meu-filme-production.up.railway.app';  // Usando a URL base da API a partir da variável de ambiente
+  const apiUrlBase = 'http://localhost:5000/'
 
   // Mapeando os provedores para os valores esperados pela API
   const mappedProvider = providers_dict[provider];
@@ -32,17 +32,22 @@ export const fetchMovies = async (provider, selectedGenres) => {
   const mappedGenres = selectedGenres.map(genre => genres_dict[genre]);
   
   // Construindo a URL com base no número de gêneros selecionados
-  let url = `${apiUrlBase}/movies?provider=${mappedProvider}`;
+  let url = `${apiUrlBase}/movies?provider=${mappedProvider}%runtime=${runtime}&release_year=${release_year}`;
+  
   if (mappedGenres.length === 1) {
     url += `&genres=${mappedGenres[0]}`;
   } else if (mappedGenres.length === 2) {
     url += `&genres=${mappedGenres[0]}&genres=${mappedGenres[1]}`;
-  }
+  } else if (mappedGenres.length === 3) {
+    url += `&genres=${mappedGenres[0]}&genres=${mappedGenres[1]}&genres=${mappedGenres[2]}`;
+  } 
+  
   
   
   try {
     const response = await fetch(url);  // Fazendo a requisição GET para a API
     const data = await response.json();  // Obtendo a resposta em formato JSON
+    console.log(data)
     return data;
   } catch (error) {
     console.error("Erro ao fazer a requisição:", error);

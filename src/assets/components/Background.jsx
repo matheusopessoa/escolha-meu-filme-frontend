@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Background = styled.div`
-  background-image: url('/bgdefault.jpg');
+  background-image: url('/bg4.png');
   background-size: cover;
   background-position: center;
   background-color: #000000;
@@ -13,7 +13,7 @@ const Background = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
-    background-image: url('/bg-mobile-home.png'); /* Imagem para celulares */
+    background-image: url('/bg4.png'); /* Imagem para celulares */
   }
 `;
 

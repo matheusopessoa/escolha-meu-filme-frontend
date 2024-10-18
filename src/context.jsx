@@ -24,6 +24,16 @@ export const AppProvider = ({ children }) => {
     return savedTheMovie ? JSON.parse(savedTheMovie) : [];
   });
 
+  const [selectedRelease, setSelectedReleases] = useState(() => { 
+    const releases = localStorage.getItem('releases');
+    return ['F', 'F', 'F', 'F'];
+  });
+
+  const [selectedRuntime, setSelectedRuntime] = useState(() => {
+    const runtime = localStorage.getItem('runtime');
+    return runtime ? JSON.parse(runtime) : [];
+  });
+
   // Salva `selectedService` no localStorage sempre que ele mudar
   useEffect(() => {
     localStorage.setItem('service', JSON.stringify(selectedService));
@@ -44,8 +54,17 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('theMovie', JSON.stringify(theMovie));
   }, [theMovie]);
 
+  // Corrigido o nome da chave para ser consistente
+  useEffect(() => {
+    localStorage.setItem('releases', JSON.stringify(selectedRelease)); // Ajustado para 'releases'
+  }, [selectedRelease]);
+
+  useEffect(() => {
+    localStorage.setItem('runtime', JSON.stringify(selectedRuntime));
+  }, [selectedRuntime]);
+
   return (
-    <AppContext.Provider value={{ selectedService, setSelectedService, selectedGenres, setSelectedGenres, movies, setMovies, theMovie, setTheMovie }}>
+    <AppContext.Provider value={{ selectedService, setSelectedService, selectedGenres, setSelectedGenres, movies, setMovies, theMovie, setTheMovie, selectedRelease, setSelectedReleases, selectedRuntime, setSelectedRuntime }}>
       {children}
     </AppContext.Provider>
   );

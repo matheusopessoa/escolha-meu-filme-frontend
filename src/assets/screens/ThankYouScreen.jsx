@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Title from '../components/Title';
-import Background2 from '../components/Background2';
+import Background from '../components/Background';
 import Container from '../components/Container';
 import Button from '../components/Button';
 import styled from 'styled-components';
@@ -29,7 +29,7 @@ const ThankYouScreen = () => {
     navigate('/');
   }
   return (
-    <Background2>
+    <Background>
       <BackHome/>
       <Container>
         <Title>Obrigado!</Title>
@@ -41,7 +41,7 @@ const ThankYouScreen = () => {
 
         <Button onClick={() => goHome()}>Voltar ao Início</Button>
       </Container>
-    </Background2>
+    </Background>
   );
 };
 

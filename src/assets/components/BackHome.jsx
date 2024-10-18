@@ -22,13 +22,14 @@ const ButtonContainer = styled.button`
 
 const BackHome = () => {
   const navigate = useNavigate(); // Hook deve estar dentro do componente
-  const { setSelectedService, setSelectedGenres, setMovies, setTheMovie } = useContext(AppContext); // useContext dentro do componente
+  const { setSelectedService, setSelectedGenres, setMovies, setTheMovie, setSelectedReleases } = useContext(AppContext); // useContext dentro do componente
 
   const resetCache = () => {
     setSelectedService(null);
     setSelectedGenres([]);
     setMovies({});
     setTheMovie([]);
+    setSelectedReleases(['F','F','F','F'])
   };
 
   const handleClick = () => {

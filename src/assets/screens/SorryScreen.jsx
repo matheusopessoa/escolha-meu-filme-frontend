@@ -1,6 +1,6 @@
 // src/screens/SorryScreen.jsx
 import React, { useState } from 'react';
-import Background2 from '../components/Background2';
+import Background from '../components/Background';
 import Container from '../components/Container';
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
@@ -21,13 +21,13 @@ const SorryScreen = () => {
   }
 
   return (
-    <Background2>
+    <Background>
       <Container>
         <Title>Desculpe!</Title>
         <Subtitle>Não encontramos nenhum filme que atenda aos seus critérios. Tente novamente com outras opções.</Subtitle>
         <Button onClick={handleRetry}>Tente novamente</Button>
       </Container>
-    </Background2>
+    </Background>
   );
 };
 

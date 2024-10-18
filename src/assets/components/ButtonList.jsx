@@ -2,37 +2,38 @@
 import styled from 'styled-components';
 
 const ButtonList = styled.button`
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.47);  /* Borda discreta */
-  background: rgba(255, 255, 255, 0.1);  /* Cor de fundo transparente com leve opacidade */
-  color: #FFFFFF;
+  border-radius: 3px;  /* Borda arredondada menor */
+  background: linear-gradient(225deg, #00BFFF, #1E90FF);  /* Gradiente semelhante ao Button */
+  color: white;
   font-family: 'Inter', sans-serif;
-  font-weight: 400;  /* Texto mais leve */
-  padding: 12px 24px;  /* Adiciona mais espaço dentro do botão */
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 24px;
   text-align: center;
-  width: auto;  /* Ajusta a largura para não ocupar toda a linha */
-  max-width: 250px;  /* Limita o tamanho máximo */
-  margin: 10px auto;  /* Aumenta a distância vertical entre os elementos e centraliza o botão */
+  width: auto;
+  max-width: 250px;
+  margin: 10px auto;
   cursor: pointer;
-  transition: background 0.3s ease, border 0.3s ease;
+  transition: background 0.4s ease, transform 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);  /* Cor de fundo mais clara no hover */
+    background: linear-gradient(225deg, #1E90FF, #00BFFF);  /* Gradiente invertido no hover */
+    transform: scale(1.05);
   }
 
   &:active {
-    border: 1px solid rgba(255, 255, 255, 0.8);  /* Destaca a borda no clique */
     outline: none;
   }
 
   &:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline: 2px solid rgba(255, 255, 255, 0.7);  /* Destaque para acessibilidade */
   }
 
   @media (max-width: 768px) {
-    max-width: 200px;  /* Ajusta a largura máxima para dispositivos móveis */
-    padding: 10px 16px;  /* Ajusta o padding para telas menores */
-    margin-top: 20px auto;  /* Mantém o espaçamento consistente */
+    max-width: 200px;
+    font-size: 14px;  /* Fonte um pouco menor no mobile */
+    padding: 12px 20px;
+    margin-top: 20px auto;
   }
 `;
 

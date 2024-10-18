@@ -16,25 +16,26 @@ const genres = [
   'História', 'Mistério', 'Musical', 'Romance', 'Suspense', 'Terror'
 ];
 
-// Estilizando o botão de gênero
 const GenreButton = styled.button`
-  background-color: ${(props) => (props.selected ? '#933FFE' : '#2a2a2a')};
+  background-color: ${(props) => (props.selected ? '#005ab3' : '#2a2a2a')};
   color: white;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 8px;
+  border-radius: 3px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${(props) => (props.selected ? '#6A2FC0' : '#555')};
+    background-color: ${(props) => (props.selected ? '#1E90FF' : '#555')};
   }
 
   @media (max-width: 768px) {
     width: 100%;  /* Para garantir que o botão ocupe toda a largura no mobile */
+    padding: 10px;
   }
 `;
+
 
 // Estilizando o container que vai dividir em colunas
 const GenreListContainer = styled.div`
@@ -97,9 +98,8 @@ const ChooseGenresScreen = () => {
     <Background>
       <BackHome></BackHome>
       <Container>
-        <Title>Escolha os Gêneros de Filme</Title>
-        <Subtitle>Selecione até dois gêneros para personalizar sua recomendação</Subtitle>
-
+        <Title>Quais gêneros de filme você prefere?</Title>
+        <Subtitle>Escolha até dois gêneros para personalizar suas recomendações de filmes</Subtitle>
         <GenreListContainer>
           {genres.map((genre) => (
             <GenreButton

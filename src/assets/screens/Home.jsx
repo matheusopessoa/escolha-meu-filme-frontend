@@ -28,8 +28,9 @@ const Home = () => {
   return (
     <Background>
       <Container>
-        <Title home>Pare de escolher <br /> Comece a assistir</Title>
-        <Subtitle>Deixe a parte chata conosco, apenas diga o que deseja</Subtitle>
+        <Title home>Ferramenta de Recomendação<br /> de Filmes</Title>
+        <Subtitle>Não consegue escolher entre milhares de filmes disponíveis para streaming?
+        <br />Responda a 4 perguntas e deixe o resto com a gente!</Subtitle>
         <Button onClick={handleButtonClick}>Escolha Meu Filme</Button>
       </Container>
     </Background>

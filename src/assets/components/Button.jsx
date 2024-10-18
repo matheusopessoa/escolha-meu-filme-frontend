@@ -2,24 +2,26 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.47);
-  background: ${(props) =>
-    props.variant === 'back'
-      ? 'linear-gradient(225deg, #FF5C5C 14.89%, #FF0000 85.85%)'  // Estilo avermelhado para "back"
-      : props.$isToggled
-      ? 'linear-gradient(225deg, #933FFE 14.89%, #18C8FF 85.85%)'
-      : 'linear-gradient(225deg, #18C8FF 14.89%, #933FFE 85.85%)'};
+  border-radius: 3px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(225deg, #00BFFF, #1E90FF);
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  padding: 16px 24px;
+  font-size: 20px;
+  padding: 18px 32px;
   margin-top: 20px;
   cursor: pointer;
-  transition: background 0.4s ease, border 0.4s ease;
+  transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background: linear-gradient(225deg, #1E90FF, #00BFFF);
+    transform: scale(1.05);
+  }
 
   &:active {
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.8);
     outline: none;
   }
 
@@ -28,7 +30,8 @@ const Button = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 12px 20px;
+    font-size: 18px;
+    padding: 14px 28px;
   }
 `;
 

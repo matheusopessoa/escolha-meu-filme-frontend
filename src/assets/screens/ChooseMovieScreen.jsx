@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context'; // Consumindo os filmes do contexto
 import Title from '../components/Title';
-import Background2 from '../components/Background2';
+import Background from '../components/Background';
 import Container from '../components/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import sendFeedbackToBackend from '../services/post'; // Importar a função do serviço
 import BackHome from '../components/BackHome';
 import { useNavigate } from 'react-router-dom';
+import ButtonList from '../components/ButtonList';
 
 // Estilizando os botões e o container dos filmes
 const CircleButton = styled.button`
@@ -70,16 +71,6 @@ const MovieTitle = styled.h3`
   margin-top: 10px;
 `;
 
-// Estilos para o botão "Ler Sinopse"
-const SynopsisButton = styled.button`
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
 
 // Estilos para o modal de sinopse
 const ModalBackground = styled.div`
@@ -204,7 +195,7 @@ const ChooseMovieScreen = () => {
   const movieOverview = currentMovie[5]; // Sinopse do filme
 
   return (
-    <Background2>
+    <Background>
       <BackHome />
       <Container>
         {/* Renderiza o título apenas se showTitle for true */}
@@ -226,7 +217,7 @@ const ChooseMovieScreen = () => {
               onTransitionEnd={handleAnimationEnd}
             />
             <MovieTitle>{movieKeys[currentMovieIndex]}</MovieTitle>
-            <SynopsisButton onClick={handleSynopsisClick}>Ler Sinopse</SynopsisButton>
+            <ButtonList onClick={handleSynopsisClick}>Ler Sinopse</ButtonList>
           </MovieContainer>
         )}
 
@@ -261,7 +252,7 @@ const ChooseMovieScreen = () => {
           </div>
         )}
       </Container>
-    </Background2>
+    </Background>
   );
 };
 

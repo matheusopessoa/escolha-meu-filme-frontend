@@ -50,7 +50,7 @@ const ChooseProviderScreen = () => {
   const handleServiceClick = (service) => {
     setSelectedService(service);  // Atualiza o estado global com o serviço selecionado
     setShowStreamingList(false);  // Oculta a lista após a seleção
-    navigate('/generos')
+    navigate('/lancamentos')
   };
 
   const handleToggleList = () => {
@@ -62,8 +62,8 @@ const ChooseProviderScreen = () => {
     <Background>
       <BackHome/>
       <Container>
-        <Title>Escolha sua Plataforma de Streaming</Title>
-        <Subtitle>Clique em uma plataforma para seguir com a seleção de filmes.</Subtitle>
+        <Title>Em qual plataforma você quer assistir? </Title>
+        <Subtitle>Selecione sua opção de streaming abaixo.</Subtitle>
 
         <ButtonList onClick={handleToggleList}>
           {selectedService ? selectedService : 'Escolher Serviço'}
