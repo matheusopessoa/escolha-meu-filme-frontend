@@ -49,7 +49,7 @@ const GenreListContainer = styled.div`
 
 const ChooseGenresScreen = () => {
   const navigate = useNavigate();
-  const { selectedService, selectedGenres, setSelectedGenres, setMovies } = useContext(AppContext);  // Usando o contexto para armazenar gêneros e filmes
+  const { selectedService, selectedRelease, selectedRuntime, selectedGenres, setSelectedGenres, setMovies } = useContext(AppContext);  // Usando o contexto para armazenar gêneros e filmes
 
   const handleGenreClick = (genre) => {
     if (selectedGenres.includes(genre)) {
@@ -75,18 +75,17 @@ const ChooseGenresScreen = () => {
     if (selectedGenres.length < 1) return;
 
     try {
+      console.log('CHEGUEI')
       // Chama a função fetchMovies do arquivo de serviço e faz a requisição
-      const data = await fetchMovies(selectedService, selectedGenres);
+      const data = await fetchMovies(selectedService, selectedGenres, selectedRuntime, selectedRelease);
 
       // Armazenar os filmes no contexto
       setMovies(data);
 
       const data_length = Object.keys(data).length
       if (data_length === 0) {
-        console.log(data_length === 0)
         goToSorry()
       } else if (data_length > 0) {
-        console.log(data_length > 0)
         goToMovies()
       }
     } catch (error) {

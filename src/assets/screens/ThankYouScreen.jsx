@@ -20,12 +20,17 @@ const MovieImage = styled.img`
 
 const ThankYouScreen = () => {
   const navigate = useNavigate()
-  const { setSelectedService, setSelectedGenres, selectedService  ,setMovies, theMovie, setTheMovie,  } = useContext(AppContext)
-  const goHome = () => {
+  const { setSelectedService, setSelectedGenres, setSelectedRuntime, setSelectedReleases ,selectedService  ,setMovies, theMovie, setTheMovie,  } = useContext(AppContext)
+  const resetCache = () => {
     setSelectedService(null);
     setSelectedGenres([]);
     setMovies({});
     setTheMovie([]);
+    setSelectedReleases(['F','F','F','F','F'])
+    setSelectedRuntime(['F','F','F','F'])
+  };
+  const goHome = () => {
+    resetCache()
     navigate('/');
   }
   return (

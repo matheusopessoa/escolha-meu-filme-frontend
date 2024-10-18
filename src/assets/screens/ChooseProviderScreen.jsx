@@ -10,13 +10,12 @@ import BackHome from '../components/BackHome';
 import { useNavigate } from 'react-router-dom';
 
 const streamingServices = [
-  'Netflix', 
-  'Max', 
-  'Amazon Prime', 
-  'AppleTV', 
-  'Disney Plus', 
   'Paramount', 
   'Crunchyroll', 
+  'Max', 
+  'Amazon Prime',  
+  'Disney Plus', 
+  'Netflix', 
   'Pluto TV', 
   'Globoplay'
 ];

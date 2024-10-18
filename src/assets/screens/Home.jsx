@@ -29,7 +29,7 @@ const Home = () => {
     <Background>
       <Container>
         <Title home>Ferramenta de Recomendação<br /> de Filmes</Title>
-        <Subtitle>Não consegue escolher entre milhares de filmes disponíveis para streaming?
+        <Subtitle>Não consegue escolher entre milhares de filmes disponíveis?
         <br />Responda a 4 perguntas e deixe o resto com a gente!</Subtitle>
         <Button onClick={handleButtonClick}>Escolha Meu Filme</Button>
       </Container>

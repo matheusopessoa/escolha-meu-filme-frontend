@@ -26,12 +26,12 @@ export const AppProvider = ({ children }) => {
 
   const [selectedRelease, setSelectedReleases] = useState(() => { 
     const releases = localStorage.getItem('releases');
-    return ['F', 'F', 'F', 'F'];
+    return ['F', 'F', 'F', 'F', 'F'];
   });
 
   const [selectedRuntime, setSelectedRuntime] = useState(() => {
     const runtime = localStorage.getItem('runtime');
-    return runtime ? JSON.parse(runtime) : [];
+    return ['F', 'F', 'F', 'F'];
   });
 
   // Salva `selectedService` no localStorage sempre que ele mudar

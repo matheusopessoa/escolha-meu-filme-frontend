@@ -12,9 +12,10 @@ import SecondaryButton from '../components/SecondaryButton';
 
 const releases = [
   'Não me importo com a data de lançamento',
-  'Quero ver um filme anteriores a 1980',
-  'Quero ver um filme entre 1980 e 2000',
-  'Quero ver um filme entre 2000 e 2024'
+  'Publicado nos últimos 10 anos',
+  'Publicado nos últimos 20 anos',
+  'Publicado nos últimos 30 anos',
+  'Publicado nos últimos 40 anos',
 ];
 
 // Estilizando o container que vai dividir em colunas
@@ -48,11 +49,12 @@ const ChooseReleaseRange = () => {
   };
 
   const goToGenres = () => {
-    navigate('/generos');
+    navigate('/runtime');
   };
 
   const handleConfirmClick = async () => {
-    if (selectedRelease.length < 1) return;
+    const newSelectedRelease = [...selectedRelease];
+    if (newSelectedRelease.every(value => value === 'F')) return;
     goToGenres();
   };
 
@@ -61,7 +63,7 @@ const ChooseReleaseRange = () => {
       <BackHome />
       <Container>
         <Title>Em que período o filme foi lançado?</Title>
-        <Subtitle>Você pode escolher todos, se quiser!</Subtitle>
+        <Subtitle>Você pode escolher todos, se quiser! <br/>Nosso algorítmo cuidará disso</Subtitle>
         <ListContainer>
           {releases.map((release) => (
             <SecondaryButton
