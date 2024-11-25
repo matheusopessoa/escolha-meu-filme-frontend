@@ -115,6 +115,7 @@ const ChooseMovieScreen = () => {
   const [animationDirection, setAnimationDirection] = useState(null); // Direção da animação
   const [showPoster, setShowPoster] = useState(true); // Controla a exibição do cartaz
   const [showTitle, setShowTitle] = useState(true); // Controla a exibição do título
+  const [canDislike, setCanDislike] = useState(true);
 
   const movieKeys = Object.keys(movies); // Chaves dos filmes
 
@@ -148,20 +149,27 @@ const ChooseMovieScreen = () => {
   };
 
   const handleDislikeClick = () => {
-    const currentMovie = movies[movieKeys[currentMovieIndex]];
-    const movieId = currentMovie[0]; // ID do filme
-
-    // Adiciona o feedback "dislike" se ainda não estiver registrado
-    setFeedbacks((prevFeedbacks) => {
-      if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
-        return [...prevFeedbacks, { movie_id: movieId, feedback: 'dislike' }];
-      }
-      return prevFeedbacks;
-    });
-
-    // Inicia a animação para a esquerda
-    setAnimationDirection('left');
-  };
+    if (!canDislike) return;
+    else {
+      const currentMovie = movies[movieKeys[currentMovieIndex]];
+      const movieId = currentMovie[0]; // ID do filme
+  
+      // Adiciona o feedback "dislike" se ainda não estiver registrado
+      setFeedbacks((prevFeedbacks) => {
+        if (!prevFeedbacks.some((feedback) => feedback.movie_id === movieId)) {
+          return [...prevFeedbacks, { movie_id: movieId, feedback: 'dislike' }];
+        }
+        return prevFeedbacks;
+      });
+  
+      setAnimationDirection('left');
+  
+      setCanDislike(false);
+      setTimeout(() => {
+          setCanDislike(true);
+      }, 650);
+    }
+};
 
   const handleAnimationEnd = async () => {
     if (animationDirection === 'grow') {
