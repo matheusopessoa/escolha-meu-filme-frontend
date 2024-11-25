@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 const streamingServices = [
   'Paramount', 
-  'Crunchyroll', 
   'Max', 
   'Amazon Prime',  
   'Disney Plus', 
