@@ -5,16 +5,19 @@ const Background = styled.div`
   background-size: cover;
   background-position: center;
   background-color: #000000;
-  width: 100vw; /* Garante que o fundo ocupe 100% da largura da viewport */
-  height: 100vh; /* Garante que o fundo ocupe 100% da altura da viewport */
+  background-attachment: fixed; /* 🎯 MANTÉM FIXO NO SCROLL */
+  width: 100vw;
+  min-height: 100vh; /* 👈 trocado de height pra min-height */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
 
   @media (max-width: 768px) {
-    background-image: url('/bg4.png'); /* Imagem para celulares */
+    background-image: url('/bg4.png');
   }
 `;
+
 
 export default Background

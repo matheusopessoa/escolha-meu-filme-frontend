@@ -1,26 +1,16 @@
 import React from 'react';
 import { Analytics } from "@vercel/analytics/react";
-import { AppProvider } from './context.jsx'; // O provedor do contexto
-import { Home, ChooseProviderScreen, ChooseReleaseRange, ChooseRuntimeRange, ChooseGenresScreen, ChooseMovieScreen, ThankYouScreen, SorryScreen } from './assets/screens/Screens.jsx'
+import MainScreen from './assets/MainScreen.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 function App() {
   return (
     <Router>
-    <AppProvider>
       <div className="App">
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/streaming' element={<ChooseProviderScreen/>}/>
-          <Route path='/lancamentos' element={<ChooseReleaseRange/>}></Route>
-          <Route path='/runtime' element={<ChooseRuntimeRange/>}/>
-          <Route path='/generos' element={<ChooseGenresScreen/>}/>
-          <Route path='/filmes' element={<ChooseMovieScreen/>}/>
-          <Route path='/obrigado' element={<ThankYouScreen/>}/>
-          <Route path='/indisponivel' element={<SorryScreen/>}/>
+        <Route path='/' element={<MainScreen/>} />
         </Routes>
-        <Analytics /> {/* Coloque aqui dentro para monitorar todas as interações */}
+        <Analytics /> 
       </div>
-    </AppProvider>
     </Router>
   );
 }

@@ -1,11 +1,11 @@
 // src/components/Button.js
 import styled from 'styled-components';
 
-const Button = styled.button`
+const PurpleButton = styled.button`
   align-self: center; /* <-- esse é o ouro */
   border-radius: 3px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: linear-gradient(225deg, #00BFFF, #1E90FF);
+  border: 2px solid rgba(221, 143, 255, 0.5);
+  background: linear-gradient(225deg,rgb(231, 97, 255),rgb(208, 0, 255));
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -17,17 +17,17 @@ const Button = styled.button`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 
   &:hover {
-    background: linear-gradient(225deg, #1E90FF, #00BFFF);
+    background: linear-gradient(225deg,rgb(80, 27, 86),rgb(121, 0, 228));
     transform: scale(1.05);
   }
 
   &:active {
-    border: 2px solid rgba(0, 8, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.8);
     outline: none;
   }
 
   &:focus-visible {
-    outline: 2px solid rgba(21, 0, 255, 0.7);
+    outline: 2px solid rgba(255, 255, 255, 0.7);
   }
 
   @media (max-width: 768px) {
@@ -37,4 +37,4 @@ const Button = styled.button`
 `;
 
 
-export default Button;
+export default PurpleButton;
