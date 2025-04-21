@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import './MainScreen.css';
 import fetchMovies from './utils/fetch';
 import styled from 'styled-components';
+import MenuSanduiche from './components/MenuSanduiche';
 
 const MovieCard = styled.div`
   display: flex;
@@ -117,6 +118,7 @@ export default function MainScreen() {
 
   return (
     <Background>
+      <MenuSanduiche />
       {step === 1 && (
         <div className="centered-content">
         <Title>Escolha Meu Filme</Title>
@@ -225,7 +227,7 @@ export default function MainScreen() {
                     <MovieTitle>{movie[4]}</MovieTitle>
                     <MovieDescription>{movie[5]}</MovieDescription>
                     <MovieDetails>
-                      <span>Nota: {(movie[9] + 0.5).toFixed(2)}</span>
+                      <span>Nota: {(movie[9] + 0.2).toFixed(2)}</span>
                       <span>Lançamento: {new Date(movie[8]).getFullYear()}</span>
                     </MovieDetails>
                   </MovieInfo>

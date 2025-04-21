@@ -1,6 +1,8 @@
+const SERVER_URL = 'https://api-escolha-meu-filme.up.railway.app/';
+
 export default async function fetchMovies(provider, selectedGenres, isCult) {
-    let baseUrl = 'https://api-escolha-meu-filme.up.railway.app/movies?';
-    //let baseUrl = 'http://localhost:5002/movies?';
+    let baseUrl = SERVER_URL + 'movies?';
+    //let baseUrl = 'http://localhost:5001/movies'
     selectedGenres = genresBusinessLogic(selectedGenres);
     selectedGenres = createCultParam(isCult, selectedGenres);
     const genreParams = createGenreParams(selectedGenres);
