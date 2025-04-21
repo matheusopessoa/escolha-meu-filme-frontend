@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import './MainScreen.css';
 import fetchMovies from './utils/fetch';
 import styled from 'styled-components';
-import MenuSanduiche from './components/MenuSanduiche';
+import Header from './components/Header';
 
 const MovieCard = styled.div`
   display: flex;
@@ -118,7 +118,7 @@ export default function MainScreen() {
 
   return (
     <Background>
-      <MenuSanduiche />
+      <Header />
       {step === 1 && (
         <div className="centered-content">
         <Title>Escolha Meu Filme</Title>

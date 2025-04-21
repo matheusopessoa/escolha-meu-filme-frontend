@@ -3,7 +3,7 @@ import Title from './components/Title';
 import Subtitle from './components/Subtitle';
 import Footer from './components/Footer';
 import styled from 'styled-components';
-import MenuSanduiche from './components/MenuSanduiche';
+import Header from './components/Header';
 
 const ContentContainer = styled.div`
   max-width: 800px;
@@ -33,7 +33,7 @@ const Text = styled.p`
 export default function ComoEscolhemos() {
   return (
     <Background>
-      <MenuSanduiche />
+      <Header />
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <Title>Como escolhemos os filmes</Title>
         

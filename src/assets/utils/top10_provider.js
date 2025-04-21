@@ -568,7 +568,7 @@ export const top10_provider =
 			"/zMXWRL4uhtpNTXVeMHsFHmXQRt0.jpg"
 		]
 	],
-	"netflix": [
+	"Netflix": [
 		[
 			703859,
 			"35, 10751",

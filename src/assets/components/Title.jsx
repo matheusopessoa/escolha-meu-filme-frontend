@@ -7,14 +7,13 @@ const Title = styled.h1`
   font-weight: 900;
   line-height: 130%;
   padding: 0;
-
+  text-shadow: 1px 1px 2px rgba(57, 57, 57, 0.5);
+  margin-top: 80px;
   font-size: ${(props) => (props.home ? '65px' : '56px')};
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     font-size: ${(props) => (props.home ? '38px' : '34px')};
     line-height: 110%;
-    margin: 25% 0 0; /* Adiciona uma margem de 20px no topo e remove margem nas laterais e na parte inferior */
-
   }
 `;
 

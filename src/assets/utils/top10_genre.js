@@ -1,20 +1,6 @@
 export const top10_genre = {
 	"Ação": [
 		[
-			1356039,
-			"28, 12, 53",
-			"netflix",
-			1,
-			"Contra-Ataque",
-			"Uma missão de resgate faz surgir um novo inimigo, levando o capitão Guerrero e seus soldados de elite a enfrentar uma emboscada de um grupo criminoso.",
-			"es",
-			129.5731,
-			"2025-02-28",
-			8.374,
-			602,
-			"/iQsMy1xn8NG1VfVWFpEhhAsp4pi.jpg"
-		],
-		[
 			27205,
 			"28, 878, 12",
 			"amazon",
@@ -55,6 +41,20 @@ export const top10_genre = {
 			8.2,
 			26231,
 			"/qFHE09iQDbpHUBXJ8cFZu9v2ViO.jpg"
+		],
+		[
+			1356039,
+			"28, 12, 53",
+			"netflix",
+			1,
+			"Contra-Ataque",
+			"Uma missão de resgate faz surgir um novo inimigo, levando o capitão Guerrero e seus soldados de elite a enfrentar uma emboscada de um grupo criminoso.",
+			"es",
+			129.5731,
+			"2025-02-28",
+			8.374,
+			602,
+			"/iQsMy1xn8NG1VfVWFpEhhAsp4pi.jpg"
 		],
 		[
 			111,

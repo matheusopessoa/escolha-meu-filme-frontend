@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Background = styled.div`
-  background-image: url('/bg4.png');
+  background-image: url('/pcbg.webp');
   background-size: cover;
   background-position: center;
   background-color: #000000;
@@ -14,8 +14,8 @@ const Background = styled.div`
   align-items: center;
   position: relative;
 
-  @media (max-width: 768px) {
-    background-image: url('/bg4.png');
+  @media (max-width: 800px) {
+    background-image: url('/mobbg.webp');
   }
 `;
 

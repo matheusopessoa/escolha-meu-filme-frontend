@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import MenuSanduiche from './components/MenuSanduiche';
 import Button from './components/Button';
 import { top10_genre } from './utils/top10_genre';
+import Header from './components/Header';
 
 const MovieCard = styled.div`
   display: flex;
@@ -71,6 +72,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 export default function Aleatorio() {
@@ -109,7 +111,7 @@ export default function Aleatorio() {
 
   return (
     <Background>
-      <MenuSanduiche />
+      <Header />
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <Title>Escolha Aleatória</Title>
         
@@ -134,7 +136,7 @@ export default function Aleatorio() {
                   </div>
                   <span>Nota: {(movie[9] + 0.2).toFixed(2)}</span>
                   <span>Lançamento: {new Date(movie[8]).getFullYear()}</span>
-                  <span>Disponível no {movie[2]}</span>
+                  <span>Disponível no {movie[2].charAt(0).toUpperCase() + movie[2].slice(1)}</span>
                 </MovieDetails>
               </MovieInfo>
             </MovieCard>

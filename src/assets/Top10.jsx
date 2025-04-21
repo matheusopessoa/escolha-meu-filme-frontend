@@ -8,7 +8,7 @@ import ButtonList from './components/ButtonList';
 import PurpleButton from './components/PurpleButton';
 import Footer from './components/Footer';
 import styled from 'styled-components';
-import MenuSanduiche from './components/MenuSanduiche';
+import Header from './components/Header';
 import { top10_genre } from './utils/top10_genre';
 import { top10_provider } from './utils/top10_provider';
 
@@ -92,7 +92,7 @@ export default function Top10() {
 
   return (
     <Background>
-      <MenuSanduiche />
+      <Header />
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <Title>
           {isLoading 

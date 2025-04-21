@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const MenuContainer = styled.div`
   position: fixed;
-  top: 20px;
   right: 20px;
   z-index: 1000;
 `;
@@ -12,7 +11,7 @@ const MenuContainer = styled.div`
 const MenuButton = styled.button`
   background: rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+  border-radius: 100%;
   cursor: pointer;
   padding: 12px;
   display: flex;
@@ -134,6 +133,10 @@ export default function MenuSanduiche() {
     setOpenSubMenu(null);
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
     <MenuContainer>
       <MenuButton onClick={() => setIsOpen(!isOpen)}>
@@ -145,7 +148,7 @@ export default function MenuSanduiche() {
       <MenuContent isOpen={isOpen}>
         <MenuItem onClick={() => {
           navigate('/');
-          setIsOpen(false);
+          handleRefresh();
         }}>
           <MenuIcon>🎯</MenuIcon>
           Busca Personalizada
