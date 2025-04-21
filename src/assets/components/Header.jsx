@@ -57,10 +57,16 @@ const MenuButton = styled.button`
 
 const Header = () => {
   const navigate = useNavigate();
-
+  
+  const handleRefresh = () => {
+    window.location.reload();
+  };
   const handleNavigate = () => {
     navigate('/');
+    handleRefresh();
   };
+
+
 
   return (
     <HeaderContainer>
