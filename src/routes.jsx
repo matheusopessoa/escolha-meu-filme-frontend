@@ -3,6 +3,7 @@ import MainScreen from './assets/MainScreen';
 import Top10 from './assets/Top10';
 import ComoEscolhemos from './assets/ComoEscolhemos';
 import Aleatorio from './assets/Aleatorio';
+import TermosDeUso from './assets/TermosDeUso';
 
 export const router = createBrowserRouter([
   {
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
   {
     path: '/aleatorio',
     element: <Aleatorio />,
+  },
+  {
+    path: '/termos-de-uso',
+    element: <TermosDeUso />,
   },
 ]); 
