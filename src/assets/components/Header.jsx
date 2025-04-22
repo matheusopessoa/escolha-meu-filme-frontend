@@ -12,8 +12,8 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.05);
+  background-color:rgba(0, 0, 0, 0.43);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 `;
 

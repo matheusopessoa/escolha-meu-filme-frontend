@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import { top10_genre } from './utils/top10_genre';
 import { top10_provider } from './utils/top10_provider';
+import WatchButton from '../components/WatchButton';
 
 const MovieCard = styled.div`
   display: flex;
@@ -104,8 +105,8 @@ export default function Top10() {
           <Subtitle>Buscando os melhores filmes para você...</Subtitle>
         ) : movies.length > 0 ? (
           <div className="flex flex-col items-center w-full px-4">
-            {movies.map((movie, index) => (
-              <MovieCard key={movie[0] || index}>
+            {movies.map((movie) => (
+              <MovieCard key={movie[0]}>
                 <MoviePoster
                   src={`https://image.tmdb.org/t/p/w200${movie[11]}`}
                   alt={movie[4]}
@@ -120,6 +121,9 @@ export default function Top10() {
                     <span>Nota: {(movie[9] + 0.2).toFixed(2)}</span>
                     <span>Lançamento: {new Date(movie[8]).getFullYear()}</span>
                   </MovieDetails>
+                  <WatchButton 
+                    provider={movie[2].charAt(0).toUpperCase() + movie[2].slice(1)}
+                  />
                 </MovieInfo>
               </MovieCard>
             ))}

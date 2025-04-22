@@ -10,6 +10,7 @@ import './MainScreen.css';
 import fetchMovies from './utils/fetch';
 import styled from 'styled-components';
 import Header from './components/Header';
+import WatchButton from '../components/WatchButton';
 
 const MovieCard = styled.div`
   display: flex;
@@ -230,6 +231,9 @@ export default function MainScreen() {
                       <span>Nota: {(movie[9] + 0.2).toFixed(2)}</span>
                       <span>Lançamento: {new Date(movie[8]).getFullYear()}</span>
                     </MovieDetails>
+                    <WatchButton 
+                      provider={movie[2].charAt(0).toUpperCase() + movie[2].slice(1)}
+                    />
                   </MovieInfo>
                 </MovieCard>
               ))}
@@ -246,19 +250,18 @@ export default function MainScreen() {
             <div className='try-again-container'>
               <Subtitle>Não encontramos filmes que correspondam aos critérios selecionados.</Subtitle>
               <div className="button-list-row">
-              <PurpleButton
-                onClick={() => setStep(4)}
-                className="w-48 mt-4"
-              >
-                Tentar novamente
-              </PurpleButton>
-            </div>
+                <PurpleButton
+                  onClick={() => setStep(4)}
+                  className="w-48 mt-4"
+                >
+                  Tentar novamente
+                </PurpleButton>
+              </div>
             </div>
           )}
         </div>
       )}
-    <Footer></Footer>
+      <Footer />
     </Background>
-    
   );
 }

@@ -8,6 +8,7 @@ import MenuSanduiche from './components/MenuSanduiche';
 import Button from './components/Button';
 import { top10_genre } from './utils/top10_genre';
 import Header from './components/Header';
+import WatchButton from '../components/WatchButton';
 
 const MovieCard = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const MovieCard = styled.div`
   padding: 20px;
   margin: 15px auto;
   width: 95%;
-  max-width: 800px;
+  max-width: 1000px;
   gap: 10px;
   backdrop-filter: blur(5px);
   overflow: hidden;
@@ -138,6 +139,10 @@ export default function Aleatorio() {
                   <span>Lançamento: {new Date(movie[8]).getFullYear()}</span>
                   <span>Disponível no {movie[2].charAt(0).toUpperCase() + movie[2].slice(1)}</span>
                 </MovieDetails>
+                <WatchButton 
+                  provider={movie[2].charAt(0).toUpperCase() + movie[2].slice(1)} 
+                  movieTitle={movie[4]}
+                />
               </MovieInfo>
             </MovieCard>
             <ButtonContainer>
