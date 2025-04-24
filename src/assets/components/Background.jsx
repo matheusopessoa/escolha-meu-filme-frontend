@@ -6,8 +6,9 @@ const Background = styled.div`
   background-position: center;
   background-color: #000000;
   background-attachment: fixed; /* 🎯 MANTÉM FIXO NO SCROLL */
-  width: 100vw;
-  min-height: 100vh; /* 👈 trocado de height pra min-height */
+  width: 100dvw;
+  min-height: 100dvh; 
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
