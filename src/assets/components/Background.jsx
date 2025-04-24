@@ -7,7 +7,7 @@ const Background = styled.div`
   background-color: #000000;
   background-attachment: fixed; /* 🎯 MANTÉM FIXO NO SCROLL */
   width: 100vw;
-  height: 100dvh; 
+  min-height: 100dvh; 
   display: flex;
   flex-direction: column;
   justify-content: center;
