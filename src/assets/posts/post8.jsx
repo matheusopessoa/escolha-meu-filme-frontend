@@ -90,7 +90,7 @@ export default function Post8() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>2 de Março, 2024</PostDate>
+          <PostDate>2 de Março, 2025</PostDate>
           <PostText>
             <p>
               A animação evoluiu muito além dos desenhos animados tradicionais, com técnicas como 

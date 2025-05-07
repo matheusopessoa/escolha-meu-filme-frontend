@@ -90,7 +90,7 @@ export default function Post9() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>1 de Março, 2024</PostDate>
+          <PostDate>1 de Março, 2025</PostDate>
           <PostText>
             <p>
               Documentários estão ganhando cada vez mais espaço, com plataformas de streaming 
@@ -198,7 +198,7 @@ export default function Post9() {
         </AdContainer>
         <PostContainer>
           <PostContent>
-            <PostDate>1 de Março, 2024</PostDate>
+            <PostDate>1 de Março, 2025</PostDate>
             <PostText>
               A música é um elemento fundamental no cinema, capaz de transformar completamente a experiência do espectador.
 

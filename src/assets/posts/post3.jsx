@@ -90,7 +90,7 @@ export default function Post3() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>10 de Março, 2024</PostDate>
+          <PostDate>10 de Março, 2025</PostDate>
           <PostText>
             <p>
               Enquanto os blockbusters dominam as bilheterias, o cinema independente continua sendo 

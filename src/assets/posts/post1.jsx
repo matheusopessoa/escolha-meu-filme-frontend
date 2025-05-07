@@ -92,7 +92,7 @@ export default function Post1() {
         setContent({
           title: 'O Impacto do Streaming no Cinema',
           subtitle: 'Como as plataformas de streaming estão transformando a indústria cinematográfica',
-          date: '15 de Março, 2024',
+          date: '15 de Março, 2025',
           content: `
             <p>
               A revolução do streaming transformou completamente a forma como consumimos conteúdo audiovisual. 

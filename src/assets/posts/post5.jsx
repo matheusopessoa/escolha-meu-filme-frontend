@@ -91,7 +91,7 @@ export default function Post5() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>6 de Março, 2024</PostDate>
+          <PostDate>6 de Março, 2025</PostDate>
           <PostText>
             <p>
               A representatividade no cinema tem ganhado cada vez mais importância, com filmes como 

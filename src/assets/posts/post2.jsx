@@ -91,7 +91,7 @@ export default function Post2() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>12 de Março, 2024</PostDate>
+          <PostDate>12 de Março, 2025</PostDate>
           <PostText>
             <p>
               Desde os primeiros filmes até os blockbusters atuais, os efeitos especiais percorreram 

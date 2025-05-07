@@ -90,7 +90,7 @@ export default function Post10() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>28 de Fevereiro, 2024</PostDate>
+          <PostDate>28 de Fevereiro, 2025</PostDate>
           <PostText>
             <p>
               A trilha sonora é um elemento fundamental na experiência cinematográfica, capaz de 

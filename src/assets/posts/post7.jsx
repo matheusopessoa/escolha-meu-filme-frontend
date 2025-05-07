@@ -90,7 +90,7 @@ export default function Post7() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>3 de Março, 2024</PostDate>
+          <PostDate>3 de Março, 2025</PostDate>
           <PostText>
             <p>
               Os gêneros cinematográficos estão em constante evolução, refletindo mudanças sociais, 

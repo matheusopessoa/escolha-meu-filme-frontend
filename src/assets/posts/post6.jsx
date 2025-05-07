@@ -90,7 +90,7 @@ export default function Post6() {
         </AdContainer>
 
         <PostContent>
-          <PostDate>4 de Março, 2024</PostDate>
+          <PostDate>4 de Março, 2025</PostDate>
           <PostText>
             <p>
               O cinema de arte está passando por um renascimento significativo, atraindo novas 

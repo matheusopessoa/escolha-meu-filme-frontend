@@ -233,70 +233,70 @@ export default function Blog() {
           {
             id: 1,
             title: 'O Impacto do Streaming no Cinema',
-            date: '15 de Março, 2024',
+            date: '15 de Março, 2025',
             content: 'Como as plataformas de streaming estão transformando a indústria cinematográfica...',
             path: '/blog/post1'
           },
           {
             id: 2,
             title: 'A Evolução dos Efeitos Especiais',
-            date: '12 de Março, 2024',
+            date: '12 de Março, 2025',
             content: 'Uma análise sobre como os efeitos especiais evoluíram ao longo dos anos...',
             path: '/blog/post2'
           },
           {
             id: 3,
             title: 'O Poder das Narrativas Independentes',
-            date: '10 de Março, 2024',
+            date: '10 de Março, 2025',
             content: 'Como filmes independentes estão ganhando espaço e reconhecimento...',
             path: '/blog/post3'
           },
           {
             id: 4,
             title: 'Cinema e Tecnologia: Uma Parceria em Constante Evolução',
-            date: '8 de Março, 2024',
+            date: '8 de Março, 2025',
             content: 'As inovações tecnológicas que estão moldando o futuro do cinema...',
             path: '/blog/post4'
           },
           {
             id: 5,
             title: 'A Importância da Representatividade no Cinema',
-            date: '6 de Março, 2024',
+            date: '6 de Março, 2025',
             content: 'Como a diversidade está transformando a indústria cinematográfica...',
             path: '/blog/post5'
           },
           {
             id: 6,
             title: 'O Renascimento do Cinema de Arte',
-            date: '4 de Março, 2024',
+            date: '4 de Março, 2025',
             content: 'Como o cinema de arte está conquistando novas audiências...',
             path: '/blog/post6'
           },
           {
             id: 7,
             title: 'A Evolução dos Gêneros Cinematográficos',
-            date: '3 de Março, 2024',
+            date: '3 de Março, 2025',
             content: 'Como os gêneros do cinema se transformaram ao longo do tempo...',
             path: '/blog/post7'
           },
           {
             id: 8,
             title: 'A Arte da Animação Moderna',
-            date: '2 de Março, 2024',
+            date: '2 de Março, 2025',
             content: 'Como a animação evoluiu além dos desenhos animados...',
             path: '/blog/post8'
           },
           {
             id: 9,
             title: 'O Poder do Cinema Documental',
-            date: '1 de Março, 2024',
+            date: '1 de Março, 2025',
             content: 'Como os documentários estão mudando o mundo...',
             path: '/blog/post9'
           },
           {
             id: 10,
             title: 'A Importância da Trilha Sonora',
-            date: '28 de Fevereiro, 2024',
+            date: '28 de Fevereiro, 2025',
             content: 'Como a música transforma a experiência cinematográfica...',
             path: '/blog/post10'
           }
