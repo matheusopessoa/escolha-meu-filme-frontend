@@ -9,6 +9,7 @@ import Button from './components/Button';
 import { top10_genre } from './utils/top10_genre';
 import Header from './components/Header';
 import WatchButton from '../components/WatchButton';
+import GoogleAd from '../components/GoogleAd';
 
 const MovieCard = styled.div`
   display: flex;
@@ -120,6 +121,14 @@ export default function Aleatorio() {
           <Subtitle>Buscando um filme especial para você...</Subtitle>
         ) : movie ? (
           <div className="flex flex-col items-center w-full px-4">
+            {/* Anúncio superior - banner */}
+            <GoogleAd 
+              adSlot="1234567890" 
+              adFormat="horizontal"
+              adLayout="in-article"
+              adStyle={{ display: 'block', width: '100%', height: '90px' }}
+            />
+            
             <MovieCard>
               <MoviePoster
                 src={`https://image.tmdb.org/t/p/w200${movie[11]}`}
@@ -145,6 +154,15 @@ export default function Aleatorio() {
                 />
               </MovieInfo>
             </MovieCard>
+
+            {/* Anúncio inferior - retângulo */}
+            <GoogleAd 
+              adSlot="0987654321" 
+              adFormat="rectangle"
+              adLayout="in-article"
+              adStyle={{ display: 'block', width: '300px', height: '250px' }}
+            />
+            
             <ButtonContainer>
               <Button onClick={fetchRandomMovie}>
                 Escolher Outro Filme

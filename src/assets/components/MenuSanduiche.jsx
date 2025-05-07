@@ -185,7 +185,14 @@ export default function MenuSanduiche() {
           <MenuIcon>🎲</MenuIcon>
           Filme Aleatório
         </MenuItem>
-
+        
+        <MenuItem onClick={() => {
+          navigate('/blog');
+          setIsOpen(false);
+        }}>
+          <MenuIcon>📝</MenuIcon>
+          Blog
+        </MenuItem>
         <MenuItem onClick={() => {
           navigate('/como-escolhemos');
           setIsOpen(false);
@@ -193,6 +200,8 @@ export default function MenuSanduiche() {
           <MenuIcon>ℹ️</MenuIcon>
           Sobre Nossa Seleção
         </MenuItem>
+
+
       </MenuContent>
     </MenuContainer>
   );

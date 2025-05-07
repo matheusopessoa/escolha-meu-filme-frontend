@@ -1,32 +1,68 @@
+import React from 'react';
 import Background from './components/Background';
 import Title from './components/Title';
+import Subtitle from './components/Subtitle';
 import Footer from './components/Footer';
 import styled from 'styled-components';
 import Header from './components/Header';
+import GoogleAd from '../components/GoogleAd';
 
 const ContentContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   color: white;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    margin-bottom: 80px; /* Espaço para o botão fixo */
+  }
 `;
 
-const Section = styled.div`
+const Section = styled.section`
   margin-bottom: 30px;
   background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 10px;
   backdrop-filter: blur(5px);
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  color: #FFA500;
+  color: white;
   margin-bottom: 15px;
+  font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
-const Text = styled.p`
-  line-height: 1.6;
+const Paragraph = styled.p`
   margin-bottom: 15px;
+  line-height: 1.6;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+`;
+
+const AdContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 15px;
+
+  @media (max-width: 768px) {
+    margin: 15px auto;
+  }
 `;
 
 export default function TermosDeUso() {
@@ -34,64 +70,94 @@ export default function TermosDeUso() {
     <Background>
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <Title>Termos de Uso e Política de Cookies</Title>
-        
+        <Title>Termos de Uso</Title>
+        <AdContainer>
+          <GoogleAd 
+            adSlot="0123456789" 
+            adFormat="horizontal"
+            adLayout="in-article"
+            adStyle={{ display: 'block', width: '100%', height: '90px' }}
+          />
+        </AdContainer>
         <ContentContainer>
           <Section>
-            <SectionTitle>Coleta e Uso de Dados</SectionTitle>
-            <Text>
-              O site Escolha Meu Filme exibe anúncios personalizados com base em interesses e comportamentos de navegação. Para isso, utilizamos tecnologias como cookies e identificadores de dispositivo que nos ajudam a melhorar sua experiência e oferecer recomendações e publicidade mais relevante.
-            </Text>
-            <Text>
-              Cookies são pequenos arquivos de texto armazenados no seu navegador. Eles permitem que o site "lembre" de suas preferências, como idioma, plataforma de streaming favorita ou tipos de filmes visualizados.
-            </Text>
+            <SectionTitle>1. Aceitação dos Termos</SectionTitle>
+            <Paragraph>
+              Ao acessar e usar o Escolha Meu Filme, você concorda em cumprir estes termos de uso. Se você não concordar com qualquer parte destes termos, não deverá usar nosso serviço.
+            </Paragraph>
+          </Section>
+
+          <AdContainer>
+            <GoogleAd 
+              adSlot="1234567890" 
+              adFormat="rectangle"
+              adLayout="in-article"
+              adStyle={{ display: 'block', width: '300px', height: '250px', margin: '20px auto' }}
+            />
+          </AdContainer>
+
+          <Section>
+            <SectionTitle>2. Uso do Serviço</SectionTitle>
+            <Paragraph>
+              O Escolha Meu Filme é um serviço gratuito que ajuda você a encontrar filmes para assistir. Nós:
+            </Paragraph>
+            <Paragraph>
+              1. Fornecemos recomendações personalizadas de filmes
+            </Paragraph>
+            <Paragraph>
+              2. Mostramos informações sobre disponibilidade em plataformas de streaming
+            </Paragraph>
+            <Paragraph>
+              3. Exibimos anúncios para manter o serviço gratuito
+            </Paragraph>
           </Section>
 
           <Section>
-            <SectionTitle>Tipos de Dados Coletados</SectionTitle>
-            <Text>
-              Podemos coletar e utilizar as seguintes informações, diretamente ou por meio de serviços de publicidade parceiros (como Google Ads):
-            </Text>
-            <ul>
-              <li>Endereço IP</li>
-              <li>Tipo e versão do navegador</li>
-              <li>Tipo e modelo de dispositivo</li>
-              <li>Sistema operacional</li>
-              <li>Idioma do navegador</li>
-              <li>Páginas acessadas e tempo de navegação</li>
-              <li>Interações com anúncios</li>
-              <li>Preferências de conteúdo (como gêneros e plataformas de streaming selecionadas)</li>
-            </ul>
-            <Text>
-              Esses dados nunca são usados para identificar você pessoalmente e são processados de forma agregada e anônima.
-            </Text>
+            <SectionTitle>3. Privacidade e Dados</SectionTitle>
+            <Paragraph>
+              Coletamos e utilizamos dados para:
+            </Paragraph>
+            <Paragraph>
+              1. Melhorar nossas recomendações
+            </Paragraph>
+            <Paragraph>
+              2. Personalizar sua experiência
+            </Paragraph>
+            <Paragraph>
+              3. Exibir anúncios relevantes
+            </Paragraph>
           </Section>
 
           <Section>
-            <SectionTitle>Publicidade Personalizada</SectionTitle>
-            <Text>
-              Anúncios exibidos no Escolha Meu Filme podem ser personalizados com base na sua navegação anterior, tanto neste quanto em outros sites. Isso é feito por redes de publicidade parceiras que utilizam cookies e outras tecnologias semelhantes para criar perfis de interesse.
-            </Text>
-            <Text>
-              Você pode optar por desativar a personalização de anúncios nas configurações do seu navegador ou usando ferramentas como:
-            </Text>
-            <ul>
-              <li>Configurações de Anúncios do Google</li>
-              <li>Network Advertising Initiative</li>
-            </ul>
-            <Text>
-              Desabilitar cookies pode limitar funcionalidades do site, como recomendações de filmes baseadas nas suas preferências anteriores.
-            </Text>
+            <SectionTitle>4. Anúncios</SectionTitle>
+            <Paragraph>
+              Utilizamos o Google AdSense para exibir anúncios. Estes anúncios:
+            </Paragraph>
+            <Paragraph>
+              1. São personalizados com base em seus interesses
+            </Paragraph>
+            <Paragraph>
+              2. Ajudam a manter o serviço gratuito
+            </Paragraph>
+            <Paragraph>
+              3. Seguem as políticas do Google AdSense
+            </Paragraph>
           </Section>
 
           <Section>
-            <SectionTitle>Transparência e Controle</SectionTitle>
-            <Text>
-              Nós respeitamos sua privacidade. O Escolha Meu Filme não coleta dados sensíveis (como localização exata ou informações pessoais) nem armazena informações de login, documentos ou fotos.
-            </Text>
-            <Text>
-              Ao continuar utilizando este site, você concorda com o uso de cookies e com os termos descritos nesta página.
-            </Text>
+            <SectionTitle>5. Limitações de Responsabilidade</SectionTitle>
+            <Paragraph>
+              O Escolha Meu Filme:
+            </Paragraph>
+            <Paragraph>
+              1. Não garante a disponibilidade contínua do serviço
+            </Paragraph>
+            <Paragraph>
+              2. Não se responsabiliza por decisões tomadas com base em nossas recomendações
+            </Paragraph>
+            <Paragraph>
+              3. Não garante a precisão absoluta das informações sobre disponibilidade em streaming
+            </Paragraph>
           </Section>
         </ContentContainer>
       </div>
