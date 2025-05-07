@@ -220,6 +220,44 @@ export default function MainScreen() {
       return null;
     }
 
+    const hasRelevantContent = () => {
+      switch (step) {
+        case 1:
+          return true;
+        case 2:
+          return streamings.length > 0;
+        case 3:
+          return true;
+        case 4:
+          return genres.length > 0;
+        case 5:
+          return movies.length > 0;
+        default:
+          return false;
+      }
+    };
+
+    if (!hasRelevantContent()) {
+      return null;
+    }
+
+    const isContentVisible = () => {
+      const contentElement = document.querySelector(step === 5 ? '.movie-card' : '.centered-content');
+      if (!contentElement) return false;
+
+      const rect = contentElement.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    };
+
+    if (!isContentVisible()) {
+      return null;
+    }
+
     return (
       <AdContainer>
         <GoogleAd
