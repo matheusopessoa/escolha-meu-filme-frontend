@@ -41,11 +41,7 @@ const Index = () => {
       
       <Header />
       <main className="flex-grow">
-        <HeroSection 
-          title={heroContent.title}
-          subtitle={heroContent.subtitle}
-          description={heroContent.description}
-        />
+        <HeroSection />
         
         <div className="container mx-auto px-4 py-4">
           <GoogleAd
