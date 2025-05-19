@@ -13,7 +13,7 @@ const FeatureSection = () => {
     {
       icon: <User className="w-10 h-10 mb-4 text-custom-orange" />,
       title: "Sem Cadastro",
-      description: "Use o site imediatamente sem registros, logins ou dados pessoais"
+      description: "Use o site imediatamente sem cadastro, logins ou dados pessoais"
     },
     {
       icon: <Clock className="w-10 h-10 mb-4 text-netflix-red" />,
@@ -33,7 +33,7 @@ const FeatureSection = () => {
     {
       icon: <Award className="w-10 h-10 mb-4 text-custom-orange" />,
       title: "100% Gratuito",
-      description: "Todos os recursos disponíveis sem nenhum custo, para sempre"
+      description: "Todos os recursos disponíveis sem nenhum custo, para sempre. Isso é Escolha Meu Filme!"
     }
   ];
 

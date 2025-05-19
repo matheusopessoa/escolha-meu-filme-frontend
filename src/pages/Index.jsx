@@ -10,7 +10,9 @@ import SeoHead from '../assets/components/SeoHead';
 import GoogleAd from '../components/GoogleAd';
 
 const Index = () => {
-  const homeKeywords = 'escolher filme, filme para assistir hoje, recomendação de filme, sugestão de filme, ' +
+  const homeKeywords = 'recomendador de filmes, escolha meu filme, filmes gratuitos, filmes sem cadastro, ' +
+    'recomendação inteligente de filmes, sistema recomendador, recomendador personalizado, ' +
+    'escolher filme, filme para assistir hoje, recomendação de filme, sugestão de filme, ' +
     'filme netflix, filme prime video, filme disney plus, filme hbo max, filme globoplay, filme online, ' +
     'filme streaming, filme para ver hoje, filme bom para assistir, filme novo, lançamento filme, filme 2024, ' +
     'filme para casal, filme em família, filme para assistir em casa, filme gratuito, filme sem cadastro, ' +
@@ -39,9 +41,12 @@ const Index = () => {
       
       <Header />
       <main className="flex-grow">
-        <HeroSection />
+        <HeroSection 
+          title={heroContent.title}
+          subtitle={heroContent.subtitle}
+          description={heroContent.description}
+        />
         
-        {/* Primeiro anúncio após o Hero */}
         <div className="container mx-auto px-4 py-4">
           <GoogleAd
             adClient="ca-pub-3744101723313882"
@@ -53,9 +58,11 @@ const Index = () => {
           />
         </div>
 
-        <FeaturesSection />
+        <FeaturesSection 
+          title={featuresContent.title}
+          features={featuresContent.features}
+        />
         
-        {/* Segundo anúncio após Features */}
         <div className="container mx-auto px-4 py-4">
           <GoogleAd
             adClient="ca-pub-3744101723313882"
@@ -67,10 +74,13 @@ const Index = () => {
           />
         </div>
 
-        <HowItWorksSection />
+        <HowItWorksSection 
+          title={howItWorksContent.title}
+          steps={howItWorksContent.steps}
+        />
+        
         <TestimonialsSection />
         
-        {/* Terceiro anúncio antes do CTA */}
         <div className="container mx-auto px-4 py-4">
           <GoogleAd
             adClient="ca-pub-3744101723313882"
