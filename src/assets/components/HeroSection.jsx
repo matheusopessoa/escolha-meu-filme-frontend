@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
-const HeroSection = () => {
+const HeroSection = ({ title, subtitle, description }) => {
   return (
     <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -12,15 +12,17 @@ const HeroSection = () => {
       <div className="container-custom relative z-20 pt-16">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in">
-            Não sabe o que assistir? Nós escolhemos para você.
+            {title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Encontre o filme perfeito para o seu momento em segundos. 
-            <span className="text-netflix-red font-semibold"> 100% gratuito</span>, sem cadastro e sem complicações.
+          <p className="text-xl md:text-2xl text-white/90 mb-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {subtitle}
+          </p>
+          <p className="text-lg text-white/80 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            {description}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button asChild size="lg" className="btn-primary text-lg px-8 py-6 text-black">
-              <Link to="/escolher-filme">Encontrar um Filme</Link>
+              <Link to="/escolher-filme">Escolher Meu Filme Agora</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="bg-transparent border border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6">
               <Link to="/como-escolhemos">Como Funciona</Link>
