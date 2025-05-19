@@ -54,10 +54,7 @@ const Index = () => {
           />
         </div>
 
-        <FeaturesSection 
-          title={featuresContent.title}
-          features={featuresContent.features}
-        />
+        <FeaturesSection />
         
         <div className="container mx-auto px-4 py-4">
           <GoogleAd
@@ -70,10 +67,7 @@ const Index = () => {
           />
         </div>
 
-        <HowItWorksSection 
-          title={howItWorksContent.title}
-          steps={howItWorksContent.steps}
-        />
+        <HowItWorksSection />
         
         <TestimonialsSection />
         
