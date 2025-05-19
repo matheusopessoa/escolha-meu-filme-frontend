@@ -1,19 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { cn } from "@/lib/utils";
+import { useLocation } from 'react-router-dom';
 
 const AdContainer = styled.div`
   width: 100%;
-  display: flex;
+  display: ${props => props.shouldShow ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
   min-height: ${props => props.style?.height || '90px'};
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  margin: 10px 0;
+  margin: ${props => props.shouldShow ? '10px 0' : '0'};
   overflow: hidden;
   opacity: ${props => props.isVisible ? 1 : 0};
   transition: opacity 0.3s ease;
   position: relative;
+  height: ${props => props.shouldShow ? 'auto' : '0'};
 
   &::before {
     content: 'Publicidade';
@@ -34,6 +37,7 @@ const LoadingContainer = styled.div`
   align-items: center;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
+  min-height: ${props => props.style?.height || '90px'};
 `;
 
 const FallbackContainer = styled.div`
@@ -46,19 +50,21 @@ const FallbackContainer = styled.div`
   font-size: 0.8rem;
   text-align: center;
   padding: 10px;
+  min-height: ${props => props.style?.height || '90px'};
 `;
 
-const GoogleAd = ({ adSlot, style, contentSelector }) => {
+const GoogleAd = ({ adClient, adSlot, style, contentSelector, minWordCount = 300, className, allowedPaths = ['/'] }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
   const [hasContent, setHasContent] = useState(false);
+  const [adLoaded, setAdLoaded] = useState(false);
   const adRef = useRef(null);
-  const observerRef = useRef(null);
-  const contentObserverRef = useRef(null);
+  const location = useLocation();
 
-  // Verifica se há conteúdo suficiente na página
+  const isAllowedPath = allowedPaths.includes(location.pathname);
+
   useEffect(() => {
     const checkContent = () => {
       if (!contentSelector) return true;
@@ -66,81 +72,54 @@ const GoogleAd = ({ adSlot, style, contentSelector }) => {
       const contentElement = document.querySelector(contentSelector);
       if (!contentElement) return false;
 
-      // Verifica se há texto suficiente
       const textContent = contentElement.textContent || '';
       const wordCount = textContent.trim().split(/\s+/).length;
       
-      // Verifica se há elementos visíveis
       const visibleElements = contentElement.querySelectorAll('*');
       const hasVisibleContent = Array.from(visibleElements).some(el => {
         const rect = el.getBoundingClientRect();
         return rect.width > 0 && rect.height > 0;
       });
 
-      return wordCount >= 50 && hasVisibleContent;
+      const hasOriginalContent = Array.from(visibleElements).some(el => {
+        const tagName = el.tagName.toLowerCase();
+        return ['p', 'article', 'section', 'div'].includes(tagName) && 
+               el.textContent.trim().length > 100;
+      });
+
+      return wordCount >= minWordCount && hasVisibleContent && hasOriginalContent;
     };
 
     setHasContent(checkContent());
-  }, [contentSelector]);
+  }, [contentSelector, minWordCount]);
 
   useEffect(() => {
-    if (!hasContent) return;
+    if (!isAllowedPath || !hasContent) return;
 
-    const checkContentVisibility = () => {
-      if (!contentSelector) return true;
-
-      const contentElement = document.querySelector(contentSelector);
-      if (!contentElement) return false;
-
-      const rect = contentElement.getBoundingClientRect();
-      return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-    };
-
-    contentObserverRef.current = new IntersectionObserver(
-      (entries) => {
-        const isContentVisible = entries[0].isIntersecting;
-        if (isContentVisible && !isVisible && hasContent) {
-          setIsVisible(true);
-        } else if (!isContentVisible && isVisible) {
-          setIsVisible(false);
-        }
-      },
-      {
-        threshold: 0.5,
-        rootMargin: '50px'
-      }
-    );
-
-    const contentElement = document.querySelector(contentSelector);
-    if (contentElement) {
-      contentObserverRef.current.observe(contentElement);
+    if (!document.querySelector('script[src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
     }
-
-    return () => {
-      if (contentObserverRef.current) {
-        contentObserverRef.current.disconnect();
-      }
-    };
-  }, [contentSelector, isVisible, hasContent]);
+  }, [isAllowedPath, hasContent]);
 
   useEffect(() => {
-    if (!isVisible || !hasContent) return;
+    if (!isAllowedPath || !hasContent) return;
 
     const loadAd = () => {
       try {
-        if (window.adsbygoogle && process.env.NODE_ENV !== 'development') {
+        if (window.adsbygoogle) {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
           setIsLoading(false);
+          setAdLoaded(true);
         }
       } catch (err) {
         console.error('Erro ao carregar anúncio:', err);
         setError(true);
         setIsLoading(false);
+        setAdLoaded(false);
       }
     };
 
@@ -153,58 +132,39 @@ const GoogleAd = ({ adSlot, style, contentSelector }) => {
     } else {
       setError(true);
       setIsLoading(false);
+      setAdLoaded(false);
     }
-  }, [isVisible, retryCount, hasContent]);
+  }, [isVisible, retryCount, hasContent, isAllowedPath]);
 
-  useEffect(() => {
-    if (!isVisible || !hasContent) return;
+  if (!isAllowedPath || !hasContent) return null;
 
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !isLoading && !error) {
-          setRetryCount(prev => prev + 1);
-        }
-      },
-      {
-        threshold: 0.5,
-        rootMargin: '50px'
-      }
-    );
-
-    if (adRef.current) {
-      observerRef.current.observe(adRef.current);
-    }
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [isVisible, isLoading, error, hasContent]);
-
-  if (!isVisible || !hasContent) return null;
+  const shouldShowContainer = isLoading || (adLoaded && !error);
 
   return (
-    <AdContainer style={style} isVisible={isVisible}>
-      {isLoading && !error ? (
-        <LoadingContainer>Carregando...</LoadingContainer>
+    <AdContainer 
+      ref={adRef}
+      isVisible={isVisible}
+      style={style}
+      className={cn("google-ad", className)}
+      shouldShow={shouldShowContainer}
+    >
+      {isLoading ? (
+        <LoadingContainer style={style}>Carregando anúncio...</LoadingContainer>
       ) : error ? (
-        <FallbackContainer>
-          Não foi possível carregar o anúncio. Por favor, tente novamente mais tarde.
-        </FallbackContainer>
+        null
       ) : (
         <ins
-          ref={adRef}
           className="adsbygoogle"
-          style={style}
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          style={{ display: 'block', width: '100%', height: '100%' }}
+          data-ad-client="ca-pub-3744101723313882"
           data-ad-slot={adSlot}
           data-ad-format="auto"
           data-full-width-responsive="true"
+          key={location.pathname}
         />
       )}
     </AdContainer>
   );
 };
 
-export default GoogleAd; 
+export default GoogleAd;

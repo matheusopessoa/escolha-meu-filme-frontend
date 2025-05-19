@@ -1,64 +1,32 @@
-import styled from 'styled-components';
 
-const WatchButton = styled.button`
-  background-color: #10B981;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
+import React from 'react';
+import { cn } from "@/lib/utils";
 
-  &:hover {
-    background-color: #059669;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-`;
-
-const WatchButtonComponent = ({ provider }) => {
-  const getStreamingUrl = (provider) => {
-    const baseUrls = {
-      netflix: 'https://www.netflix.com',
-      amazon: 'https://www.primevideo.com',
-      disney: 'https://www.disneyplus.com',
-      max: 'https://max.com',
-      globoplay: 'https://globoplay.globo.com'
-    };
-
-    return baseUrls[provider.toLowerCase()];
+const WatchButton = ({ provider, className }) => {
+  // Mapear provedores para suas cores específicas
+  const providerStyles = {
+    Netflix: "bg-netflix-red hover:bg-netflix-redHover",
+    Amazon: "bg-blue-700 hover:bg-blue-800",
+    Disney: "bg-blue-900 hover:bg-blue-950",
+    Max: "bg-purple-700 hover:bg-purple-800",
+    Globoplay: "bg-red-600 hover:bg-red-700",
   };
 
-  const getProviderIcon = (provider) => {
-    const icons = {
-      netflix: '🎬',
-      amazon: '🎥',
-      disney: '✨',
-      max: '🎭',
-      globoplay: '📺'
-    };
-
-    return icons[provider.toLowerCase()] || '🎬';
-  };
+  const style = providerStyles[provider] || "bg-blue-500 hover:bg-blue-600";
 
   return (
-    <WatchButton 
-      onClick={() => window.open(getStreamingUrl(provider), '_blank')}
-      title={`Ir para ${provider}`}
+    <button 
+      className={cn(
+        `${style} text-white font-bold py-2 px-4 rounded mt-4 flex items-center justify-center transition-all duration-200 shadow-lg`, 
+        className
+      )}
     >
-      <span>{getProviderIcon(provider)}</span>
-      Ir para {provider}
-    </WatchButton>
+      <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 12L9 19.5V4.5L21 12Z" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      Assistir no {provider}
+    </button>
   );
 };
 
-export default WatchButtonComponent; 
+export default WatchButton;

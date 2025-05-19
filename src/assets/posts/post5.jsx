@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import Background from '../components/Background';
 import Title from '../components/Title';
 import Subtitle from '../components/Subtitle';
+import Button from '../components/Button';
+import ButtonList from '../components/ButtonList';
 import PurpleButton from '../components/PurpleButton';
 import Footer from '../components/Footer';
+import styled from 'styled-components';
 import Header from '../components/Header';
 import GoogleAd from '../../components/GoogleAd';
 
@@ -12,37 +14,26 @@ const PostContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  color: white;
 `;
 
-const PostContent = styled.article`
+const PostContent = styled.div`
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 30px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 20px 0;
-`;
-
-const PostDate = styled.p`
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-`;
-
-const PostText = styled.div`
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  line-height: 1.8;
-  text-align: justify;
-
-  p {
-    margin-bottom: 20px;
-  }
+  backdrop-filter: blur(5px);
+  line-height: 1.6;
 
   h2 {
     color: #FFA500;
-    font-size: 1.8rem;
-    margin: 30px 0 20px;
+    margin: 30px 0 15px;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
   }
 
   ul {
@@ -52,20 +43,85 @@ const PostText = styled.div`
 
   li {
     margin-bottom: 10px;
+    font-size: 1.1rem;
   }
 `;
 
 const AdContainer = styled.div`
-  margin: 20px 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 10px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    margin: 5px auto;
+  }
+
+  .adsbygoogle {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 30px 0;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0 15px;
 `;
+
+// Conteúdo estático do post
+const postContent = {
+  title: 'O Papel da Crítica Cinematográfica',
+  subtitle: 'Como a análise de filmes influencia a indústria e o público',
+  date: '5 de Março, 2025',
+  content: `
+    <p>
+      A crítica cinematográfica desempenha um papel fundamental na indústria do cinema, 
+      servindo como ponte entre os filmes e o público. Além de informar e orientar os 
+      espectadores, a crítica também influencia a evolução da arte cinematográfica.
+    </p>
+
+    <h2>O Que é Crítica Cinematográfica?</h2>
+    <p>
+      A crítica cinematográfica envolve:
+    </p>
+    <ul>
+      <li>Análise técnica e artística</li>
+      <li>Contextualização histórica</li>
+      <li>Avaliação de performances</li>
+      <li>Discussão de temas e mensagens</li>
+    </ul>
+
+    <h2>Impacto na Indústria</h2>
+    <p>
+      A crítica tem influência significativa:
+    </p>
+    <ul>
+      <li>Formação de opinião pública</li>
+      <li>Influência no sucesso comercial</li>
+      <li>Reconhecimento de talentos</li>
+      <li>Evolução da linguagem cinematográfica</li>
+    </ul>
+
+    <h2>O Futuro da Crítica</h2>
+    <p>
+      Com as mudanças na indústria, a crítica também evolui:
+    </p>
+    <ul>
+      <li>Plataformas digitais</li>
+      <li>Crítica colaborativa</li>
+      <li>Análise em tempo real</li>
+      <li>Novos formatos de discussão</li>
+    </ul>
+  `
+};
 
 export default function Post5() {
   const navigate = useNavigate();
@@ -79,103 +135,49 @@ export default function Post5() {
   return (
     <Background>
       <Header />
-      <PostContainer>
-        <Title>A Importância da Representatividade no Cinema</Title>
-        <Subtitle>Como a diversidade está transformando a indústria cinematográfica</Subtitle>
-
+      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
+        <Title>{postContent.title}</Title>
+        <Subtitle>{postContent.subtitle}</Subtitle>
         <AdContainer>
-          <GoogleAd
-            adSlot="8901234567"
-            style={{ display: 'block', width: '100%', height: '90px' }}
+          <GoogleAd 
+            adSlot="6789012345" 
+            adFormat="horizontal"
+            adLayout="in-article"
+            adStyle={{ 
+              display: 'block', 
+              width: '100%', 
+              height: '90px',
+              maxHeight: '90px',
+              overflow: 'hidden'
+            }}
           />
         </AdContainer>
-
-        <PostContent>
-          <PostDate>6 de Março, 2025</PostDate>
-          <PostText>
-            <p>
-              A representatividade no cinema tem ganhado cada vez mais importância, com filmes como 
-              'Pantera Negra' e 'Parasita' mostrando o poder da diversidade nas telas. A inclusão de 
-              diferentes culturas, gêneros e perspectivas não é apenas uma questão de justiça social, 
-              mas também de qualidade artística.
-            </p>
-
-            <h2>O Poder da Representação</h2>
-            <p>
-              A representatividade no cinema é importante por várias razões:
-            </p>
-            <ul>
-              <li>Reflete a diversidade da sociedade</li>
-              <li>Dá voz a histórias marginalizadas</li>
-              <li>Inspira novas gerações</li>
-              <li>Promove empatia e compreensão</li>
-            </ul>
-
-            <h2>Mudanças na Indústria</h2>
-            <p>
-              A indústria cinematográfica tem passado por transformações significativas:
-            </p>
-            <ul>
-              <li>Mais oportunidades para diretores diversos</li>
-              <li>Histórias de diferentes culturas</li>
-              <li>Personagens mais complexos e autênticos</li>
-              <li>Equipes de produção mais inclusivas</li>
-            </ul>
-
-            <h2>Impacto Cultural</h2>
-            <p>
-              Filmes diversos têm um impacto profundo na sociedade:
-            </p>
-            <ul>
-              <li>Quebram estereótipos</li>
-              <li>Promovem diálogo cultural</li>
-              <li>Inspiram mudanças sociais</li>
-              <li>Criam novas referências</li>
-            </ul>
-
-            <h2>Desafios e Progresso</h2>
-            <p>
-              Apesar dos avanços, ainda existem desafios:
-            </p>
-            <ul>
-              <li>Necessidade de mais oportunidades</li>
-              <li>Representação autêntica</li>
-              <li>Inclusão em todos os níveis</li>
-              <li>Combate ao tokenismo</li>
-            </ul>
-
-            <h2>O Futuro da Representatividade</h2>
-            <p>
-              O futuro do cinema depende da diversidade. Filmes que representam diferentes vozes e 
-              perspectivas tendem a:
-            </p>
-            <ul>
-              <li>Alcançar públicos mais amplos</li>
-              <li>Contar histórias mais ricas</li>
-              <li>Promover mudanças positivas</li>
-              <li>Inspirar novas gerações</li>
-            </ul>
-
-            <p>
-              A representatividade no cinema não é apenas uma tendência, mas uma necessidade para 
-              que a arte continue relevante e significativa para todos.
-            </p>
-          </PostText>
-        </PostContent>
-
-        <AdContainer>
-          <GoogleAd
-            adSlot="9012345678"
-            style={{ display: 'block', width: '300px', height: '250px' }}
-          />
-        </AdContainer>
-
-        <ButtonContainer>
-          <PurpleButton onClick={handleBackToHome}>
-            Voltar ao início
-          </PurpleButton>
-        </ButtonContainer>
-      </PostContainer>
+        <PostContainer>
+          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
+          <AdContainer>
+            <GoogleAd 
+              adSlot="7890123456" 
+              adFormat="rectangle"
+              adLayout="in-article"
+              adStyle={{ 
+                display: 'block', 
+                width: '300px', 
+                height: '250px',
+                maxHeight: '250px',
+                overflow: 'hidden'
+              }}
+            />
+          </AdContainer>
+          <ButtonContainer>
+            <PurpleButton
+              onClick={handleBackToHome}
+              className="w-48"
+            >
+              Voltar ao início
+            </PurpleButton>
+          </ButtonContainer>
+        </PostContainer>
+      </div>
       <Footer />
     </Background>
   );

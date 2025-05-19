@@ -2415,3 +2415,12 @@ export const top10_genre = {
 	]
 }
 
+export const fetchTop10ByGenre = async (genre) => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			const movies = top10_genre[genre] || [];
+			resolve(movies);
+		}, 500); // Simulando um delay de rede
+	});
+};
+

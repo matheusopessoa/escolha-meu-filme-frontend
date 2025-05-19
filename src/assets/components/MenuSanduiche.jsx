@@ -185,7 +185,7 @@ export default function MenuSanduiche() {
           <MenuIcon>🎲</MenuIcon>
           Filme Aleatório
         </MenuItem>
-        
+
         <MenuItem onClick={() => {
           navigate('/blog');
           setIsOpen(false);

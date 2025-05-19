@@ -711,3 +711,12 @@ export const top10_provider =
 		]
 	]
 }
+
+export const fetchTop10ByProvider = async (provider) => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			const movies = top10_provider[provider] || [];
+			resolve(movies);
+		}, 500); // Simulando um delay de rede
+	});
+};

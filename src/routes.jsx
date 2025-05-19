@@ -15,70 +15,106 @@ import Post7 from './assets/posts/post7';
 import Post8 from './assets/posts/post8';
 import Post9 from './assets/posts/post9';
 import Post10 from './assets/posts/post10';
+import Privacidade from './pages/privacidade';
+import Sobre from './pages/sobre';
+import Index from './pages/index';
+import SelectionPage from './pages/SelectionPage';
+import ScrollToTop from './components/ScrollToTop';
+import { Outlet } from 'react-router-dom';
+
+const AppLayout = () => {
+  return (
+    <>
+      <ScrollToTop />
+      <Outlet />
+    </>
+  );
+};
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <MainScreen />,
-  },
-  {
-    path: '/top10/:type/:option',
-    element: <Top10 />,
-  },
-  {
-    path: '/como-escolhemos',
-    element: <ComoEscolhemos />,
-  },
-  {
-    path: '/aleatorio',
-    element: <Aleatorio />,
-  },
-  {
-    path: '/termos-de-uso',
-    element: <TermosDeUso />,
-  },
-  {
-    path: '/blog',
-    element: <Blog />,
-  },
-  {
-    path: '/blog/post1',
-    element: <Post1 />,
-  },
-  {
-    path: '/blog/post2',
-    element: <Post2 />,
-  },
-  {
-    path: '/blog/post3',
-    element: <Post3 />,
-  },
-  {
-    path: '/blog/post4',
-    element: <Post4 />,
-  },
-  {
-    path: '/blog/post5',
-    element: <Post5 />,
-  },
-  {
-    path: '/blog/post6',
-    element: <Post6 />,
-  },
-  {
-    path: '/blog/post7',
-    element: <Post7 />,
-  },
-  {
-    path: '/blog/post8',
-    element: <Post8 />,
-  },
-  {
-    path: '/blog/post9',
-    element: <Post9 />,
-  },
-  {
-    path: '/blog/post10',
-    element: <Post10 />,
-  },
+    element: <AppLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Index />,
+      },
+      {
+        path: '/escolher-filme',
+        element: <MainScreen />,
+      },
+      {
+        path: '/top10',
+        element: <SelectionPage />,
+      },
+      {
+        path: '/top10/:type/:option',
+        element: <Top10 />,
+      },
+      {
+        path: '/como-escolhemos',
+        element: <ComoEscolhemos />,
+      },
+      {
+        path: '/aleatorio',
+        element: <Aleatorio />,
+      },
+      {
+        path: '/termos',
+        element: <TermosDeUso />,
+      },
+      {
+        path: '/blog',
+        element: <Blog />,
+      },
+      {
+        path: '/blog/post1',
+        element: <Post1 />,
+      },
+      {
+        path: '/blog/post2',
+        element: <Post2 />,
+      },
+      {
+        path: '/blog/post3',
+        element: <Post3 />,
+      },
+      {
+        path: '/blog/post4',
+        element: <Post4 />,
+      },
+      {
+        path: '/blog/post5',
+        element: <Post5 />,
+      },
+      {
+        path: '/blog/post6',
+        element: <Post6 />,
+      },
+      {
+        path: '/blog/post7',
+        element: <Post7 />,
+      },
+      {
+        path: '/blog/post8',
+        element: <Post8 />,
+      },
+      {
+        path: '/blog/post9',
+        element: <Post9 />,
+      },
+      {
+        path: '/blog/post10',
+        element: <Post10 />,
+      },
+      {
+        path: '/privacidade',
+        element: <Privacidade />,
+      },
+      {
+        path: '/sobre',
+        element: <Sobre />,
+      }
+    ]
+  }
 ]); 

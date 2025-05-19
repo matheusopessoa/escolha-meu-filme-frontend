@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
-import Background from './components/Background';
 import Title from './components/Title';
 import Subtitle from './components/Subtitle';
 import Button from './components/Button';
 import ButtonList from './components/ButtonList';
 import PurpleButton from './components/PurpleButton';
-import Footer from './components/Footer';
 import './MainScreen.css';
 import fetchMovies from './utils/fetch';
 import styled from 'styled-components';
-import Header from './components/Header';
 import WatchButton from '../components/WatchButton';
-import GoogleAd from '../components/GoogleAd';
+import Layout from '../components/Layout';
 
 const MovieCard = styled.div`
   display: flex;
@@ -40,7 +37,7 @@ const MoviePoster = styled.img`
   height: auto;
   border-radius: 8px;
   object-fit: contain;
-  flex-shrink: 0;
+  flex-shrink: 0; 
 
   @media (max-width: 768px) {
     width: 120px;
@@ -89,36 +86,16 @@ const ButtonContainer = styled.div`
   z-index: 1;
 `;
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    margin: 5px;
-    height: 10px;
-  }
-
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
-
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  margin-bottom: 50px;
   min-height: calc(100vh - 300px);
 `;
 
@@ -142,7 +119,7 @@ const MainContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px; /* Espaço para o footer */
+  padding-bottom: 100px;
 `;
 
 const MoviesContainer = styled.div`
@@ -152,7 +129,6 @@ const MoviesContainer = styled.div`
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 200px);
-  padding: 80px 0 100px 0;
   width: 100%;
 `;
 
@@ -215,77 +191,15 @@ export default function MainScreen() {
     }
   }, [step, provider, selectedGenres, style]);
 
-  const renderAd = (slot, style) => {
-    if (isLoading) {
-      return null;
-    }
-
-    const hasRelevantContent = () => {
-      switch (step) {
-        case 1:
-          return true;
-        case 2:
-          return streamings.length > 0;
-        case 3:
-          return true;
-        case 4:
-          return genres.length > 0;
-        case 5:
-          return movies.length > 0;
-        default:
-          return false;
-      }
-    };
-
-    if (!hasRelevantContent()) {
-      return null;
-    }
-
-    const isContentVisible = () => {
-      const contentElement = document.querySelector(step === 5 ? '.movie-card' : '.centered-content');
-      if (!contentElement) return false;
-
-      const rect = contentElement.getBoundingClientRect();
-      return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-    };
-
-    if (!isContentVisible()) {
-      return null;
-    }
-
-    return (
-      <AdContainer>
-        <GoogleAd
-          adSlot={slot}
-          style={style}
-          contentSelector={step === 5 ? '.movie-card' : '.centered-content'}
-        />
-      </AdContainer>
-    );
-  };
-
   return (
-    <Background>
+    <Layout>
       <div id="top-of-page" />
-      <Header />
       <MainContainer>
         {step === 1 && (
           <CenteredContent>
             <ContentWrapper>
               <Title>Escolha Meu Filme</Title>
-              <Subtitle>Deixa com a gente: vamos encontrar o filme perfeito para você!</Subtitle>
-              {renderAd("1234567890", { 
-                display: 'block', 
-                width: '100%', 
-                height: '90px',
-                maxHeight: '90px',
-                overflow: 'hidden'
-              })}
+              <Subtitle>Deixa com a gente: vamos encontrar o filme perfeito para você!</Subtitle>          
               <ButtonContainer>
                 <Button onClick={() => setStep(2)}>Começar</Button>
               </ButtonContainer>
@@ -298,13 +212,6 @@ export default function MainScreen() {
             <ContentWrapper>
               <Title>Onde você quer assistir?</Title>
               <Subtitle>Escolha uma plataforma de streaming</Subtitle>
-              {renderAd("2345678901", { 
-                display: 'block', 
-                width: '100%', 
-                height: '90px',
-                maxHeight: '90px',
-                overflow: 'hidden'
-              })}
               <div className='button-list-col'>
                 {Array.from({ length: Math.ceil(streamings.length / 3) }, (_, rowIndex) => (
                   <div className='button-list-row' key={rowIndex}>
@@ -331,14 +238,7 @@ export default function MainScreen() {
           <CenteredContent>
             <ContentWrapper>
               <Title>Que tipo de filme você curte?</Title>
-              <Subtitle>Prefere algo bem conhecido (Mainstream) ou um filme mais alternativo (Cult)?</Subtitle>
-              {renderAd("3456789012", { 
-                display: 'block', 
-                width: '100%', 
-                height: '90px',
-                maxHeight: '90px',
-                overflow: 'hidden'
-              })}
+              <Subtitle>Prefere algo bem conhecido (Mainstream) ou um filme mais alternativo (Cult)?</Subtitle>          
               <div className='button-list-row'> 
                 <Button onClick={() => {
                   setStyle(false);
@@ -404,13 +304,6 @@ export default function MainScreen() {
                 <Subtitle>Aguarde enquanto encontramos algo perfeito para você</Subtitle>
               ) : movies.length > 0 ? (
                 <>
-                  {renderAd("4567890123", { 
-                    display: 'block', 
-                    width: '100%', 
-                    height: '90px',
-                    maxHeight: '90px',
-                    overflow: 'hidden'
-                  })}
                   {movies.map((movie) => (
                     <MovieCard key={movie[0]}>
                       <MoviePoster
@@ -430,13 +323,6 @@ export default function MainScreen() {
                       </MovieInfo>
                     </MovieCard>
                   ))}
-                  {renderAd("5678901234", { 
-                    display: 'block', 
-                    width: '300px', 
-                    height: '250px',
-                    maxHeight: '250px',
-                    overflow: 'hidden'
-                  })}
                   <ButtonContainer>
                     <PurpleButton
                       onClick={handleBackToHome}
@@ -463,7 +349,6 @@ export default function MainScreen() {
           </MoviesContainer>
         )}
       </MainContainer>
-      <Footer />
-    </Background>
+    </Layout>
   );
 }

@@ -1,0 +1,114 @@
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  color: white;
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.ad-container {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.ad-container.horizontal {
+  height: 90px;
+}
+
+.ad-container.square {
+  height: 250px;
+  width: 300px;
+}
+
+.ad-container.vertical {
+  height: 600px;
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .ad-container.horizontal {
+    height: 50px;
+  }
+  
+  .ad-container.square {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+/* Melhoria de acessibilidade para foco em elementos interativos */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid rgba(255, 165, 0, 0.5);
+  outline-offset: 2px;
+}
+
+/* Animações suaves para transições de página */
+.page-transition {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos para o tooltip de acessibilidade */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Melhorar o scrollbar para uma experiência mais agradável */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 165, 0, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 165, 0, 0.8);
+}
