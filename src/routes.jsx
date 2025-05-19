@@ -17,7 +17,7 @@ import Post9 from './assets/posts/post9';
 import Post10 from './assets/posts/post10';
 import Privacidade from './pages/privacidade';
 import Sobre from './pages/sobre';
-import Index from './pages/index';
+import Index from './pages/Index';
 import SelectionPage from './pages/SelectionPage';
 import ScrollToTop from './components/ScrollToTop';
 import { Outlet } from 'react-router-dom';
