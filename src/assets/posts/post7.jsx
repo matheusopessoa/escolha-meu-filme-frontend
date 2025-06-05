@@ -1,186 +1,213 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
+const Post7 = () => {
+  return (
+    <PostLayout
+      title="A Arte da Fotografia no Cinema: Pintando com Luz e Movimento"
+      description="Descubra como a direção de fotografia molda a narrativa visual do cinema, criando atmosferas únicas e emoções memoráveis através das imagens."
+      publishedTime="2024-03-26T10:00:00Z"
+      keywords="fotografia no cinema, cinematografia, direção de fotografia, iluminação, composição visual"
+      image="/blog/fotografia-cinema.jpg"
+    >
+      <p>
+        A fotografia cinematográfica é uma arte que vai muito além do simples 
+        registro de imagens. É através dela que o cinema cria sua linguagem 
+        visual única, transmitindo emoções, estabelecendo atmosferas e 
+        contando histórias através da luz, enquadramento e movimento.
+      </p>
 
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
+      <h2>Elementos Fundamentais</h2>
+      <p>
+        Os pilares da fotografia cinematográfica:
+      </p>
+      <ul>
+        <li>
+          <strong>Iluminação:</strong>
+          <ul>
+            <li>Luz natural vs artificial</li>
+            <li>Esquemas de iluminação clássicos</li>
+            <li>Contraste e sombras</li>
+            <li>Temperatura de cor</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Composição:</strong>
+          <ul>
+            <li>Regra dos terços</li>
+            <li>Linhas e formas</li>
+            <li>Profundidade de campo</li>
+            <li>Enquadramento dinâmico</li>
+          </ul>
+        </li>
+      </ul>
 
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
+      <h2>Estilos e Movimentos</h2>
+      <p>
+        Diferentes abordagens que marcaram a história:
+      </p>
+      <ul>
+        <li>
+          <strong>Expressionismo Alemão:</strong>
+          <ul>
+            <li>Sombras dramáticas</li>
+            <li>Ângulos extremos</li>
+            <li>Distorção visual</li>
+            <li>Contraste acentuado</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Film Noir:</strong>
+          <ul>
+            <li>Low-key lighting</li>
+            <li>Atmosfera sombria</li>
+            <li>Silhuetas marcantes</li>
+            <li>Uso criativo de sombras</li>
+          </ul>
+        </li>
+      </ul>
 
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
+      <h2>Diretores de Fotografia Icônicos</h2>
+      <p>
+        Mestres que revolucionaram a arte:
+      </p>
+      <ul>
+        <li>
+          <strong>Clássicos:</strong>
+          <ul>
+            <li>Gregg Toland (Cidadão Kane)</li>
+            <li>James Wong Howe (Sweet Smell of Success)</li>
+            <li>Sven Nykvist (Filmes de Bergman)</li>
+            <li>Vittorio Storaro (Apocalypse Now)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Contemporâneos:</strong>
+          <ul>
+            <li>Roger Deakins (Blade Runner 2049)</li>
+            <li>Emmanuel Lubezki (Gravidade)</li>
+            <li>Robert Richardson (Kill Bill)</li>
+            <li>Hoyte van Hoytema (Interstellar)</li>
+          </ul>
+        </li>
+      </ul>
 
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
+      <h2>Técnicas Essenciais</h2>
+      <p>
+        Ferramentas do ofício:
+      </p>
+      <ul>
+        <li>
+          <strong>Movimentos de Câmera:</strong>
+          <ul>
+            <li>Travelling</li>
+            <li>Steadicam</li>
+            <li>Dolly</li>
+            <li>Grua e drone</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Lentes e Equipamentos:</strong>
+          <ul>
+            <li>Objetivas específicas</li>
+            <li>Filtros e difusores</li>
+            <li>Sistemas de estabilização</li>
+            <li>Equipamentos de iluminação</li>
+          </ul>
+        </li>
+      </ul>
 
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
+      <h2>A Era Digital</h2>
+      <p>
+        Transformações tecnológicas:
+      </p>
+      <ul>
+        <li>
+          <strong>Câmeras Digitais:</strong>
+          <ul>
+            <li>Alta resolução</li>
+            <li>Range dinâmico amplo</li>
+            <li>Sensibilidade ISO</li>
+            <li>Workflows digitais</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Pós-Produção:</strong>
+          <ul>
+            <li>Correção de cor</li>
+            <li>VFX integration</li>
+            <li>HDR e formatos modernos</li>
+            <li>Looks personalizados</li>
+          </ul>
+        </li>
+      </ul>
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
+      <h2>Narrativa Visual</h2>
+      <p>
+        Como a fotografia conta histórias:
+      </p>
+      <ul>
+        <li>
+          <strong>Elementos Narrativos:</strong>
+          <ul>
+            <li>Simbolismo visual</li>
+            <li>Paleta de cores</li>
+            <li>Ritmo visual</li>
+            <li>Transições</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Impacto Emocional:</strong>
+          <ul>
+            <li>Atmosfera e mood</li>
+            <li>Tensão dramática</li>
+            <li>Intimidade vs distância</li>
+            <li>Subjetividade vs objetividade</li>
+          </ul>
+        </li>
+      </ul>
 
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
+      <h2>Desafios e Inovações</h2>
+      <p>
+        O futuro da fotografia cinematográfica:
+      </p>
+      <ul>
+        <li>
+          <strong>Novas Tecnologias:</strong>
+          <ul>
+            <li>Realidade virtual</li>
+            <li>Câmeras volumétricas</li>
+            <li>LED walls</li>
+            <li>Inteligência artificial</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Tendências:</strong>
+          <ul>
+            <li>Cinematografia virtual</li>
+            <li>Produção remota</li>
+            <li>Sustentabilidade</li>
+            <li>Democratização das ferramentas</li>
+          </ul>
+        </li>
+      </ul>
 
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
+      <h2>Conclusão</h2>
+      <p>
+        A fotografia cinematográfica é uma arte em constante evolução que 
+        continua a surpreender e emocionar o público. Através da combinação 
+        de técnica, criatividade e sensibilidade, os diretores de fotografia 
+        criam mundos visuais únicos que enriquecem nossa experiência com o cinema.
+      </p>
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
-
-// Conteúdo estático do post
-const postContent = {
-  title: 'O Renascimento do Cinema de Arte',
-  subtitle: 'Como o cinema de arte está conquistando novas audiências',
-  date: '1 de Março, 2025',
-  content: `
-    <p>
-      O cinema de arte está passando por um renascimento significativo, atraindo novas 
-      audiências e ganhando reconhecimento mainstream. Filmes que antes eram considerados 
-      nicho estão agora alcançando um público mais amplo, graças a uma combinação de fatores 
-      que incluem streaming, redes sociais e uma crescente apreciação por narrativas 
-      complexas.
-    </p>
-
-    <h2>O Que Define o Cinema de Arte</h2>
-    <p>
-      O cinema de arte se caracteriza por:
-    </p>
-    <ul>
-      <li>Foco em narrativas experimentais</li>
-      <li>Exploração de temas complexos</li>
-      <li>Estética visual única</li>
-      <li>Liberdade criativa</li>
-    </ul>
-
-    <h2>Mudanças no Público</h2>
-    <p>
-      O público do cinema de arte está evoluindo:
-    </p>
-    <ul>
-      <li>Maior interesse em filmes internacionais</li>
-      <li>Busca por narrativas diferentes</li>
-      <li>Apreciação por estilos únicos</li>
-      <li>Engajamento em discussões online</li>
-    </ul>
-
-    <h2>O Papel do Streaming</h2>
-    <p>
-      Plataformas de streaming têm sido fundamentais para o renascimento do cinema de arte:
-    </p>
-    <ul>
-      <li>Acesso facilitado a filmes internacionais</li>
-      <li>Recomendações personalizadas</li>
-      <li>Conteúdo curado</li>
-      <li>Produções originais arrojadas</li>
-    </ul>
-  `
+      <p>
+        No Escolha Meu Filme, valorizamos a excelência visual como um dos 
+        critérios importantes em nossas recomendações, reconhecendo o poder 
+        da fotografia em criar experiências cinematográficas memoráveis e 
+        impactantes.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post7() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer />
-    </Background>
-  );
-} 
+export default Post7; 

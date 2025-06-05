@@ -1,208 +1,214 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
-
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
-
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
-
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
-
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
-
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
-
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
-
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
-
-// Conteúdo estático do post
-const postContent = {
-  title: 'A Importância da Trilha Sonora',
-  subtitle: 'Como a música transforma a experiência cinematográfica',
-  date: '28 de Fevereiro, 2025',
-  content: `
-    <p>
-      A trilha sonora é um elemento fundamental na experiência cinematográfica, capaz de 
-      transformar completamente a forma como percebemos um filme. Desde as primeiras 
-      composições até as produções mais recentes, a música tem sido uma ferramenta 
-      poderosa para contar histórias.
-    </p>
-
-    <h2>Elementos da Trilha Sonora</h2>
-    <p>
-      Uma trilha sonora eficaz inclui:
-    </p>
-    <ul>
-      <li>Música de fundo</li>
-      <li>Efeitos sonoros</li>
-      <li>Silêncio estratégico</li>
-      <li>Canções diegéticas</li>
-    </ul>
-
-    <h2>Impacto na Narrativa</h2>
-    <p>
-      A música influencia a narrativa de várias formas:
-    </p>
-    <ul>
-      <li>Estabelece o clima emocional</li>
-      <li>Destaca momentos importantes</li>
-      <li>Guia a atenção do espectador</li>
-      <li>Amplifica o impacto das cenas</li>
-    </ul>
-
-    <h2>Compositores Notáveis</h2>
-    <p>
-      Alguns compositores que marcaram a história do cinema:
-    </p>
-    <ul>
-      <li>John Williams</li>
-      <li>Hans Zimmer</li>
-      <li>Ennio Morricone</li>
-      <li>Max Steiner</li>
-    </ul>
-  `,
-  footer: {
-    title: 'Trilhas Sonoras Imperdíveis',
-    content: `
+const Post10 = () => {
+  return (
+    <PostLayout
+      title="A Arte do Roteiro: Construindo Histórias que Marcam"
+      description="Descubra como o roteiro é a base fundamental de todo filme, moldando narrativas que emocionam e conectam com o público."
+      publishedTime="2024-03-29T10:00:00Z"
+      keywords="roteiro de cinema, screenwriting, narrativa cinematográfica, estrutura dramática, desenvolvimento de personagens"
+      image="/blog/roteiro-cinema.jpg"
+    >
       <p>
-        Descubra algumas das trilhas sonoras mais marcantes da história do cinema:
+        O roteiro é o alicerce sobre o qual todo filme é construído. É a 
+        primeira etapa na transformação de uma ideia em uma experiência 
+        cinematográfica completa, definindo não apenas a história, mas também 
+        o tom, o ritmo e a emoção que o filme irá transmitir.
+      </p>
+
+      <h2>Elementos Fundamentais</h2>
+      <p>
+        Os componentes essenciais de um bom roteiro:
       </p>
       <ul>
-        <li>Star Wars - John Williams</li>
-        <li>O Senhor dos Anéis - Howard Shore</li>
-        <li>Gladiador - Hans Zimmer</li>
-        <li>O Poderoso Chefão - Nino Rota</li>
-        <li>O Rei Leão - Hans Zimmer</li>
+        <li>
+          <strong>Estrutura Narrativa:</strong>
+          <ul>
+            <li>Três atos clássicos</li>
+            <li>Pontos de virada</li>
+            <li>Arco dramático</li>
+            <li>Resolução de conflitos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Desenvolvimento de Personagens:</strong>
+          <ul>
+            <li>Arcos de transformação</li>
+            <li>Motivações e objetivos</li>
+            <li>Conflitos internos</li>
+            <li>Relações interpessoais</li>
+          </ul>
+        </li>
       </ul>
+
+      <h2>Roteiristas Influentes</h2>
       <p>
-        Estas trilhas sonoras não apenas complementam as histórias, mas se tornaram 
-        parte fundamental da experiência cinematográfica. Cada uma delas é capaz de 
-        transportar o espectador para o universo do filme através da música.
+        Mestres que definiram a arte do roteiro:
       </p>
-    `
-  }
+      <ul>
+        <li>
+          <strong>Clássicos:</strong>
+          <ul>
+            <li>Billy Wilder</li>
+            <li>Paddy Chayefsky</li>
+            <li>Robert Towne</li>
+            <li>William Goldman</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Contemporâneos:</strong>
+          <ul>
+            <li>Charlie Kaufman</li>
+            <li>Aaron Sorkin</li>
+            <li>Quentin Tarantino</li>
+            <li>Nora Ephron</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Técnicas de Escrita</h2>
+      <p>
+        Ferramentas para criar roteiros eficazes:
+      </p>
+      <ul>
+        <li>
+          <strong>Diálogos:</strong>
+          <ul>
+            <li>Subtexto</li>
+            <li>Caracterização através da fala</li>
+            <li>Ritmo e cadência</li>
+            <li>Economia de palavras</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Descrições de Cena:</strong>
+          <ul>
+            <li>Visualização clara</li>
+            <li>Ação e movimento</li>
+            <li>Atmosfera e tom</li>
+            <li>Detalhes relevantes</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Processo Criativo</h2>
+      <p>
+        Etapas do desenvolvimento do roteiro:
+      </p>
+      <ul>
+        <li>
+          <strong>Pré-Escrita:</strong>
+          <ul>
+            <li>Pesquisa e documentação</li>
+            <li>Outline e tratamento</li>
+            <li>Desenvolvimento de personagens</li>
+            <li>Estruturação da história</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Escrita e Revisão:</strong>
+          <ul>
+            <li>Primeiro rascunho</li>
+            <li>Feedback e notas</li>
+            <li>Reescritas</li>
+            <li>Polimento final</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Formatos e Gêneros</h2>
+      <p>
+        Adaptação da escrita para diferentes contextos:
+      </p>
+      <ul>
+        <li>
+          <strong>Tipos de Roteiro:</strong>
+          <ul>
+            <li>Longa-metragem</li>
+            <li>Série de TV</li>
+            <li>Documentário</li>
+            <li>Curta-metragem</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Especificidades de Gênero:</strong>
+          <ul>
+            <li>Comédia e timing</li>
+            <li>Drama e emoção</li>
+            <li>Suspense e mistério</li>
+            <li>Ação e ritmo</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Tendências Modernas</h2>
+      <p>
+        Evolução da escrita para roteiros:
+      </p>
+      <ul>
+        <li>
+          <strong>Novas Narrativas:</strong>
+          <ul>
+            <li>Estruturas não-lineares</li>
+            <li>Narrativas multiplataforma</li>
+            <li>Interatividade</li>
+            <li>Realidade virtual</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Ferramentas Digitais:</strong>
+          <ul>
+            <li>Software especializado</li>
+            <li>Colaboração online</li>
+            <li>Análise de roteiro por IA</li>
+            <li>Formatação automática</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Desafios e Oportunidades</h2>
+      <p>
+        O cenário atual do roteiro:
+      </p>
+      <ul>
+        <li>
+          <strong>Mercado:</strong>
+          <ul>
+            <li>Demanda por conteúdo original</li>
+            <li>Plataformas de streaming</li>
+            <li>Competição global</li>
+            <li>Nichos específicos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Desenvolvimento Profissional:</strong>
+          <ul>
+            <li>Educação e treinamento</li>
+            <li>Networking</li>
+            <li>Representação</li>
+            <li>Direitos autorais</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Conclusão</h2>
+      <p>
+        O roteiro continua sendo o fundamento essencial da arte cinematográfica, 
+        combinando criatividade e técnica para criar histórias que ressoam com 
+        o público. Em um mundo cada vez mais visual e conectado, a habilidade 
+        de contar histórias bem estruturadas e emocionalmente impactantes 
+        torna-se ainda mais valiosa.
+      </p>
+
+      <p>
+        No Escolha Meu Filme, valorizamos a qualidade do roteiro como um dos 
+        principais critérios em nossas recomendações, reconhecendo que uma 
+        história bem contada é a base para uma experiência cinematográfica 
+        verdadeiramente memorável.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post10() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer 
-        title={postContent.footer.title}
-        content={postContent.footer.content}
-      />
-    </Background>
-  );
-} 
+export default Post10; 

@@ -1,185 +1,225 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
+const Post4 = () => {
+  return (
+    <PostLayout
+      title="Guia Completo dos Gêneros Cinematográficos"
+      description="Explore os diferentes gêneros do cinema, suas características, evolução e como eles influenciam nossa experiência com os filmes."
+      publishedTime="2024-03-23T10:00:00Z"
+      keywords="gêneros de filmes, tipos de filmes, categorias de filmes, drama, comédia, ação, suspense, terror, documentário"
+      image="/blog/generos-cinematograficos.jpg"
+    >
+      <p>
+        Os gêneros cinematográficos são mais do que simples categorias: são 
+        linguagens próprias que moldam nossa expectativa e experiência com os 
+        filmes. Neste guia completo, vamos explorar as características, 
+        convenções e evolução dos principais gêneros do cinema.
+      </p>
 
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
+      <h2>Drama</h2>
+      <p>
+        O drama é considerado o gênero mais versátil e fundamental do cinema:
+      </p>
+      <ul>
+        <li>
+          <strong>Características Principais:</strong>
+          <ul>
+            <li>Foco no desenvolvimento dos personagens</li>
+            <li>Conflitos emocionais e psicológicos</li>
+            <li>Temas universais da experiência humana</li>
+            <li>Narrativa centrada em relacionamentos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Subgêneros:</strong>
+          <ul>
+            <li>Drama histórico</li>
+            <li>Drama familiar</li>
+            <li>Drama social</li>
+            <li>Drama psicológico</li>
+          </ul>
+        </li>
+      </ul>
 
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
+      <h2>Comédia</h2>
+      <p>
+        A comédia evolui constantemente, refletindo mudanças culturais e sociais:
+      </p>
+      <ul>
+        <li>
+          <strong>Elementos Essenciais:</strong>
+          <ul>
+            <li>Timing e ritmo específicos</li>
+            <li>Situações inusitadas ou absurdas</li>
+            <li>Desenvolvimento de personagens cômicos</li>
+            <li>Diálogos espirituosos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Variações:</strong>
+          <ul>
+            <li>Comédia romântica</li>
+            <li>Comédia de ação</li>
+            <li>Comédia dramática</li>
+            <li>Sátira e paródia</li>
+          </ul>
+        </li>
+      </ul>
 
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
+      <h2>Ação e Aventura</h2>
+      <p>
+        Gêneros que privilegiam o espetáculo visual e a adrenalina:
+      </p>
+      <ul>
+        <li>
+          <strong>Elementos de Ação:</strong>
+          <ul>
+            <li>Sequências de perseguição</li>
+            <li>Cenas de luta elaboradas</li>
+            <li>Efeitos especiais impressionantes</li>
+            <li>Heróis carismáticos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Elementos de Aventura:</strong>
+          <ul>
+            <li>Jornadas e descobertas</li>
+            <li>Ambientes exóticos</li>
+            <li>Busca por tesouros ou artefatos</li>
+            <li>Superação de obstáculos</li>
+          </ul>
+        </li>
+      </ul>
 
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
+      <h2>Suspense e Terror</h2>
+      <p>
+        Gêneros que trabalham com tensão e medo de formas distintas:
+      </p>
+      <ul>
+        <li>
+          <strong>Suspense:</strong>
+          <ul>
+            <li>Construção gradual de tensão</li>
+            <li>Mistérios e reviravoltas</li>
+            <li>Jogos psicológicos</li>
+            <li>Narrativas complexas</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Terror:</strong>
+          <ul>
+            <li>Elementos sobrenaturais</li>
+            <li>Atmosfera opressiva</li>
+            <li>Jump scares estratégicos</li>
+            <li>Simbolismos e metáforas</li>
+          </ul>
+        </li>
+      </ul>
 
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
+      <h2>Ficção Científica</h2>
+      <p>
+        Gênero que explora possibilidades futuras e questões filosóficas:
+      </p>
+      <ul>
+        <li>
+          <strong>Temas Recorrentes:</strong>
+          <ul>
+            <li>Avanços tecnológicos</li>
+            <li>Exploração espacial</li>
+            <li>Inteligência artificial</li>
+            <li>Distopias e utopias</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Abordagens:</strong>
+          <ul>
+            <li>Hard sci-fi (baseada em ciência real)</li>
+            <li>Space opera</li>
+            <li>Cyberpunk</li>
+            <li>Pós-apocalíptico</li>
+          </ul>
+        </li>
+      </ul>
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
+      <h2>Documentário</h2>
+      <p>
+        Gênero que busca retratar a realidade de forma criativa:
+      </p>
+      <ul>
+        <li>
+          <strong>Estilos:</strong>
+          <ul>
+            <li>Observacional</li>
+            <li>Participativo</li>
+            <li>Expositivo</li>
+            <li>Reflexivo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Temas:</strong>
+          <ul>
+            <li>Natureza e meio ambiente</li>
+            <li>Biografias</li>
+            <li>Questões sociais</li>
+            <li>Arte e cultura</li>
+          </ul>
+        </li>
+      </ul>
 
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
+      <h2>Hibridização e Evolução</h2>
+      <p>
+        O cinema contemporâneo é marcado pela mistura de gêneros:
+      </p>
+      <ul>
+        <li>
+          <strong>Tendências Atuais:</strong>
+          <ul>
+            <li>Combinação de elementos de diferentes gêneros</li>
+            <li>Subversão de convenções tradicionais</li>
+            <li>Narrativas meta-referenciais</li>
+            <li>Experimentação com formatos</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Impacto na Narrativa:</strong>
+          <ul>
+            <li>Maior complexidade narrativa</li>
+            <li>Personagens mais nuançados</li>
+            <li>Expectativas subvertidas</li>
+            <li>Novas possibilidades criativas</li>
+          </ul>
+        </li>
+      </ul>
 
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
+      <h2>Como Escolher o Gênero Certo</h2>
+      <p>
+        Dicas para selecionar filmes baseados em gênero:
+      </p>
+      <ul>
+        <li>Considere seu estado emocional atual</li>
+        <li>Pense no contexto de exibição</li>
+        <li>Avalie as preferências do grupo</li>
+        <li>Esteja aberto a experimentar</li>
+      </ul>
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
+      <h2>Conclusão</h2>
+      <p>
+        Compreender os gêneros cinematográficos enriquece nossa experiência 
+        com o cinema, permitindo escolhas mais conscientes e uma apreciação 
+        mais profunda das obras. No Escolha Meu Filme, utilizamos esse 
+        conhecimento para oferecer recomendações mais precisas e 
+        personalizadas.
+      </p>
 
-// Conteúdo estático do post
-const postContent = {
-  title: 'A Importância da Representatividade no Cinema',
-  subtitle: 'Como a diversidade está transformando a indústria cinematográfica',
-  date: '8 de Março, 2025',
-  content: `
-    <p>
-      A representatividade no cinema tem se tornado um tema cada vez mais importante na 
-      indústria cinematográfica. A diversidade de vozes, histórias e perspectivas não é 
-      apenas uma questão de justiça social, mas também um fator crucial para a evolução 
-      da arte cinematográfica.
-    </p>
-
-    <h2>O Que é Representatividade?</h2>
-    <p>
-      Representatividade no cinema envolve:
-    </p>
-    <ul>
-      <li>Diversidade étnica e racial</li>
-      <li>Representação de gênero</li>
-      <li>Inclusão de pessoas com deficiência</li>
-      <li>Representação LGBTQIA+</li>
-    </ul>
-
-    <h2>Impacto na Indústria</h2>
-    <p>
-      A representatividade tem trazido mudanças significativas:
-    </p>
-    <ul>
-      <li>Novas perspectivas narrativas</li>
-      <li>Maior autenticidade nas histórias</li>
-      <li>Público mais engajado</li>
-      <li>Sucesso comercial comprovado</li>
-    </ul>
-
-    <h2>Desafios e Oportunidades</h2>
-    <p>
-      Ainda existem desafios a serem superados:
-    </p>
-    <ul>
-      <li>Barreiras sistêmicas</li>
-      <li>Estereótipos persistentes</li>
-      <li>Falta de oportunidades</li>
-      <li>Necessidade de mais inclusão</li>
-    </ul>
-  `
+      <p>
+        Lembre-se que os gêneros são guias, não limitações. Os melhores 
+        filmes frequentemente transcendem categorias, criando experiências 
+        únicas e memoráveis. Continue explorando diferentes gêneros para 
+        expandir seu horizonte cinematográfico.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post4() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer />
-    </Background>
-  );
-} 
+export default Post4; 

@@ -1,208 +1,213 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
-
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
-
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
-
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
-
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
-
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
-
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
-
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
-
-// Conteúdo estático do post
-const postContent = {
-  title: 'O Poder do Cinema Documental',
-  subtitle: 'Como os documentários estão mudando o mundo',
-  date: '1 de Março, 2025',
-  content: `
-    <p>
-      O cinema documental tem se mostrado uma ferramenta poderosa para contar histórias reais 
-      e provocar mudanças sociais. Com o avanço da tecnologia e novas plataformas de distribuição, 
-      os documentários têm alcançado audiências maiores e causado impactos significativos na sociedade.
-    </p>
-
-    <h2>O Que é um Documentário?</h2>
-    <p>
-      Documentários são caracterizados por:
-    </p>
-    <ul>
-      <li>Narrativas baseadas em fatos reais</li>
-      <li>Pesquisa aprofundada</li>
-      <li>Entrevistas com especialistas</li>
-      <li>Registro de eventos históricos</li>
-    </ul>
-
-    <h2>Impacto Social</h2>
-    <p>
-      Os documentários têm causado mudanças significativas:
-    </p>
-    <ul>
-      <li>Conscientização sobre questões ambientais</li>
-      <li>Exposição de injustiças sociais</li>
-      <li>Mobilização de movimentos sociais</li>
-      <li>Mudanças em políticas públicas</li>
-    </ul>
-
-    <h2>Novas Tecnologias</h2>
-    <p>
-      A tecnologia tem revolucionado o cinema documental:
-    </p>
-    <ul>
-      <li>Câmeras mais acessíveis</li>
-      <li>Edição digital avançada</li>
-      <li>Distribuição online</li>
-      <li>Realidade virtual e aumentada</li>
-    </ul>
-  `,
-  footer: {
-    title: 'Documentários Recomendados',
-    content: `
+const Post9 = () => {
+  return (
+    <PostLayout
+      title="A Magia dos Efeitos Especiais: Da Maquiagem ao CGI"
+      description="Uma jornada pela evolução dos efeitos especiais no cinema, desde as técnicas artesanais até as mais avançadas tecnologias digitais."
+      publishedTime="2024-03-28T10:00:00Z"
+      keywords="efeitos especiais, VFX, CGI, maquiagem, efeitos práticos, cinema digital"
+      image="/blog/efeitos-especiais.jpg"
+    >
       <p>
-        Confira alguns documentários imperdíveis que estão disponíveis nas principais 
-        plataformas de streaming:
+        Os efeitos especiais são uma parte fundamental da magia do cinema, 
+        permitindo que cineastas deem vida a mundos fantásticos e tornem 
+        realidade o impossível. Neste artigo, vamos explorar a evolução 
+        desta arte que continua a surpreender e encantar o público.
+      </p>
+
+      <h2>A Era dos Efeitos Práticos</h2>
+      <p>
+        O início dos efeitos especiais no cinema:
       </p>
       <ul>
-        <li>O Dilema das Redes (Netflix)</li>
-        <li>Seaspiracy (Netflix)</li>
-        <li>Minimalismo (Netflix)</li>
-        <li>O Código Bill Gates (Netflix)</li>
-        <li>Free Solo (Disney+)</li>
+        <li>
+          <strong>Técnicas Pioneiras:</strong>
+          <ul>
+            <li>Stop motion</li>
+            <li>Miniaturas e maquetes</li>
+            <li>Matte painting</li>
+            <li>Dupla exposição</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Maquiagem Especial:</strong>
+          <ul>
+            <li>Próteses</li>
+            <li>Caracterização</li>
+            <li>Efeitos de envelhecimento</li>
+            <li>Criaturas fantásticas</li>
+          </ul>
+        </li>
       </ul>
+
+      <h2>Mestres dos Efeitos</h2>
       <p>
-        Estes documentários não apenas informam, mas também inspiram mudanças positivas 
-        na sociedade. Cada um deles aborda temas relevantes e atuais, oferecendo novas 
-        perspectivas sobre questões importantes do nosso tempo.
+        Artistas que revolucionaram a indústria:
       </p>
-    `
-  }
+      <ul>
+        <li>
+          <strong>Pioneiros:</strong>
+          <ul>
+            <li>Georges Méliès</li>
+            <li>Willis O'Brien (King Kong)</li>
+            <li>Ray Harryhausen</li>
+            <li>Stan Winston</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Era Moderna:</strong>
+          <ul>
+            <li>Dennis Muren (ILM)</li>
+            <li>Phil Tippett</li>
+            <li>Rick Baker</li>
+            <li>Douglas Trumbull</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>A Revolução Digital</h2>
+      <p>
+        A chegada do CGI transformou os efeitos especiais:
+      </p>
+      <ul>
+        <li>
+          <strong>Marcos Históricos:</strong>
+          <ul>
+            <li>Tron (1982)</li>
+            <li>Jurassic Park (1993)</li>
+            <li>Toy Story (1995)</li>
+            <li>Matrix (1999)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Avanços Tecnológicos:</strong>
+          <ul>
+            <li>Renderização fotorrealista</li>
+            <li>Motion capture</li>
+            <li>Simulação de física</li>
+            <li>Deep learning</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Técnicas Modernas</h2>
+      <p>
+        O estado da arte dos efeitos especiais:
+      </p>
+      <ul>
+        <li>
+          <strong>CGI Avançado:</strong>
+          <ul>
+            <li>Personagens digitais</li>
+            <li>Ambientes virtuais</li>
+            <li>Simulação de multidões</li>
+            <li>Efeitos de partículas</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Integração Híbrida:</strong>
+          <ul>
+            <li>Combinação prático-digital</li>
+            <li>LED walls</li>
+            <li>Previs e postvis</li>
+            <li>Virtual production</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Impacto na Narrativa</h2>
+      <p>
+        Como os efeitos especiais influenciam a história:
+      </p>
+      <ul>
+        <li>
+          <strong>Possibilidades Criativas:</strong>
+          <ul>
+            <li>Mundos fantásticos</li>
+            <li>Personagens impossíveis</li>
+            <li>Eventos espetaculares</li>
+            <li>Viagens no tempo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Desafios:</strong>
+          <ul>
+            <li>Equilíbrio com a narrativa</li>
+            <li>Credibilidade visual</li>
+            <li>Custo vs benefício</li>
+            <li>Expectativas do público</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>O Futuro dos VFX</h2>
+      <p>
+        Tendências e inovações:
+      </p>
+      <ul>
+        <li>
+          <strong>Novas Tecnologias:</strong>
+          <ul>
+            <li>Ray tracing em tempo real</li>
+            <li>IA generativa</li>
+            <li>Volumetric capture</li>
+            <li>Neural rendering</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Aplicações Emergentes:</strong>
+          <ul>
+            <li>Realidade virtual</li>
+            <li>Realidade aumentada</li>
+            <li>Experiências interativas</li>
+            <li>Produção virtual</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Sustentabilidade e Eficiência</h2>
+      <p>
+        Preocupações modernas na indústria:
+      </p>
+      <ul>
+        <li>
+          <strong>Otimização:</strong>
+          <ul>
+            <li>Renderização na nuvem</li>
+            <li>Automação de processos</li>
+            <li>Reutilização de assets</li>
+            <li>Pipeline eficiente</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Práticas Sustentáveis:</strong>
+          <ul>
+            <li>Redução de desperdício</li>
+            <li>Energia renovável</li>
+            <li>Produção remota</li>
+            <li>Tecnologias verdes</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Conclusão</h2>
+      <p>
+        Os efeitos especiais continuam a evoluir, mesclando arte e tecnologia 
+        para criar experiências cinematográficas cada vez mais impressionantes. 
+        Seja através de técnicas práticas tradicionais ou das mais avançadas 
+        tecnologias digitais, eles permanecem essenciais para a magia do cinema.
+      </p>
+
+      <p>
+        No Escolha Meu Filme, reconhecemos a importância dos efeitos especiais 
+        como elemento que enriquece a experiência cinematográfica, sempre 
+        considerando como eles se integram à narrativa e contribuem para a 
+        qualidade geral dos filmes que recomendamos.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post9() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer 
-        title={postContent.footer.title}
-        content={postContent.footer.content}
-      />
-    </Background>
-  );
-} 
+export default Post9; 

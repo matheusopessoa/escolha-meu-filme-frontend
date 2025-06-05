@@ -1,185 +1,214 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
+const Post6 = () => {
+  return (
+    <PostLayout
+      title="A Arte da Trilha Sonora: Como a Música Transforma o Cinema"
+      description="Explore o papel fundamental da música no cinema, desde as primeiras exibições até as modernas composições orquestrais e eletrônicas."
+      publishedTime="2024-03-25T10:00:00Z"
+      keywords="trilha sonora, música no cinema, composição musical, sound design, cinema sonoro"
+      image="/blog/trilha-sonora.jpg"
+    >
+      <p>
+        A trilha sonora é um elemento crucial na experiência cinematográfica, 
+        capaz de intensificar emoções, criar atmosferas e dar vida às imagens 
+        na tela. Neste artigo, vamos explorar como a música se tornou uma parte 
+        indispensável da linguagem do cinema.
+      </p>
 
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
+      <h2>A Origem da Música no Cinema</h2>
+      <p>
+        Mesmo na era do cinema mudo, a música já era essencial:
+      </p>
+      <ul>
+        <li>
+          <strong>Cinema Mudo:</strong>
+          <ul>
+            <li>Pianistas ao vivo nas salas</li>
+            <li>Orquestras nos grandes cinemas</li>
+            <li>Partituras específicas para filmes</li>
+            <li>Improvisação musical ao vivo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Primeiras Inovações:</strong>
+          <ul>
+            <li>Sistemas de som mecânico</li>
+            <li>Sincronização com discos</li>
+            <li>Desenvolvimento do Vitaphone</li>
+            <li>Transição para o cinema sonoro</li>
+          </ul>
+        </li>
+      </ul>
 
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
+      <h2>Funções da Trilha Sonora</h2>
+      <p>
+        A música no cinema serve a múltiplos propósitos:
+      </p>
+      <ul>
+        <li>
+          <strong>Aspectos Emocionais:</strong>
+          <ul>
+            <li>Intensificação dramática</li>
+            <li>Criação de tensão</li>
+            <li>Desenvolvimento de empatia</li>
+            <li>Manipulação do humor</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Aspectos Narrativos:</strong>
+          <ul>
+            <li>Estabelecimento de tempo e lugar</li>
+            <li>Caracterização de personagens</li>
+            <li>Continuidade entre cenas</li>
+            <li>Antecipação de eventos</li>
+          </ul>
+        </li>
+      </ul>
 
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
+      <h2>Compositores Lendários</h2>
+      <p>
+        Grandes nomes que definiram a música no cinema:
+      </p>
+      <ul>
+        <li>
+          <strong>Era Clássica:</strong>
+          <ul>
+            <li>Max Steiner (King Kong, E o Vento Levou)</li>
+            <li>Bernard Herrmann (Psicose, Cidadão Kane)</li>
+            <li>Ennio Morricone (Três Homens em Conflito)</li>
+            <li>Nino Rota (O Poderoso Chefão)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Era Contemporânea:</strong>
+          <ul>
+            <li>John Williams (Star Wars, E.T.)</li>
+            <li>Hans Zimmer (O Rei Leão, Inception)</li>
+            <li>Howard Shore (O Senhor dos Anéis)</li>
+            <li>Alexandre Desplat (A Forma da Água)</li>
+          </ul>
+        </li>
+      </ul>
 
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
+      <h2>Técnicas de Composição</h2>
+      <p>
+        Métodos utilizados na criação de trilhas sonoras:
+      </p>
+      <ul>
+        <li>
+          <strong>Elementos Musicais:</strong>
+          <ul>
+            <li>Leitmotiv (temas recorrentes)</li>
+            <li>Mickeymousing (sincronização precisa)</li>
+            <li>Contraponto sonoro</li>
+            <li>Música diegética vs não-diegética</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Abordagens Modernas:</strong>
+          <ul>
+            <li>Música eletrônica e sintetizadores</li>
+            <li>Sampling e sound design</li>
+            <li>Integração com efeitos sonoros</li>
+            <li>Composição assistida por computador</li>
+          </ul>
+        </li>
+      </ul>
 
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
+      <h2>Gêneros e Estilos</h2>
+      <p>
+        Diferentes gêneros demandam abordagens musicais específicas:
+      </p>
+      <ul>
+        <li>
+          <strong>Terror e Suspense:</strong>
+          <ul>
+            <li>Dissonâncias e texturas</li>
+            <li>Silêncio estratégico</li>
+            <li>Construção de tensão</li>
+            <li>Sons subliminares</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Ação e Aventura:</strong>
+          <ul>
+            <li>Temas heroicos</li>
+            <li>Orquestração grandiosa</li>
+            <li>Ritmos intensos</li>
+            <li>Momentos climáticos</li>
+          </ul>
+        </li>
+      </ul>
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
+      <h2>Trilha Sonora na Era Digital</h2>
+      <p>
+        Novas tecnologias transformam a produção musical:
+      </p>
+      <ul>
+        <li>
+          <strong>Inovações Tecnológicas:</strong>
+          <ul>
+            <li>Bibliotecas de samples</li>
+            <li>Orquestras virtuais</li>
+            <li>Produção remota</li>
+            <li>Áudio imersivo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Tendências Atuais:</strong>
+          <ul>
+            <li>Hibridização de estilos</li>
+            <li>Música adaptativa</li>
+            <li>Integração com VR/AR</li>
+            <li>Personalização sonora</li>
+          </ul>
+        </li>
+      </ul>
 
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
+      <h2>O Impacto Cultural</h2>
+      <p>
+        A influência da música de cinema na sociedade:
+      </p>
+      <ul>
+        <li>
+          <strong>Legado Cultural:</strong>
+          <ul>
+            <li>Temas icônicos</li>
+            <li>Álbuns de trilha sonora</li>
+            <li>Concertos temáticos</li>
+            <li>Influência na música popular</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Reconhecimento:</strong>
+          <ul>
+            <li>Prêmios específicos</li>
+            <li>Crítica especializada</li>
+            <li>Preservação histórica</li>
+            <li>Estudos acadêmicos</li>
+          </ul>
+        </li>
+      </ul>
 
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
+      <h2>Conclusão</h2>
+      <p>
+        A trilha sonora é uma arte que transcende sua função técnica no cinema, 
+        tornando-se uma linguagem própria capaz de elevar a experiência 
+        cinematográfica a novos patamares. Sua evolução contínua reflete não 
+        apenas avanços tecnológicos, mas também nossa compreensão cada vez mais 
+        profunda da relação entre som e imagem.
+      </p>
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
-
-// Conteúdo estático do post
-const postContent = {
-  title: 'O Poder da Trilha Sonora',
-  subtitle: 'Como a música transforma a experiência cinematográfica',
-  date: '3 de Março, 2025',
-  content: `
-    <p>
-      A trilha sonora é um elemento fundamental na experiência cinematográfica, capaz de 
-      transformar completamente a forma como percebemos um filme. Desde as primeiras 
-      composições até as produções mais recentes, a música tem sido uma ferramenta 
-      poderosa para contar histórias.
-    </p>
-
-    <h2>Elementos da Trilha Sonora</h2>
-    <p>
-      Uma trilha sonora eficaz inclui:
-    </p>
-    <ul>
-      <li>Música de fundo</li>
-      <li>Efeitos sonoros</li>
-      <li>Silêncio estratégico</li>
-      <li>Canções diegéticas</li>
-    </ul>
-
-    <h2>Impacto na Narrativa</h2>
-    <p>
-      A música influencia a narrativa de várias formas:
-    </p>
-    <ul>
-      <li>Estabelece o clima emocional</li>
-      <li>Destaca momentos importantes</li>
-      <li>Guia a atenção do espectador</li>
-      <li>Amplifica o impacto das cenas</li>
-    </ul>
-
-    <h2>Compositores Notáveis</h2>
-    <p>
-      Alguns compositores que marcaram a história do cinema:
-    </p>
-    <ul>
-      <li>John Williams</li>
-      <li>Hans Zimmer</li>
-      <li>Ennio Morricone</li>
-      <li>Max Steiner</li>
-    </ul>
-  `
+      <p>
+        No Escolha Meu Filme, reconhecemos a importância da música como elemento 
+        fundamental na experiência cinematográfica, e consideramos a qualidade 
+        das trilhas sonoras em nossas recomendações, buscando proporcionar 
+        experiências audiovisuais completas e memoráveis.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post6() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer />
-    </Background>
-  );
-} 
+export default Post6; 

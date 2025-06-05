@@ -1,184 +1,213 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
+const Post5 = () => {
+  return (
+    <PostLayout
+      title="A Evolução do Cinema: Das Origens ao Streaming"
+      description="Uma jornada pela história do cinema, desde os primeiros experimentos até a era do streaming. Descubra como a sétima arte se transformou ao longo dos anos."
+      publishedTime="2024-03-24T10:00:00Z"
+      keywords="história do cinema, evolução do cinema, cinema mudo, era de ouro, cinema digital, streaming"
+      image="/blog/historia-cinema.jpg"
+    >
+      <p>
+        A história do cinema é uma fascinante jornada de inovação tecnológica, 
+        evolução artística e transformação cultural. Neste artigo, vamos explorar 
+        os momentos cruciais que moldaram a sétima arte, desde seus primórdios 
+        até os dias atuais.
+      </p>
 
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
+      <h2>Os Primórdios (1890-1920)</h2>
+      <p>
+        O nascimento do cinema foi marcado por experimentação e descobertas:
+      </p>
+      <ul>
+        <li>
+          <strong>Pioneiros:</strong>
+          <ul>
+            <li>Irmãos Lumière e o cinematógrafo</li>
+            <li>Thomas Edison e o cinetoscópio</li>
+            <li>Georges Méliès e os efeitos especiais</li>
+            <li>Alice Guy-Blaché, primeira diretora</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Inovações Técnicas:</strong>
+          <ul>
+            <li>Desenvolvimento da câmera de filme</li>
+            <li>Primeiras técnicas de edição</li>
+            <li>Experimentos com cor e som</li>
+            <li>Projeção para grandes audiências</li>
+          </ul>
+        </li>
+      </ul>
 
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
+      <h2>Era do Cinema Mudo (1920-1927)</h2>
+      <p>
+        Um período de extraordinária criatividade visual:
+      </p>
+      <ul>
+        <li>
+          <strong>Linguagem Cinematográfica:</strong>
+          <ul>
+            <li>Desenvolvimento da narrativa visual</li>
+            <li>Atuação expressiva e pantomima</li>
+            <li>Uso inovador da montagem</li>
+            <li>Experimentação com ângulos de câmera</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Grandes Nomes:</strong>
+          <ul>
+            <li>Charlie Chaplin</li>
+            <li>Buster Keaton</li>
+            <li>Sergei Eisenstein</li>
+            <li>F.W. Murnau</li>
+          </ul>
+        </li>
+      </ul>
 
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
+      <h2>Era de Ouro de Hollywood (1927-1960)</h2>
+      <p>
+        O período que estabeleceu os padrões da indústria:
+      </p>
+      <ul>
+        <li>
+          <strong>Sistema de Estúdios:</strong>
+          <ul>
+            <li>Controle criativo centralizado</li>
+            <li>Star system</li>
+            <li>Gêneros bem definidos</li>
+            <li>Produção em larga escala</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Avanços Técnicos:</strong>
+          <ul>
+            <li>Introdução do som sincronizado</li>
+            <li>Desenvolvimento do Technicolor</li>
+            <li>Melhorias na fotografia</li>
+            <li>Efeitos especiais práticos</li>
+          </ul>
+        </li>
+      </ul>
 
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
+      <h2>Nova Hollywood (1960-1980)</h2>
+      <p>
+        Uma era de revolução criativa e cultural:
+      </p>
+      <ul>
+        <li>
+          <strong>Mudanças Artísticas:</strong>
+          <ul>
+            <li>Influência do cinema europeu</li>
+            <li>Temas mais maduros e controversos</li>
+            <li>Experimentação narrativa</li>
+            <li>Autoria do diretor</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Diretores Influentes:</strong>
+          <ul>
+            <li>Martin Scorsese</li>
+            <li>Francis Ford Coppola</li>
+            <li>Steven Spielberg</li>
+            <li>George Lucas</li>
+          </ul>
+        </li>
+      </ul>
 
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
+      <h2>Era Digital (1980-2010)</h2>
+      <p>
+        A revolução tecnológica transforma o cinema:
+      </p>
+      <ul>
+        <li>
+          <strong>Inovações Digitais:</strong>
+          <ul>
+            <li>CGI e efeitos visuais</li>
+            <li>Edição não-linear</li>
+            <li>Som digital</li>
+            <li>Projeção digital</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Mudanças na Produção:</strong>
+          <ul>
+            <li>Democratização das ferramentas</li>
+            <li>Cinema independente fortalecido</li>
+            <li>Produções internacionais</li>
+            <li>Convergência com games</li>
+          </ul>
+        </li>
+      </ul>
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
+      <h2>Era do Streaming (2010-Presente)</h2>
+      <p>
+        Uma nova revolução na distribuição e consumo:
+      </p>
+      <ul>
+        <li>
+          <strong>Transformações:</strong>
+          <ul>
+            <li>Plataformas de streaming</li>
+            <li>Conteúdo sob demanda</li>
+            <li>Produções originais</li>
+            <li>Globalização do conteúdo</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Impactos:</strong>
+          <ul>
+            <li>Mudança nos hábitos de consumo</li>
+            <li>Novas janelas de exibição</li>
+            <li>Diversificação de formatos</li>
+            <li>Algoritmos de recomendação</li>
+          </ul>
+        </li>
+      </ul>
 
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
+      <h2>O Futuro do Cinema</h2>
+      <p>
+        Tendências e possibilidades que moldarão o futuro:
+      </p>
+      <ul>
+        <li>
+          <strong>Tecnologias Emergentes:</strong>
+          <ul>
+            <li>Realidade virtual e aumentada</li>
+            <li>Inteligência artificial na produção</li>
+            <li>Cinema interativo</li>
+            <li>Novas formas narrativas</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Desafios:</strong>
+          <ul>
+            <li>Preservação do cinema tradicional</li>
+            <li>Sustentabilidade econômica</li>
+            <li>Equilíbrio arte-tecnologia</li>
+            <li>Democratização do acesso</li>
+          </ul>
+        </li>
+      </ul>
 
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
+      <h2>Conclusão</h2>
+      <p>
+        A história do cinema é um testemunho da capacidade humana de inovar e 
+        contar histórias. De uma invenção técnica a uma das formas de arte mais 
+        influentes, o cinema continua a evoluir e se reinventar, mantendo sua 
+        magia e poder de conexão com o público.
+      </p>
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
-
-// Conteúdo estático do post
-const postContent = {
-  title: 'O Papel da Crítica Cinematográfica',
-  subtitle: 'Como a análise de filmes influencia a indústria e o público',
-  date: '5 de Março, 2025',
-  content: `
-    <p>
-      A crítica cinematográfica desempenha um papel fundamental na indústria do cinema, 
-      servindo como ponte entre os filmes e o público. Além de informar e orientar os 
-      espectadores, a crítica também influencia a evolução da arte cinematográfica.
-    </p>
-
-    <h2>O Que é Crítica Cinematográfica?</h2>
-    <p>
-      A crítica cinematográfica envolve:
-    </p>
-    <ul>
-      <li>Análise técnica e artística</li>
-      <li>Contextualização histórica</li>
-      <li>Avaliação de performances</li>
-      <li>Discussão de temas e mensagens</li>
-    </ul>
-
-    <h2>Impacto na Indústria</h2>
-    <p>
-      A crítica tem influência significativa:
-    </p>
-    <ul>
-      <li>Formação de opinião pública</li>
-      <li>Influência no sucesso comercial</li>
-      <li>Reconhecimento de talentos</li>
-      <li>Evolução da linguagem cinematográfica</li>
-    </ul>
-
-    <h2>O Futuro da Crítica</h2>
-    <p>
-      Com as mudanças na indústria, a crítica também evolui:
-    </p>
-    <ul>
-      <li>Plataformas digitais</li>
-      <li>Crítica colaborativa</li>
-      <li>Análise em tempo real</li>
-      <li>Novos formatos de discussão</li>
-    </ul>
-  `
+      <p>
+        No Escolha Meu Filme, celebramos essa rica história oferecendo 
+        recomendações que abrangem todas as eras e estilos do cinema, 
+        ajudando nossos usuários a descobrir tanto clássicos atemporais 
+        quanto as mais recentes inovações da sétima arte.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post5() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer />
-    </Background>
-  );
-} 
+export default Post5; 

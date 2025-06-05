@@ -1,185 +1,165 @@
-import { useNavigate } from 'react-router-dom';
-import Background from '../components/Background';
-import Title from '../components/Title';
-import Subtitle from '../components/Subtitle';
-import Button from '../components/Button';
-import ButtonList from '../components/ButtonList';
-import PurpleButton from '../components/PurpleButton';
-import Footer from '../components/Footer';
-import styled from 'styled-components';
-import Header from '../components/Header';
-import GoogleAd from '../../components/GoogleAd';
+import React from 'react';
+import PostLayout from './PostLayout';
 
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-`;
+const Post3 = () => {
+  return (
+    <PostLayout
+      title="Os Melhores Filmes de 2024 (Até Agora)"
+      description="Uma análise completa dos filmes mais impactantes e bem avaliados de 2024. Descubra as obras que estão definindo o ano no cinema."
+      publishedTime="2024-03-22T10:00:00Z"
+      keywords="melhores filmes 2024, filmes 2024, lançamentos cinema 2024, oscar 2024, crítica filmes 2024"
+      image="/blog/melhores-filmes-2024.jpg"
+    >
+      <p>
+        O ano de 2024 tem sido extraordinário para o cinema, com lançamentos 
+        marcantes em diversos gêneros. Neste artigo, analisamos os filmes mais 
+        significativos do ano, considerando tanto o impacto crítico quanto a 
+        recepção do público.
+      </p>
 
-const PostContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 0;
-  backdrop-filter: blur(5px);
-  line-height: 1.6;
+      <h2>Destaques do Primeiro Trimestre</h2>
+      <p>
+        O início de 2024 trouxe produções excepcionais que estabeleceram um alto 
+        padrão para o resto do ano:
+      </p>
 
-  h2 {
-    color: #FFA500;
-    margin: 30px 0 15px;
-    font-size: 1.5rem;
-  }
+      <h3>Duna: Parte 2</h3>
+      <p>
+        Denis Villeneuve retorna com a continuação de sua adaptação da obra-prima 
+        de Frank Herbert. O filme expande o universo apresentado na primeira parte, 
+        oferecendo:
+      </p>
+      <ul>
+        <li>Efeitos visuais deslumbrantes</li>
+        <li>Atuações poderosas do elenco</li>
+        <li>Trilha sonora envolvente de Hans Zimmer</li>
+        <li>Fidelidade ao material original</li>
+      </ul>
 
-  p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-  }
+      <h3>Pobres Criaturas</h3>
+      <p>
+        Yorgos Lanthimos nos presenteia com uma obra única que mistura elementos 
+        de ficção científica, romance e comédia:
+      </p>
+      <ul>
+        <li>Direção artística inovadora</li>
+        <li>Performance memorável de Emma Stone</li>
+        <li>Roteiro criativo e provocativo</li>
+        <li>Fotografia deslumbrante</li>
+      </ul>
 
-  ul {
-    margin: 20px 0;
-    padding-left: 20px;
-  }
+      <h2>Tendências do Cinema em 2024</h2>
+      <p>
+        Alguns padrões interessantes emergiram no cinema este ano:
+      </p>
+      <ul>
+        <li>
+          <strong>Inovação Técnica:</strong>
+          <ul>
+            <li>Uso crescente de tecnologia virtual</li>
+            <li>Avanços em captura de movimento</li>
+            <li>Novas técnicas de iluminação digital</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Temas Recorrentes:</strong>
+          <ul>
+            <li>Sustentabilidade e meio ambiente</li>
+            <li>Inteligência artificial</li>
+            <li>Conexões humanas na era digital</li>
+          </ul>
+        </li>
+      </ul>
 
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-`;
+      <h2>Filmes Mais Aguardados</h2>
+      <p>
+        O restante de 2024 promete grandes lançamentos:
+      </p>
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 10px auto;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10px;
-  overflow: hidden;
+      <h3>Furiosa</h3>
+      <p>
+        O novo capítulo da saga Mad Max traz Anya Taylor-Joy no papel principal:
+      </p>
+      <ul>
+        <li>Direção de George Miller</li>
+        <li>Efeitos práticos impressionantes</li>
+        <li>História de origem da personagem</li>
+        <li>Mundo pós-apocalíptico expandido</li>
+      </ul>
 
-  @media (max-width: 768px) {
-    margin: 5px auto;
-  }
+      <h3>Deadpool 3</h3>
+      <p>
+        A entrada do mercenário tagarela no MCU promete revolucionar o universo 
+        cinematográfico da Marvel:
+      </p>
+      <ul>
+        <li>Retorno de Hugh Jackman como Wolverine</li>
+        <li>Humor característico da franquia</li>
+        <li>Conexões com o multiverso Marvel</li>
+        <li>Classificação indicativa mais madura</li>
+      </ul>
 
-  .adsbygoogle {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-`;
+      <h2>Destaques por Categoria</h2>
+      
+      <h3>Melhor Direção</h3>
+      <ul>
+        <li>Denis Villeneuve (Duna: Parte 2)</li>
+        <li>Yorgos Lanthimos (Pobres Criaturas)</li>
+        <li>Alexander Payne (Os Rejeitados)</li>
+      </ul>
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-`;
+      <h3>Melhor Roteiro</h3>
+      <ul>
+        <li>Cord Jefferson (American Fiction)</li>
+        <li>Tony McNamara (Pobres Criaturas)</li>
+        <li>David Kajganich (Ferrari)</li>
+      </ul>
 
-// Conteúdo estático do post
-const postContent = {
-  title: 'O Poder das Narrativas Independentes',
-  subtitle: 'Como filmes independentes estão ganhando espaço e reconhecimento',
-  date: '10 de Março, 2025',
-  content: `
-    <p>
-      O cinema independente tem se destacado cada vez mais no cenário cinematográfico mundial. 
-      Com histórias únicas e abordagens inovadoras, esses filmes têm conquistado não apenas 
-      o público, mas também o reconhecimento da crítica e dos principais festivais de cinema.
-    </p>
+      <h3>Melhores Atuações</h3>
+      <ul>
+        <li>Emma Stone (Pobres Criaturas)</li>
+        <li>Paul Giamatti (Os Rejeitados)</li>
+        <li>Lily Gladstone (Assassinos da Lua das Flores)</li>
+      </ul>
 
-    <h2>O Que Define um Filme Independente?</h2>
-    <p>
-      Filmes independentes são caracterizados por:
-    </p>
-    <ul>
-      <li>Orçamentos mais baixos</li>
-      <li>Maior liberdade criativa</li>
-      <li>Produção fora do sistema dos grandes estúdios</li>
-      <li>Foco em narrativas alternativas</li>
-    </ul>
+      <h2>Análise de Mercado</h2>
+      <p>
+        O cenário cinematográfico de 2024 apresenta algumas tendências interessantes:
+      </p>
+      <ul>
+        <li>
+          <strong>Streaming vs. Cinema:</strong>
+          <ul>
+            <li>Aumento de lançamentos híbridos</li>
+            <li>Janelas de exibição mais flexíveis</li>
+            <li>Produções exclusivas de alta qualidade</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Público e Bilheteria:</strong>
+          <ul>
+            <li>Retorno forte do público às salas</li>
+            <li>Sucesso de filmes independentes</li>
+            <li>Demanda por experiências IMAX/3D</li>
+          </ul>
+        </li>
+      </ul>
 
-    <h2>Impacto no Cinema Contemporâneo</h2>
-    <p>
-      O cinema independente tem influenciado significativamente a indústria cinematográfica:
-    </p>
-    <ul>
-      <li>Introdução de novas técnicas narrativas</li>
-      <li>Descoberta de novos talentos</li>
-      <li>Exploração de temas não convencionais</li>
-      <li>Inovação na linguagem cinematográfica</li>
-    </ul>
+      <h2>Conclusão</h2>
+      <p>
+        2024 está se revelando um ano excepcional para o cinema, com uma 
+        diversidade impressionante de produções de qualidade. A combinação de 
+        blockbusters tecnicamente impressionantes com filmes autorais ousados 
+        demonstra a vitalidade da sétima arte.
+      </p>
 
-    <h2>O Futuro do Cinema Independente</h2>
-    <p>
-      Com o avanço da tecnologia e novas plataformas de distribuição, o futuro do cinema 
-      independente parece promissor:
-    </p>
-    <ul>
-      <li>Maior acesso a recursos de produção</li>
-      <li>Novas formas de financiamento</li>
-      <li>Distribuição digital facilitada</li>
-      <li>Maior alcance de público</li>
-    </ul>
-  `
+      <p>
+        No Escolha Meu Filme, continuaremos acompanhando e analisando os 
+        lançamentos mais importantes do ano, sempre buscando trazer recomendações 
+        relevantes e análises aprofundadas para nossos leitores.
+      </p>
+    </PostLayout>
+  );
 };
 
-export default function Post3() {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    const header = document.querySelector('header');
-    header?.scrollIntoView({ behavior: 'smooth' });
-    navigate('/');
-  };
-
-  return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
-        <Title>{postContent.title}</Title>
-        <Subtitle>{postContent.subtitle}</Subtitle>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="6789012345" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ 
-              display: 'block', 
-              width: '100%', 
-              height: '90px',
-              maxHeight: '90px',
-              overflow: 'hidden'
-            }}
-          />
-        </AdContainer>
-        <PostContainer>
-          <PostContent dangerouslySetInnerHTML={{ __html: postContent.content }} />
-          <AdContainer>
-            <GoogleAd 
-              adSlot="7890123456" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ 
-                display: 'block', 
-                width: '300px', 
-                height: '250px',
-                maxHeight: '250px',
-                overflow: 'hidden'
-              }}
-            />
-          </AdContainer>
-          <ButtonContainer>
-            <PurpleButton
-              onClick={handleBackToHome}
-              className="w-48"
-            >
-              Voltar ao início
-            </PurpleButton>
-          </ButtonContainer>
-        </PostContainer>
-      </div>
-      <Footer />
-    </Background>
-  );
-} 
+export default Post3; 
