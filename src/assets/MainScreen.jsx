@@ -1,136 +1,201 @@
-import { useState, useEffect } from 'react';
-import Title from './components/Title';
-import Subtitle from './components/Subtitle';
-import Button from './components/Button';
-import ButtonList from './components/ButtonList';
-import PurpleButton from './components/PurpleButton';
-import './MainScreen.css';
-import fetchMovies from './utils/fetch';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import WatchButton from '../components/WatchButton';
+import { Loader2, Film, Star, Calendar } from 'lucide-react';
 import Layout from '../components/Layout';
+import WatchButton from '../components/WatchButton';
+import fetchMovies from './utils/fetch';
 
-const MovieCard = styled.div`
-  display: flex;
-  background: rgba(255, 255, 255, 0.1);
+// Componentes do Shadcn/UI estilizados com styled-components
+const Card = styled.div`
+  background: rgba(31, 41, 55, 0.95);
   border-radius: 10px;
-  padding: 20px;
-  margin: 15px auto;
-  width: 100%;
-  max-width: 800px; 
-  gap: 10px;
-  backdrop-filter: blur(5px);
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 15px;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
+`;
+
+const Button = styled.button`
+  background: ${props => props.isPurple ? 'linear-gradient(225deg, #DC2626, #991B1B)' : 'rgba(255, 255, 255, 0.1)'};
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background: ${props => props.isPurple ? 'linear-gradient(225deg, #B91C1C, #7F1D1D)' : 'rgba(255, 255, 255, 0.15)'};
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  color: white;
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+`;
+
+const Header = styled.div`
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: bold;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const FilterSection = styled(Card)`
+  padding: 1.5rem;
+  height: fit-content;
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+`;
+
+const FilterTitle = styled.h2`
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+`;
+
+const FilterGroup = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const Label = styled.label`
+  display: block;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(55, 65, 81, 0.8);
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 1rem;
+`;
+
+const GenreGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+`;
+
+const GenreButton = styled(Button)`
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  background: ${props => props.selected ? 'linear-gradient(225deg, #DC2626, #991B1B)' : 'rgba(55, 65, 81, 0.8)'};
+
+  &:hover {
+    background: ${props => props.selected ? 'linear-gradient(225deg, #B91C1C, #7F1D1D)' : 'rgba(75, 85, 99, 0.9)'};
+  }
+`;
+
+const MovieGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+`;
+
+const MovieCard = styled(Card)`
+  overflow: hidden;
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+`;
+
+const MovieContent = styled.div`
+  padding: 1.5rem;
 `;
 
 const MoviePoster = styled.img`
-  width: 150px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: contain;
-  flex-shrink: 0; 
-
-  @media (max-width: 768px) {
-    width: 120px;
-    margin-bottom: 15px;
-  }
-`;
-
-const MovieInfo = styled.div`
-  flex: 1;
-  color: white;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 `;
 
 const MovieTitle = styled.h3`
-  margin: 0 0 10px 0;
-  font-size: 1rem;
-  word-wrap: break-word; /* Permite quebra de palavras longas */
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 `;
 
 const MovieDescription = styled.p`
-  margin: 0 0 10px 0;
-  font-size: 1rem;
-  opacity: 0.9;
-  word-wrap: break-word; /* Permite quebra de palavras longas */
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const MovieDetails = styled.div`
   display: flex;
-  gap: 5px;
-  flex-direction: column;
-  font-size: 0.9rem;
-  opacity: 0.8;
-  flex-wrap: wrap; /* Permite quebra de linha nos detalhes */
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 20px 0;
-  padding: 0 15px;
-  position: relative;
-  z-index: 1;
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  margin-bottom: 50px;
-  min-height: calc(100vh - 300px);
-`;
-
-const CenteredContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 200px);
-  width: 100%;
-  padding: 20px;
-  gap: 20px;
-  margin-top: 80px;
-  margin-bottom: 100px;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
 `;
 
 const streamings = ['Netflix', 'Amazon', 'Disney', 'Max', 'Globoplay'];
 const genres = ['Ação', 'Aventura', 'Comédia', 'Animação', 'Crime', 'Drama', 'Família', 'Fantasia', 'História', 'Horror', 'Musical', 'Mistério', 'Romance', 'Ficção Científica', 'Terror', 'Guerra', 'Faroeste'];
-
-const MainContainer = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 100px;
-`;
-
-const MoviesContainer = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 200px);
-  width: 100%;
-`;
 
 export default function MainScreen() {
   const [step, setStep] = useState(1);
@@ -139,7 +204,6 @@ export default function MainScreen() {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
-  const [rollDown, setRollDown] = useState(false);
 
   const handleGenreClick = (genre) => {
     setSelectedGenres((prev) => {
@@ -153,202 +217,135 @@ export default function MainScreen() {
     });
   };
 
-  const isGenreSelected = (genre) => selectedGenres.includes(genre);
+  const handleSearch = async () => {
+    if (!provider || selectedGenres.length === 0) return;
 
-  const handleBackToHome = () => {
-    document.getElementById('top-of-page')?.scrollIntoView();
-    setStep(1);
+    setIsLoading(true);
+    try {
+      const moviesData = await fetchMovies(provider, selectedGenres, style === 'cult');
+      setMovies(moviesData);
+      setStep(5);
+    } catch (error) {
+      console.error('Erro ao buscar filmes:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-
-  useEffect(() => {
-    if (step === 4 && selectedGenres.length > 0 && rollDown === false) {
-      const continueButton = document.getElementById('continue-button');
-      if (continueButton) {
-        continueButton.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        });
-      }
-      setRollDown(true);
-    }
-  }, [step, selectedGenres]);
-
-  useEffect(() => {
-    if (step === 5) {
-      const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const moviesData = await fetchMovies(provider, selectedGenres, style);
-          const sortedMovies = [...moviesData].sort((a, b) => b[9] - a[9]);
-          setMovies(sortedMovies);
-        } catch (error) {
-          console.error('Erro ao buscar filmes:', error);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      fetchData();
-    }
-  }, [step, provider, selectedGenres, style]);
 
   return (
     <Layout>
-      <div id="top-of-page" />
-      <MainContainer>
-        {step === 1 && (
-          <CenteredContent>
-            <ContentWrapper>
-              <Title>Escolha Meu Filme</Title>
-              <Subtitle>Deixa com a gente: vamos encontrar o filme perfeito para você!</Subtitle>          
-              <ButtonContainer>
-                <Button onClick={() => setStep(2)}>Começar</Button>
-              </ButtonContainer>
-            </ContentWrapper>
-          </CenteredContent>
-        )}
+      <Container>
+        <ContentWrapper>
+          <Header>
+            <Subtitle>Encontre o filme perfeito para você assistir hoje!</Subtitle>
+          </Header>
 
-        {step === 2 && (
-          <CenteredContent>
-            <ContentWrapper>
-              <Title>Onde você quer assistir?</Title>
-              <Subtitle>Escolha uma plataforma de streaming</Subtitle>
-              <div className='button-list-col'>
-                {Array.from({ length: Math.ceil(streamings.length / 3) }, (_, rowIndex) => (
-                  <div className='button-list-row' key={rowIndex}>
-                    {streamings.slice(rowIndex * 3, rowIndex * 3 + 3).map((s) => (
-                      <ButtonList
-                        key={s}
-                        onClick={() => {
-                          setProvider(s.toLocaleLowerCase());
-                          setStep(3);
-                        }}
-                        className="w-48 m-[5px]"
-                      >
-                        {s}
-                      </ButtonList>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </ContentWrapper>
-          </CenteredContent>
-        )}
+          <Grid>
+            <FilterSection>
+              <FilterTitle>Filtros</FilterTitle>
+              
+              <FilterGroup>
+                <Label>Plataforma de Streaming</Label>
+                <Select 
+                  value={provider} 
+                  onChange={(e) => setProvider(e.target.value)}
+                >
+                  <option value="">Selecione uma plataforma</option>
+                  {streamings.map((s) => (
+                    <option key={s} value={s.toLowerCase()}>{s}</option>
+                  ))}
+                </Select>
+              </FilterGroup>
 
-        {step === 3 && (
-          <CenteredContent>
-            <ContentWrapper>
-              <Title>Que tipo de filme você curte?</Title>
-              <Subtitle>Prefere algo bem conhecido (Mainstream) ou um filme mais alternativo (Cult)?</Subtitle>          
-              <div className='button-list-row'> 
-                <Button onClick={() => {
-                  setStyle(false);
-                  setStep(4);
-                }} className="w-48 m-[5px]">Mainstream</Button>
-                <Button onClick={() => {
-                  setStyle(true);
-                  setStep(4);
-                }} className="w-48 m-[5px]">Cult</Button>
-              </div>
-            </ContentWrapper>
-          </CenteredContent>
-        )}
+              <FilterGroup>
+                <Label>Estilo</Label>
+                <Select 
+                  value={style} 
+                  onChange={(e) => setStyle(e.target.value)}
+                >
+                  <option value="">Selecione um estilo</option>
+                  <option value="mainstream">Mainstream</option>
+                  <option value="cult">Cult</option>
+                </Select>
+              </FilterGroup>
 
-        {step === 4 && (
-          <CenteredContent>
-            <ContentWrapper>
-              <Title>Quais gêneros você prefere?</Title>
-              <Subtitle>Escolha um ou dois para curtir seu próximo filme!</Subtitle>
-              <div className="button-list-col">
-                {Array.from({ length: Math.ceil(genres.length / 3) }, (_, rowIndex) => (
-                  <div className="button-list-row" key={rowIndex}>
-                    {genres.slice(rowIndex * 3, rowIndex * 3 + 3).map((g) => (
-                      <ButtonList
-                        key={g}
-                        onClick={() => handleGenreClick(g)}
-                        className="w-48 m-[5px]"
-                        style={{
-                          border: isGenreSelected(g) ? '2px solid #fff' : '',
-                          background: isGenreSelected(g)
-                            ? 'linear-gradient(225deg, #FFA500, #FF8C00)'
-                            : '',
-                        }}
-                      >
-                        {g}
-                      </ButtonList>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              {selectedGenres.length > 0 && (
-                <ButtonContainer>
-                  <PurpleButton 
-                    id='continue-button'
-                    onClick={() => {
-                      setStep(5);
-                    }}
-                    className="w-48"
-                  >
-                    Continuar
-                  </PurpleButton>
-                </ButtonContainer>
-              )}
-            </ContentWrapper>
-          </CenteredContent>
-        )}
+              <FilterGroup>
+                <Label>Gêneros (máximo 2)</Label>
+                <GenreGrid>
+                  {genres.map((genre) => (
+                    <GenreButton
+                      key={genre}
+                      selected={selectedGenres.includes(genre)}
+                      onClick={() => handleGenreClick(genre)}
+                      disabled={!selectedGenres.includes(genre) && selectedGenres.length >= 2}
+                    >
+                      {genre}
+                    </GenreButton>
+                  ))}
+                </GenreGrid>
+              </FilterGroup>
 
-        {step === 5 && (
-          <MoviesContainer>
-            <ContentWrapper>
-              <Title>{isLoading ? 'Buscando filmes...' : 'Filmes recomendados'}</Title>
-              {isLoading ? (
-                <Subtitle>Aguarde enquanto encontramos algo perfeito para você</Subtitle>
-              ) : movies.length > 0 ? (
-                <>
+              <Button
+                isPurple
+                onClick={handleSearch}
+                disabled={!provider || selectedGenres.length === 0 || isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin" size={20} />
+                    Buscando...
+                  </>
+                ) : (
+                  <>
+                    <Film size={20} />
+                    Encontrar Filmes
+                  </>
+                )}
+              </Button>
+            </FilterSection>
+
+            <div>
+              {movies.length > 0 ? (
+                <MovieGrid>
                   {movies.map((movie) => (
                     <MovieCard key={movie[0]}>
                       <MoviePoster
-                        src={`https://image.tmdb.org/t/p/w200${movie[11]}`}
+                        src={`https://image.tmdb.org/t/p/w500${movie[11]}`}
                         alt={movie[4]}
                       />
-                      <MovieInfo>
+                      <MovieContent>
                         <MovieTitle>{movie[4]}</MovieTitle>
                         <MovieDescription>{movie[5]}</MovieDescription>
                         <MovieDetails>
-                          <span>Nota: {(movie[9] + 0.2).toFixed(2)}</span>
-                          <span>Lançamento: {new Date(movie[8]).getFullYear()}</span>
+                          <span className="flex items-center">
+                            <Star size={16} className="text-yellow-500 mr-1" />
+                            {(movie[9] + 0.2).toFixed(1)}
+                          </span>
+                          <span className="flex items-center">
+                            <Calendar size={16} className="mr-1" />
+                            {new Date(movie[8]).getFullYear()}
+                          </span>
                         </MovieDetails>
                         <WatchButton 
                           provider={movie[2].charAt(0).toUpperCase() + movie[2].slice(1)}
                         />
-                      </MovieInfo>
+                      </MovieContent>
                     </MovieCard>
                   ))}
-                  <ButtonContainer>
-                    <PurpleButton
-                      onClick={handleBackToHome}
-                      className="w-48"
-                    >
-                      Voltar ao início
-                    </PurpleButton>
-                  </ButtonContainer>
-                </>
+                </MovieGrid>
               ) : (
-                <div className='try-again-container'>
-                  <Subtitle>Não encontramos filmes que correspondam aos critérios selecionados.</Subtitle>
-                  <ButtonContainer>
-                    <PurpleButton
-                      onClick={() => setStep(4)}
-                      className="w-48"
-                    >
-                      Tentar novamente
-                    </PurpleButton>
-                  </ButtonContainer>
-                </div>
+                <Card className="p-12 text-center">
+                  <Film size={48} className="mx-auto mb-4 text-gray-600" />
+                  <h3 className="text-white text-xl mb-2">Nenhum filme encontrado</h3>
+                  <p className="text-gray-400">
+                    Selecione uma plataforma e pelo menos um gênero para começar
+                  </p>
+                </Card>
               )}
-            </ContentWrapper>
-          </MoviesContainer>
-        )}
-      </MainContainer>
+            </div>
+          </Grid>
+        </ContentWrapper>
+      </Container>
     </Layout>
   );
 }
