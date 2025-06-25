@@ -13,7 +13,7 @@ const HowItWorksSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
           
           <div className="glass-card rounded-xl p-8 text-center relative">
             <div className="absolute -top-4 -left-4 bg-netflix-red w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold">1</div>

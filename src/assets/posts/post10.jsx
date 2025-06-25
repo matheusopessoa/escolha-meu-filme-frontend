@@ -211,4 +211,4 @@ const Post10 = () => {
   );
 };
 
-export default Post10; 
+export default Post10;

@@ -100,9 +100,9 @@ const Blog = () => {
         <PostGrid>
           <PostCard>
             <PostContent>
-              <PostTitle>Os 10 Melhores Filmes de Ficção Científica da Década</PostTitle>
+              <PostTitle>Como Escolher o Filme Perfeito para sua Noite de Cinema              </PostTitle>
               <PostExcerpt>
-                De Interestelar a Blade Runner 2049, confira nossa seleção dos melhores filmes de ficção científica dos últimos anos.
+              Escolher um filme para assistir pode parecer uma tarefa simples, mas quando nos deparamos com milhares de opções.
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post1">Continuar lendo...</PostLink>
             </PostContent>
@@ -110,9 +110,10 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Clássicos do Terror que Você Precisa Assistir</PostTitle>
+              <PostTitle>Como Analisar um Filme: Um Guia Completo
+              </PostTitle>
               <PostExcerpt>
-                Prepare a pipoca e confira nossa lista de filmes de terror clássicos que vão te deixar sem dormir.
+              A análise de filmes vai muito além de simplesmente gostar ou não de uma obra. É uma habilidade que envolve compreender diversos elementos
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post2">Continuar lendo...</PostLink>
             </PostContent>
@@ -120,9 +121,10 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>As Melhores Comédias Românticas de Todos os Tempos</PostTitle>
+              <PostTitle>Os Melhores Filmes de 2024 (Até Agora)
+              </PostTitle>
               <PostExcerpt>
-                Para rir e se apaixonar: confira nossa seleção das melhores comédias românticas que marcaram época.
+              O ano de 2024 tem sido extraordinário para o cinema, com lançamentos marcantes em diversos gên
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post3">Continuar lendo...</PostLink>
             </PostContent>
@@ -130,9 +132,10 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Animações Imperdíveis para Todas as Idades</PostTitle>
+              <PostTitle>Guia Completo dos Gêneros Cinematográficos
+              </PostTitle>
               <PostExcerpt>
-                Do Studio Ghibli à Pixar, descubra animações que encantam crianças e adultos.
+              Os gêneros cinematográficos são mais do que simples categorias: são linguagens próprias que moldam nossa expectativa e experiência 
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post4">Continuar lendo...</PostLink>
             </PostContent>
@@ -140,9 +143,9 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Os Filmes de Ação Mais Emocionantes dos Anos 90</PostTitle>
+              <PostTitle>A Evolução do Cinema: Das Origens ao Streaming</PostTitle>
               <PostExcerpt>
-                Explosões, perseguições e muita adrenalina: relembre os filmes de ação que marcaram os anos 90.
+              A história do cinema é uma fascinante jornada de inovação tecnológica, evolução artística e transformação cultural. Neste artigo
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post5">Continuar lendo...</PostLink>
             </PostContent>
@@ -150,9 +153,9 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Dramas Inesquecíveis que Vão Tocar Seu Coração</PostTitle>
+              <PostTitle>A Arte da Trilha Sonora: Como a Música Transforma o Cinema</PostTitle>
               <PostExcerpt>
-                Prepare os lenços e confira nossa seleção de dramas que emocionam e fazem refletir.
+              A trilha sonora é um elemento crucial na experiência cinematográfica, capaz de intensificar emoções, criar atmosferas
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post6">Continuar lendo...</PostLink>
             </PostContent>
@@ -160,9 +163,9 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Suspenses Psicológicos que Vão Te Deixar Sem Fôlego</PostTitle>
+              <PostTitle>A Arte da Fotografia no Cinema: Pintando com Luz e Movimento</PostTitle>
               <PostExcerpt>
-                Mentes brilhantes, reviravoltas e muita tensão: descubra os melhores suspenses psicológicos do cinema.
+              A fotografia cinematográfica é uma arte que vai muito além do simples registro de imagens. É através dela que o cinema cria sua linguagem visual 
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post7">Continuar lendo...</PostLink>
             </PostContent>
@@ -170,9 +173,9 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Aventuras Épicas que Você Não Pode Perder</PostTitle>
+              <PostTitle>A Arte da Edição: Como a Montagem Dá Vida ao Cinema</PostTitle>
               <PostExcerpt>
-                De Indiana Jones a Senhor dos Anéis, embarque em aventuras inesquecíveis com nossos filmes selecionados.
+              A edição é frequentemente chamada de "a gramática do cinema", pois é através dela que as imagens captadas ganham sentido
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post8">Continuar lendo...</PostLink>
             </PostContent>
@@ -180,9 +183,9 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Os Melhores Filmes de Guerra de Todos os Tempos</PostTitle>
+              <PostTitle>A Magia dos Efeitos Especiais: Da Maquiagem ao CGI</PostTitle>
               <PostExcerpt>
-                Conflitos, heroísmo e histórias impactantes: confira nossa lista dos melhores filmes de guerra já feitos.
+              Os efeitos especiais são uma parte fundamental da magia do cinema, permitindo que cineastas deem vida a mundos fantásticos
               </PostExcerpt>
               <PostLink as={Link} to="/blog/post9">Continuar lendo...</PostLink>
             </PostContent>
@@ -190,11 +193,31 @@ const Blog = () => {
 
           <PostCard>
             <PostContent>
-              <PostTitle>Mistérios Envolventes que Vão Te Surpreender</PostTitle>
+              <PostTitle>A Arte do Roteiro: Construindo Histórias que Marcam</PostTitle>
               <PostExcerpt>
-                Detetives, enigmas e finais surpreendentes: descubra os melhores filmes de mistério para testar suas habilidades de dedução.
+              O roteiro é o alicerce sobre o qual todo filme é construído. É a primeira etapa na transformação de uma ideia em uma experiência cinematográfica
               </PostExcerpt> 
               <PostLink as={Link} to="/blog/post10">Continuar lendo...</PostLink>
+            </PostContent>
+          </PostCard>
+
+          <PostCard>
+            <PostContent>
+              <PostTitle>Filme do Minecraft: Tudo Sobre a Adaptação com Jack Black e Jason Momoa</PostTitle>
+              <PostExcerpt>
+              Depois de anos de expectativa, o universo pixelado de Minecraft está finalmente chegando às telonas em formato live-action
+              </PostExcerpt> 
+              <PostLink as={Link} to="/blog/post11">Continuar lendo...</PostLink>
+            </PostContent>
+          </PostCard>
+
+          <PostCard>
+            <PostContent>
+              <PostTitle>Lilo & Stitch Live-Action: Elenco, Data e o Retorno da Voz Original de Stitch</PostTitle>
+              <PostExcerpt>
+              "'Ohana quer dizer família. Família quer dizer nunca abandonar ou esquecer." Poucas frases da Disney marcaram tanto uma geração quanto esta.
+              </PostExcerpt> 
+              <PostLink as={Link} to="/blog/post12">Continuar lendo...</PostLink>
             </PostContent>
           </PostCard>
         </PostGrid>

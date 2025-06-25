@@ -4,6 +4,7 @@ import { Loader2, Film, Star, Calendar } from 'lucide-react';
 import Layout from '../components/Layout';
 import WatchButton from '../components/WatchButton';
 import fetchMovies from './utils/fetch';
+import FooterWithText from '../components/FooterWithText';
 
 // Componentes do Shadcn/UI estilizados com styled-components
 const Card = styled.div`
@@ -357,6 +358,7 @@ export default function MainScreen() {
             </div>
           </Grid>
         </ContentWrapper>
+        <FooterWithText />
       </Container>
     </Layout>
   );

@@ -16,6 +16,8 @@ import Post7 from './assets/posts/post7';
 import Post8 from './assets/posts/post8';
 import Post9 from './assets/posts/post9';
 import Post10 from './assets/posts/post10';
+import Post11 from './assets/posts/post11';
+import Post12 from './assets/posts/post12';
 import Privacidade from './pages/privacidade';
 import Sobre from './pages/sobre';
 import Index from './pages/Index';
@@ -111,6 +113,14 @@ export const router = createBrowserRouter([
       {
         path: '/blog/post10',
         element: <Post10 />,
+      },
+      {
+        path: '/blog/post11',
+        element: <Post11 />,
+      },
+      {
+        path: '/blog/post12',
+        element: <Post12 />,
       },
       {
         path: '/privacidade',

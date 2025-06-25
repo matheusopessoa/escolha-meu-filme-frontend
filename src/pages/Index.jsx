@@ -7,7 +7,6 @@ import TestimonialsSection from '../assets/components/TestemonialSection';
 import CtaSection from '../components/CtaSection';
 import Footer from '../assets/components/Footer';
 import SeoHead from '../assets/components/SeoHead';
-import GoogleAd from '../components/GoogleAd';
 
 const Index = () => {
   const homeKeywords = 'recomendador de filmes, escolha meu filme, filmes gratuitos, filmes sem cadastro, ' +
@@ -53,48 +52,12 @@ const Index = () => {
       <Header />
       <main className="flex-grow">
         <HeroSection />
-        
-        <div //className="container mx-auto px-4 py-4"
-        >
-          <GoogleAd
-            adClient="ca-pub-3744101723313882"
-            adSlot="3744101723"
-            contentSelector="main"
-            minWordCount={100}
-            allowedPaths={['/']}
-            style={{ height: '250px' }}
-          />
-        </div>
 
         <FeaturesSection />
-        
-        <div //className="container mx-auto px-4 py-4"
-        >
-          <GoogleAd
-            adClient="ca-pub-3744101723313882"
-            adSlot="3744101723"
-            contentSelector="main"
-            minWordCount={100}
-            allowedPaths={['/']}
-            style={{ height: '250px' }}
-          />
-        </div>
 
         <HowItWorksSection />
         
         <TestimonialsSection />
-        
-        <div //className="container mx-auto px-4 py-4"
-        >
-          <GoogleAd
-            adClient="ca-pub-3744101723313882"
-            adSlot="3744101723"
-            contentSelector="main"
-            minWordCount={100}
-            allowedPaths={['/']}
-            style={{ height: '250px' }}
-          />
-        </div>
 
         <CtaSection />
       </main>
