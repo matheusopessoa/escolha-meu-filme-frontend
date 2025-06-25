@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HowItWorksSection = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-8 relative overflow-hidden">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="section-title">Como Funciona</h2>
@@ -69,9 +69,27 @@ const HowItWorksSection = () => {
         </div>
         
         <div className="text-center">
-          <Button asChild size="lg" className="btn-primary text-lg px-8 py-6 text-black">
-            <Link to="/escolher-filme">Encontrar Meu Filme Agora</Link>
-          </Button>
+        <Button 
+              asChild 
+              size="lg" 
+              className="btn-primary text-xl md:text-2xl px-8 py-8 text-black font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 animate-pulse-slow"
+              style={{
+                background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)',
+                boxShadow: '0 20px 40px rgba(255, 215, 0, 0.3), 0 0 0 1px rgba(255, 215, 0, 0.1)',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                animation: 'pulse 2s infinite'
+              }}
+            >
+              <Link to="/escolher-filme" className="flex items-center gap-3">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Encontrar um Filme
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </Button>
         </div>
         
         <div className="mt-16">

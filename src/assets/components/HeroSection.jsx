@@ -19,11 +19,26 @@ const HeroSection = () => {
             <span className="text-netflix-red font-semibold"> 100% gratuito</span>, sem cadastro e sem complicações.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button asChild size="lg" className="btn-primary text-lg px-8 py-6 text-black">
-              <Link to="/escolher-filme">Encontrar um Filme</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="bg-transparent border border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6">
-              <Link to="/como-escolhemos">Como Funciona</Link>
+            <Button 
+              asChild 
+              size="lg" 
+              className="btn-primary text-xl md:text-2xl px-8 py-8 text-black font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 animate-pulse-slow"
+              style={{
+                background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)',
+                boxShadow: '0 20px 40px rgba(255, 215, 0, 0.3), 0 0 0 1px rgba(255, 215, 0, 0.1)',
+                textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                animation: 'pulse 2s infinite'
+              }}
+            >
+              <Link to="/escolher-filme" className="flex items-center gap-3">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Encontrar um Filme
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
             </Button>
           </div>
           <div className="mt-12 flex justify-center">

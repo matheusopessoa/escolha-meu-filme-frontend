@@ -4,6 +4,7 @@ import Top10 from './assets/Top10';
 import ComoEscolhemos from './assets/ComoEscolhemos';
 import Aleatorio from './assets/Aleatorio';
 import TermosDeUso from './assets/TermosDeUso';
+import AvisoLegal from './assets/AvisoLegal';
 import Blog from './assets/Blog';
 import Post1 from './assets/posts/post1';
 import Post2 from './assets/posts/post2';
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: '/termos',
         element: <TermosDeUso />,
+      },
+      {
+        path: '/aviso-legal',
+        element: <AvisoLegal />,
       },
       {
         path: '/blog',

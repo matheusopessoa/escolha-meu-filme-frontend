@@ -38,7 +38,7 @@ const FeatureSection = () => {
   ];
 
   return (
-    <section id="features" className="py-16 md:py-24 bg-black/40 backdrop-blur-sm">
+    <section id="features" className="pt-16 md:py-24 bg-black/40 backdrop-blur-sm">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="section-title">Por que escolher nossa plataforma?</h2>
@@ -61,11 +61,12 @@ const FeatureSection = () => {
           ))}
         </div>
         
-        <div className="mt-16 text-center">
+        <div //className="mt-16 text-center"
+        >
           <div className="ad-container horizontal mx-auto">
             <GoogleAd 
               adSlot="3456789876"
-              style={{ display: 'block', width: '100%', height: '90px' }}
+              style={{ display: 'none'}}
               contentSelector="#features"
             />
           </div>

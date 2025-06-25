@@ -58,7 +58,7 @@ const CookieConsent = () => {
         >
           Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa{' '}
           <a
-            href="/termos-de-uso"
+            href="/termos"
             style={{
               color: '#34D399',
               textDecoration: 'underline',

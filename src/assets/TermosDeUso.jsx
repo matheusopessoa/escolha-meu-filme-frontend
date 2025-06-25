@@ -1,167 +1,180 @@
 import React from 'react';
-import Background from './components/Background';
-import Title from './components/Title';
-import Subtitle from './components/Subtitle';
-import Footer from './components/Footer';
 import styled from 'styled-components';
-import Header from './components/Header';
-import GoogleAd from '../components/GoogleAd';
+import Footer from '../assets/components/Footer';
+import { privacyContent } from '../data/staticContent';
+import BackButton from '../components/BackButton';
 
-const ContentContainer = styled.div`
+const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  color: white;
-  text-align: left;
+  padding: 2rem;
+  color: #fff;
+`;
 
-  @media (max-width: 768px) {
-    padding: 15px;
-    margin-bottom: 80px; /* Espaço para o botão fixo */
-  }
+const Title = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #fff;
 `;
 
 const Section = styled.section`
-  margin-bottom: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
-
-  @media (max-width: 768px) {
-    padding: 15px;
-    margin-bottom: 20px;
-  }
+  margin-bottom: 2rem;
 `;
 
 const SectionTitle = styled.h2`
-  color: white;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.3rem;
-  }
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
 `;
 
-const Paragraph = styled.p`
-  margin-bottom: 15px;
+const Text = styled.p`
+  font-size: 1.1rem;
   line-height: 1.6;
-  font-size: 1rem;
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-  }
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
 `;
 
-const AdContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 15px;
+const List = styled.ul`
+  list-style-type: disc;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+`;
 
-  @media (max-width: 768px) {
-    margin: 15px auto;
-  }
+const ListItem = styled.li`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+`;
+
+const SubSectionTitle = styled.h3`
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  margin-top: 1.5rem;
 `;
 
 export default function TermosDeUso() {
   return (
-    <Background>
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <Title>Termos de Uso</Title>
-        <AdContainer>
-          <GoogleAd 
-            adSlot="0123456789" 
-            adFormat="horizontal"
-            adLayout="in-article"
-            adStyle={{ display: 'block', width: '100%', height: '90px' }}
-          />
-        </AdContainer>
-        <ContentContainer>
-          <Section>
-            <SectionTitle>1. Aceitação dos Termos</SectionTitle>
-            <Paragraph>
-              Ao acessar e usar o Escolha Meu Filme, você concorda em cumprir estes termos de uso. Se você não concordar com qualquer parte destes termos, não deverá usar nosso serviço.
-            </Paragraph>
-          </Section>
+    <Container>
+      <BackButton />
+      <Title>Termos de Uso</Title>
+      
+      <Section>
+        <SectionTitle>1. Introdução</SectionTitle>
+        <Text>
+          Bem-vindo ao nosso site de músicas. Ao usar nosso site, você concorda com os seguintes termos de uso.
+          Estes termos estabelecem as regras e regulamentos para o uso do nosso serviço.
+        </Text>
+      </Section>
 
-          <AdContainer>
-            <GoogleAd 
-              adSlot="1234567890" 
-              adFormat="rectangle"
-              adLayout="in-article"
-              adStyle={{ display: 'block', width: '300px', height: '250px', margin: '20px auto' }}
-            />
-          </AdContainer>
+      <Section>
+        <SectionTitle>2. Uso do Site</SectionTitle>
+        <Text>
+          Nosso site é fornecido "como está" para uso pessoal e não comercial. Você pode usar nosso site para:
+        </Text>
+        <List>
+          <ListItem>Navegar e visualizar conteúdo musical</ListItem>
+          <ListItem>Utilizar as funcionalidades disponíveis no site</ListItem>
+          <ListItem>Acessar informações sobre músicas e artistas</ListItem>
+        </List>
+        <Text>
+          Você concorda em não usar o site para qualquer propósito ilegal ou não autorizado.
+        </Text>
+      </Section>
 
-          <Section>
-            <SectionTitle>2. Uso do Serviço</SectionTitle>
-            <Paragraph>
-              O Escolha Meu Filme é um serviço gratuito que ajuda você a encontrar filmes para assistir. Nós:
-            </Paragraph>
-            <Paragraph>
-              1. Fornecemos recomendações personalizadas de filmes
-            </Paragraph>
-            <Paragraph>
-              2. Mostramos informações sobre disponibilidade em plataformas de streaming
-            </Paragraph>
-            <Paragraph>
-              3. Exibimos anúncios para manter o serviço gratuito
-            </Paragraph>
-          </Section>
+      <Section>
+        <SectionTitle>3. Cookies e Tecnologias de Rastreamento</SectionTitle>
+        <Text>
+          Nosso site utiliza cookies e tecnologias similares para melhorar sua experiência de navegação.
+        </Text>
+        
+        <SubSectionTitle>3.1 Google Ads</SubSectionTitle>
+        <Text>
+          Utilizamos cookies do Google Ads para exibir anúncios personalizados. Estes cookies permitem que o Google e seus parceiros veiculem anúncios baseados em suas visitas ao nosso site e outros sites na internet.
+        </Text>
+        
+        <SubSectionTitle>3.2 Tipos de Cookies Utilizados</SubSectionTitle>
+        <List>
+          <ListItem>Cookies de publicidade: Para exibir anúncios relevantes do Google Ads</ListItem>
+          <ListItem>Cookies de análise: Para entender como os usuários interagem com nosso site</ListItem>
+          <ListItem>Cookies de funcionalidade: Para melhorar a experiência do usuário</ListItem>
+        </List>
+        
+        <SubSectionTitle>3.3 Gerenciamento de Cookies</SubSectionTitle>
+        <Text>
+          Você pode gerenciar suas preferências de cookies através das configurações do seu navegador. 
+          Note que desabilitar cookies pode afetar a funcionalidade do site.
+        </Text>
+      </Section>
 
-          <Section>
-            <SectionTitle>3. Privacidade e Dados</SectionTitle>
-            <Paragraph>
-              Coletamos e utilizamos dados para:
-            </Paragraph>
-            <Paragraph>
-              1. Melhorar nossas recomendações
-            </Paragraph>
-            <Paragraph>
-              2. Personalizar sua experiência
-            </Paragraph>
-            <Paragraph>
-              3. Exibir anúncios relevantes
-            </Paragraph>
-          </Section>
+      <Section>
+        <SectionTitle>4. Coleta de Dados</SectionTitle>
+        <Text>
+          <strong>Importante:</strong> Nosso site não coleta, armazena ou processa dados pessoais dos usuários. 
+          Não solicitamos cadastros, informações pessoais ou qualquer tipo de registro.
+        </Text>
+        <Text>
+          As únicas informações coletadas são através de cookies para fins de publicidade do Google Ads, 
+          conforme descrito na seção anterior.
+        </Text>
+      </Section>
 
-          <Section>
-            <SectionTitle>4. Anúncios</SectionTitle>
-            <Paragraph>
-              Utilizamos o Google AdSense para exibir anúncios. Estes anúncios:
-            </Paragraph>
-            <Paragraph>
-              1. São personalizados com base em seus interesses
-            </Paragraph>
-            <Paragraph>
-              2. Ajudam a manter o serviço gratuito
-            </Paragraph>
-            <Paragraph>
-              3. Seguem as políticas do Google AdSense
-            </Paragraph>
-          </Section>
+      <Section>
+        <SectionTitle>5. Propriedade Intelectual</SectionTitle>
+        <Text>
+          Todo o conteúdo disponível neste site, incluindo textos, imagens, gráficos, logotipos e software, 
+          é propriedade nossa ou de nossos licenciadores e está protegido por leis de direitos autorais.
+        </Text>
+        <Text>
+          O uso não autorizado de qualquer conteúdo deste site pode violar leis de direitos autorais, 
+          marcas comerciais e outras leis aplicáveis.
+        </Text>
+      </Section>
 
-          <Section>
-            <SectionTitle>5. Limitações de Responsabilidade</SectionTitle>
-            <Paragraph>
-              O Escolha Meu Filme:
-            </Paragraph>
-            <Paragraph>
-              1. Não garante a disponibilidade contínua do serviço
-            </Paragraph>
-            <Paragraph>
-              2. Não se responsabiliza por decisões tomadas com base em nossas recomendações
-            </Paragraph>
-            <Paragraph>
-              3. Não garante a precisão absoluta das informações sobre disponibilidade em streaming
-            </Paragraph>
-          </Section>
-        </ContentContainer>
-      </div>
-      <Footer />
-    </Background>
+      <Section>
+        <SectionTitle>6. Limitação de Responsabilidade</SectionTitle>
+        <Text>
+          Em nenhuma circunstância seremos responsáveis por quaisquer danos diretos, indiretos, 
+          incidentais, especiais ou consequenciais que resultem do uso ou da impossibilidade de usar nosso site.
+        </Text>
+        <Text>
+          Nosso site é fornecido sem garantias de qualquer tipo, expressas ou implícitas.
+        </Text>
+      </Section>
+
+      <Section>
+        <SectionTitle>7. Modificações dos Termos</SectionTitle>
+        <Text>
+          Reservamo-nos o direito de modificar estes termos de uso a qualquer momento. 
+          As modificações entrarão em vigor imediatamente após sua publicação no site.
+        </Text>
+        <Text>
+          É sua responsabilidade revisar periodicamente estes termos para estar ciente de quaisquer mudanças.
+        </Text>
+      </Section>
+
+      <Section>
+        <SectionTitle>8. Lei Aplicável</SectionTitle>
+        <Text>
+          Estes termos de uso são regidos pelas leis do Brasil. Qualquer disputa relacionada a estes termos 
+          será resolvida nos tribunais competentes do Brasil.
+        </Text>
+      </Section>
+
+      <Section>
+        <SectionTitle>9. Contato</SectionTitle>
+        <Text>
+          Se você tiver dúvidas sobre estes termos de uso, entre em contato conosco através dos 
+          canais disponibilizados em nosso site.
+        </Text>
+      </Section>
+
+      <Section>
+        <Text style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.7)', fontStyle: 'italic' }}>
+          Última atualização: {new Date().toLocaleDateString('pt-BR')}
+        </Text>
+      </Section>
+    </Container>
   );
 } 

@@ -54,7 +54,8 @@ const Index = () => {
       <main className="flex-grow">
         <HeroSection />
         
-        <div className="container mx-auto px-4 py-4">
+        <div //className="container mx-auto px-4 py-4"
+        >
           <GoogleAd
             adClient="ca-pub-3744101723313882"
             adSlot="3744101723"
@@ -67,7 +68,8 @@ const Index = () => {
 
         <FeaturesSection />
         
-        <div className="container mx-auto px-4 py-4">
+        <div //className="container mx-auto px-4 py-4"
+        >
           <GoogleAd
             adClient="ca-pub-3744101723313882"
             adSlot="3744101723"
@@ -82,7 +84,8 @@ const Index = () => {
         
         <TestimonialsSection />
         
-        <div className="container mx-auto px-4 py-4">
+        <div //className="container mx-auto px-4 py-4"
+        >
           <GoogleAd
             adClient="ca-pub-3744101723313882"
             adSlot="3744101723"

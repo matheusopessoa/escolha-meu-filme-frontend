@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CtaSection = () => {
   return (
-    <section className="py-24 relative">
+    <section className="py-8 relative">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent z-10" />
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3')] bg-cover bg-center opacity-30 z-0" />

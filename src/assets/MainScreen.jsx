@@ -194,6 +194,14 @@ const MovieDetails = styled.div`
   font-size: 0.875rem;
 `;
 
+const Hint = styled.p`
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+`;
+
 const streamings = ['Netflix', 'Amazon', 'Disney', 'Max', 'Globoplay'];
 const genres = ['Ação', 'Aventura', 'Comédia', 'Animação', 'Crime', 'Drama', 'Família', 'Fantasia', 'História', 'Horror', 'Musical', 'Mistério', 'Romance', 'Ficção Científica', 'Terror', 'Guerra', 'Faroeste'];
 
@@ -267,6 +275,10 @@ export default function MainScreen() {
                   <option value="mainstream">Mainstream</option>
                   <option value="cult">Cult</option>
                 </Select>
+                <Hint>
+                  <strong>Mainstream:</strong> filmes populares e famosos. <br />
+                  <strong>Cult:</strong> filmes alternativos, geralmente mais artísticos ou com fãs fiéis.
+                </Hint>
               </FilterGroup>
 
               <FilterGroup>

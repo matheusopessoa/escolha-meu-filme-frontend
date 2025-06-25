@@ -53,7 +53,7 @@ const FallbackContainer = styled.div`
   min-height: ${props => props.style?.height || '90px'};
 `;
 
-const GoogleAd = ({ adClient, adSlot, style, contentSelector, minWordCount = 300, className, allowedPaths = ['/'] }) => {
+const GoogleAd = ({ adClient, adSlot, style = { display: 'none' }, contentSelector, minWordCount = 300, className, allowedPaths = ['/'] }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
