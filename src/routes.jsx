@@ -23,6 +23,7 @@ import Sobre from './pages/sobre';
 import Index from './pages/Index';
 import SelectionPage from './pages/SelectionPage';
 import ScrollToTop from './components/ScrollToTop';
+import Sitemap from './components/Sitemap';
 import { Outlet } from 'react-router-dom';
 
 const AppLayout = () => {
@@ -129,6 +130,10 @@ export const router = createBrowserRouter([
       {
         path: '/sobre',
         element: <Sobre />,
+      },
+      {
+        path: '/sitemap',
+        element: <Sitemap />,
       }
     ]
   }
