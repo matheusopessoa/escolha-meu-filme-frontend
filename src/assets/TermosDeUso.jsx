@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 import Footer from '../assets/components/Footer';
 import { privacyContent } from '../data/staticContent';
 import BackButton from '../components/BackButton';
@@ -57,6 +58,11 @@ const SubSectionTitle = styled.h3`
 export default function TermosDeUso() {
   return (
     <Container>
+      <Helmet>
+        <title>Termos de Uso</title>
+        <meta name="description" content="Saiba mais sobre os termos de uso do nosso site de músicas." />
+        <meta name="keywords" content="Termos de Uso, música, privacidade, direitos autorais" />
+      </Helmet>
       <BackButton />
       <Title>Termos de Uso</Title>
       

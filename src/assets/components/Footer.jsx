@@ -47,6 +47,7 @@ const Footer = () => {
               <li><Link to="/termos" className="text-white/70 hover:text-netflix-red transition-colors">Termos de Uso</Link></li>
               <li><Link to="/privacidade" className="text-white/70 hover:text-netflix-red transition-colors">Política de Privacidade</Link></li>
               <li><Link to="/aviso-legal" className="text-white/70 hover:text-netflix-red transition-colors">Aviso Legal</Link></li>
+              <li><Link to="/contato" className="text-white/70 hover:text-netflix-red transition-colors">Contato</Link></li>
             </ul>
           </div>
         </div>

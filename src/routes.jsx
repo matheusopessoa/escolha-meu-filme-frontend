@@ -20,6 +20,7 @@ import Post11 from './assets/posts/post11';
 import Post12 from './assets/posts/post12';
 import Privacidade from './pages/privacidade';
 import Sobre from './pages/sobre';
+import Contato from './pages/contato';
 import Index from './pages/Index';
 import SelectionPage from './pages/SelectionPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -129,6 +130,10 @@ export const router = createBrowserRouter([
       {
         path: '/sobre',
         element: <Sobre />,
+      },
+      {
+        path: '/contato',
+        element: <Contato />,
       },
     ]
   }

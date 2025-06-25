@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 import BackButton from '../components/BackButton';
 
 const Container = styled.div`
@@ -83,6 +84,11 @@ const DisclaimerTitle = styled.h3`
 export default function AvisoLegal() {
   return (
     <Container>
+      <Helmet>
+        <title>Aviso Legal - Nosso Site de Recomendações</title>
+        <meta name="description" content="Saiba mais sobre como funciona nosso site de recomendações de filmes." />
+        <meta name="keywords" content="recomendações de filmes, filmes, streaming, streaming de filmes" />
+      </Helmet>
       <BackButton />
       <Title>Aviso Legal</Title>
 
