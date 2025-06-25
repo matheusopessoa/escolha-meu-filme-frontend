@@ -1,5 +1,23 @@
 {
     "rewrites": [
       { "source": "/(.*)", "destination": "/" }
+    ],
+    "redirects": [
+      {
+        "source": "/sitemap",
+        "destination": "/sitemap.xml",
+        "permanent": false
+      }
+    ],
+    "headers": [
+      {
+        "source": "/sitemap.xml",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml; charset=utf-8"
+          }
+        ]
+      }
     ]
   }

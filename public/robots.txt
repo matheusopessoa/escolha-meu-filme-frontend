@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://escolhameufilme.com/sitemap
+Sitemap: https://escolhameufilme.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1 
