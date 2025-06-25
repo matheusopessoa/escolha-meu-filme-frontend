@@ -17,14 +17,15 @@ const StructuredData = () => {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
-      "email": "contato@escolhameufilme.com",
+      "email": "matheuspessoa.tech@gmail.com",
       "availableLanguage": "Portuguese"
     },
     "sameAs": [
       "https://escolhameufilme.com/sobre",
       "https://escolhameufilme.com/contato",
       "https://escolhameufilme.com/termos",
-      "https://escolhameufilme.com/privacidade"
+      "https://escolhameufilme.com/privacidade",
+      "https://escolhameufilme.com/contato"
     ]
   };
 
