@@ -9,6 +9,7 @@ import Footer from '../assets/components/Footer';
 import SeoHead from '../assets/components/SeoHead';
 import BlogCtaSection from '../components/BlogCtaSection';
 import Banner from '../components/Banner';
+import SocialBar from '../components/SocialBar';
 import AdsHead from '../components/AdsHead';
 
 const Index = () => {
@@ -58,37 +59,34 @@ const Index = () => {
       <main className="flex-grow">
         <HeroSection />
         
-        {/* Banner após o Hero para maior visibilidade */}
+        {/* Banner único posicionado após o Hero para máxima visibilidade */}
         <div className="container mx-auto">
           <Banner />
         </div>
 
         <FeaturesSection />
         
-        {/* Banner entre seções principais */}
+        {/* Social Bar após Features */}
         <div className="container mx-auto">
-          <Banner />
+          <SocialBar />
         </div>
 
         <HowItWorksSection />
         
-        {/* Banner estrategicamente posicionado */}
+        {/* Social Bar após How It Works */}
         <div className="container mx-auto">
-          <Banner />
         </div>
 
         <TestimonialsSection />
         
-        {/* Banner antes da seção do blog */}
+        {/* Social Bar após Testimonials */}
         <div className="container mx-auto">
-          <Banner />
         </div>
 
         <BlogCtaSection />
         
-        {/* Banner final antes do CTA */}
+        {/* Social Bar antes do CTA final */}
         <div className="container mx-auto">
-          <Banner />
         </div>
 
         <CtaSection />
