@@ -60,16 +60,12 @@ const Index = () => {
         <HeroSection />
         
         {/* Banner único posicionado após o Hero para máxima visibilidade */}
-        <div className="container mx-auto">
-          <Banner />
-        </div>
+
 
         <FeaturesSection />
         
         {/* Social Bar após Features */}
-        <div className="container mx-auto">
-          <SocialBar />
-        </div>
+
 
         <HowItWorksSection />
         
