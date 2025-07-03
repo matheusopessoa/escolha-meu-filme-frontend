@@ -223,16 +223,17 @@ export default function AvisoLegal() {
           <ListItem>Qualquer problema técnico ou de acesso às plataformas</ListItem>
         </List>
         
-        <SubSectionTitle>8.2 Google AdSense e Anúncios</SubSectionTitle>
+        <SubSectionTitle>8.2 Adsterra e Anúncios</SubSectionTitle>
         <Text>
-          Nosso site utiliza o Google AdSense para exibir anúncios. É importante esclarecer que:
+          Nosso site utiliza a plataforma Adsterra para exibir anúncios. É importante esclarecer que:
         </Text>
         <List>
-          <ListItem>Os anúncios exibidos são de responsabilidade exclusiva do Google</ListItem>
+          <ListItem>Os anúncios exibidos são de responsabilidade exclusiva do Adsterra</ListItem>
           <ListItem>Não controlamos o conteúdo, formato ou direcionamento dos anúncios</ListItem>
-          <ListItem>O Google é responsável pela seleção e exibição de anúncios</ListItem>
+          <ListItem>O Adsterra é responsável pela seleção e exibição de anúncios</ListItem>
           <ListItem>Não nos responsabilizamos por produtos, serviços ou conteúdo promovido nos anúncios</ListItem>
-          <ListItem>Qualquer interação com anúncios é de responsabilidade do usuário e do Google</ListItem>
+          <ListItem>Qualquer problema relacionado aos anúncios deve ser tratado diretamente com o Adsterra</ListItem>
+          <ListItem>Não temos controle sobre quais anúncios serão exibidos em nosso site</ListItem>
         </List>
         
         <SubSectionTitle>8.3 Sites de Terceiros</SubSectionTitle>

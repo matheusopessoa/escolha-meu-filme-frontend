@@ -92,10 +92,16 @@ const Privacidade = () => {
       <Section>
         <SectionTitle>4. Publicidade</SectionTitle>
         <Text>
-          Utilizamos o Google AdSense para exibir anúncios em nosso site. O Google AdSense utiliza 
-          cookies para exibir anúncios baseados em seus interesses. Você pode optar por não receber 
-          anúncios personalizados visitando as configurações de anúncios do Google.
+          Utilizamos a plataforma Adsterra para exibir anúncios em nosso site. O Adsterra utiliza 
+          suas próprias tecnologias para exibir anúncios baseados em diversos fatores. É importante destacar que:
         </Text>
+        <List>
+          <ListItem>O Adsterra tem sua própria política de privacidade e termos de uso</ListItem>
+          <ListItem>Não controlamos quais anúncios serão exibidos em nosso site</ListItem>
+          <ListItem>Não temos acesso aos dados coletados pelo Adsterra</ListItem>
+          <ListItem>Quaisquer questões relacionadas aos anúncios devem ser tratadas diretamente com o Adsterra</ListItem>
+          <ListItem>Não nos responsabilizamos pelo conteúdo dos anúncios ou pelos produtos/serviços anunciados</ListItem>
+        </List>
       </Section>
 
       <Section>

@@ -56,7 +56,7 @@ const CookieConsent = () => {
             margin: 0,
           }}
         >
-          Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa{' '}
+          Este site utiliza cookies e tecnologias similares, incluindo aqueles da plataforma Adsterra para exibição de anúncios. Ao continuar navegando, você concorda com nossa{' '}
           <a
             href="/termos"
             style={{

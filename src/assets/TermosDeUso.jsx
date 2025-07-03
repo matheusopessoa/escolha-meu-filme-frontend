@@ -95,10 +95,16 @@ export default function TermosDeUso() {
           Nosso site utiliza cookies e tecnologias similares para melhorar sua experiência de navegação.
         </Text>
         
-        <SubSectionTitle>3.1 Google Ads</SubSectionTitle>
+        <SubSectionTitle>3.1 Adsterra e Publicidade</SubSectionTitle>
         <Text>
-          Utilizamos cookies do Google Ads para exibir anúncios personalizados. Estes cookies permitem que o Google e seus parceiros veiculem anúncios baseados em suas visitas ao nosso site e outros sites na internet.
+          Utilizamos a plataforma Adsterra para exibição de anúncios em nosso site. O Adsterra pode utilizar cookies e outras tecnologias para exibir anúncios relevantes. É importante ressaltar que:
         </Text>
+        <List>
+          <ListItem>Não temos controle sobre o conteúdo dos anúncios exibidos</ListItem>
+          <ListItem>Qualquer problema com os anúncios deve ser reportado diretamente ao Adsterra</ListItem>
+          <ListItem>Não nos responsabilizamos pelos produtos ou serviços anunciados</ListItem>
+          <ListItem>O Adsterra tem sua própria política de privacidade e termos de uso</ListItem>
+        </List>
         
         <SubSectionTitle>3.2 Tipos de Cookies Utilizados</SubSectionTitle>
         <List>

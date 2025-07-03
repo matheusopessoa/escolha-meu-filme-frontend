@@ -23,6 +23,7 @@ const Index = () => {
     'blog de cinema, críticas de filmes, análises de filmes, resenhas de filmes, novidades cinema';
 
   useEffect(() => {
+    // Banner 1
     // Configuração do Adsterra
     if (typeof window !== 'undefined') {
       if (typeof window.atAsyncOptions !== 'object') {
@@ -40,6 +41,29 @@ const Index = () => {
       script.type = 'text/javascript';
       script.async = true;
       script.src = 'https://www.highperformanceformat.com/b531b9b24d24432ee23694a934d7e3c8/invoke.js';
+      document.head.appendChild(script);
+    }
+  }, []);
+
+  // Banner 2
+  useEffect(() => {
+    // Configuração do Adsterra
+    if (typeof window !== 'undefined') {
+      if (typeof window.atAsyncOptions !== 'object') {
+        window.atAsyncOptions = [];
+      }
+      window.atAsyncOptions.push({
+        'key': 'd13b02aaa868c9af090742ae6b9f458d',
+        'format': 'js',
+        'async': true,
+        'container': 'atContainer-d13b02aaa868c9af090742ae6b9f458d',
+        'params': {}
+      });
+
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://www.highperformanceformat.com/d13b02aaa868c9af090742ae6b9f458d/invoke.js';
       document.head.appendChild(script);
     }
   }, []);
@@ -80,12 +104,14 @@ const Index = () => {
         
         {/* Container do Adsterra após o Hero */}
 
-        <div style={{width: '100%', height: '60px'}} id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
+        <div style={{ width: '468px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
         />
 
 
         <FeaturesSection />
-        
+
+        <div style={{width: '300px', height: '160px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
+        />
 
         <HowItWorksSection />
         

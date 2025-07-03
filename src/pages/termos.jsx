@@ -106,6 +106,16 @@ const Termos = () => {
           <ListItem>Danos causados por uso indevido do serviço</ListItem>
           <ListItem>Interrupções temporárias do serviço</ListItem>
         </List>
+
+        <Text style={{ marginTop: '1rem' }}>
+          Em relação aos anúncios exibidos através da plataforma Adsterra:
+        </Text>
+        <List>
+          <ListItem>Não temos controle sobre o conteúdo dos anúncios</ListItem>
+          <ListItem>Não nos responsabilizamos por produtos ou serviços anunciados</ListItem>
+          <ListItem>Quaisquer problemas relacionados aos anúncios devem ser tratados diretamente com o Adsterra</ListItem>
+          <ListItem>A exibição dos anúncios é gerenciada exclusivamente pelo Adsterra</ListItem>
+        </List>
       </Section>
 
       <Section>
