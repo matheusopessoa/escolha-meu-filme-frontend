@@ -8,6 +8,7 @@ import CtaSection from '../components/CtaSection';
 import Footer from '../assets/components/Footer';
 import SeoHead from '../assets/components/SeoHead';
 import BlogCtaSection from '../components/BlogCtaSection';
+import Banner from '../components/Banner';
 
 const Index = () => {
   const homeKeywords = 'recomendador de filmes, escolha meu filme, filmes gratuitos, filmes sem cadastro, ' +
@@ -54,16 +55,22 @@ const Index = () => {
       <Header />
       <main className="flex-grow">
         <HeroSection />
+        <Banner />
 
         <FeaturesSection />
+        <Banner />
 
         <HowItWorksSection />
-        
+        <Banner />
+
         <TestimonialsSection />
+        <Banner />
 
         <BlogCtaSection />
+        <Banner />
+        <CtaSection /> 
+        <Banner />
 
-        <CtaSection />
       </main>
       <Footer />
     </div>
