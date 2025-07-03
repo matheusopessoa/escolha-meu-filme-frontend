@@ -8,9 +8,7 @@ import CtaSection from '../components/CtaSection';
 import Footer from '../assets/components/Footer';
 import SeoHead from '../assets/components/SeoHead';
 import BlogCtaSection from '../components/BlogCtaSection';
-import Banner from '../components/Banner';
-import SocialBar from '../components/SocialBar';
-import AdsHead from '../components/AdsHead';
+import { useEffect } from 'react';
 
 const Index = () => {
   const homeKeywords = 'recomendador de filmes, escolha meu filme, filmes gratuitos, filmes sem cadastro, ' +
@@ -24,9 +22,30 @@ const Index = () => {
     'filme por idioma, filme dublado, filme legendado, filme nacional, filme internacional, ' +
     'blog de cinema, críticas de filmes, análises de filmes, resenhas de filmes, novidades cinema';
 
+  useEffect(() => {
+    // Configuração do Adsterra
+    if (typeof window !== 'undefined') {
+      if (typeof window.atAsyncOptions !== 'object') {
+        window.atAsyncOptions = [];
+      }
+      window.atAsyncOptions.push({
+        'key': 'b531b9b24d24432ee23694a934d7e3c8',
+        'format': 'js',
+        'async': true,
+        'container': 'atContainer-b531b9b24d24432ee23694a934d7e3c8',
+        'params': {}
+      });
+
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://www.highperformanceformat.com/b531b9b24d24432ee23694a934d7e3c8/invoke.js';
+      document.head.appendChild(script);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-['Poppins',sans-serif]">
-      <AdsHead />
       <div className="fixed inset-0 -z-10">
         <div 
           className="absolute inset-0"
@@ -59,13 +78,14 @@ const Index = () => {
       <main className="flex-grow">
         <HeroSection />
         
-        {/* Banner único posicionado após o Hero para máxima visibilidade */}
-
+        {/* Container do Adsterra após o Hero */}
+        <div className="container mx-auto my-8">
+          <div id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
+               className="min-h-[60px] bg-black/20 rounded-lg overflow-hidden" />
+        </div>
 
         <FeaturesSection />
         
-        {/* Social Bar após Features */}
-
 
         <HowItWorksSection />
         
