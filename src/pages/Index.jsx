@@ -9,6 +9,7 @@ import Footer from '../assets/components/Footer';
 import SeoHead from '../assets/components/SeoHead';
 import BlogCtaSection from '../components/BlogCtaSection';
 import Banner from '../components/Banner';
+import AdsHead from '../components/AdsHead';
 
 const Index = () => {
   const homeKeywords = 'recomendador de filmes, escolha meu filme, filmes gratuitos, filmes sem cadastro, ' +
@@ -24,6 +25,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-['Poppins',sans-serif]">
+      <AdsHead />
       <div className="fixed inset-0 -z-10">
         <div 
           className="absolute inset-0"
@@ -55,22 +57,41 @@ const Index = () => {
       <Header />
       <main className="flex-grow">
         <HeroSection />
-        <Banner />
+        
+        {/* Banner após o Hero para maior visibilidade */}
+        <div className="container mx-auto">
+          <Banner />
+        </div>
 
         <FeaturesSection />
-        <Banner />
+        
+        {/* Banner entre seções principais */}
+        <div className="container mx-auto">
+          <Banner />
+        </div>
 
         <HowItWorksSection />
-        <Banner />
+        
+        {/* Banner estrategicamente posicionado */}
+        <div className="container mx-auto">
+          <Banner />
+        </div>
 
         <TestimonialsSection />
-        <Banner />
+        
+        {/* Banner antes da seção do blog */}
+        <div className="container mx-auto">
+          <Banner />
+        </div>
 
         <BlogCtaSection />
-        <Banner />
-        <CtaSection /> 
-        <Banner />
+        
+        {/* Banner final antes do CTA */}
+        <div className="container mx-auto">
+          <Banner />
+        </div>
 
+        <CtaSection />
       </main>
       <Footer />
     </div>
