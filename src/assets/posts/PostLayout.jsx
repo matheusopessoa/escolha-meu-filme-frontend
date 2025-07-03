@@ -94,6 +94,9 @@ const PostLayout = ({
       <PostContainer>
         <PostHeader>
           <PostTitle>{title}</PostTitle>
+          {image && (
+            <img src={image} alt={title} style={{ maxWidth: '100%', borderRadius: '10px', margin: '1.5rem 0' }} />
+          )}
           <PostMeta>
             <time dateTime={publishedTime}>
               {new Date(publishedTime).toLocaleDateString('pt-BR', {

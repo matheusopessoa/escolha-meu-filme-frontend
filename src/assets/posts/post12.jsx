@@ -8,7 +8,7 @@ const Post12 = () => {
       description="Tudo o que você precisa saber sobre a adaptação live-action de Lilo & Stitch da Disney: o elenco com Maia Kealoha, a data de estreia no Disney+ e a confirmação de Chris Sanders como a voz de Stitch."
       publishedTime="2025-06-25T15:38:00Z"
       keywords="Lilo e Stitch live-action, filme lilo & stitch, disney plus, elenco, maia kealoha, chris sanders, ohana, adaptação disney, sydney agudong"
-      image="/blog/lilo-stitch-live-action.jpg"
+      image="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/3216/75fef903c8c70db627a4bc96c4e3f3c4.jpg"
     >
       <p>
         "'Ohana quer dizer família. Família quer dizer nunca abandonar ou esquecer." Poucas frases da Disney marcaram tanto uma geração quanto esta. Lançado em 2002, "Lilo & Stitch" se destacou por sua originalidade, emoção e por celebrar uma cultura raramente vista nas animações do estúdio. Agora, a Disney se prepara para recapturar essa magia com uma aguardada adaptação live-action.
