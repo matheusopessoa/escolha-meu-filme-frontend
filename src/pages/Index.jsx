@@ -68,6 +68,29 @@ const Index = () => {
     }
   }, []);
 
+    // Banner 3
+    useEffect(() => {
+      // Configuração do Adsterra
+      if (typeof window !== 'undefined') {
+        if (typeof window.atAsyncOptions !== 'object') {
+          window.atAsyncOptions = [];
+        }
+        window.atAsyncOptions.push({
+          'key': 'a81005b20dbed6b5300029468846d7c3',
+          'format': 'js',
+          'async': true,
+          'container': 'atContainer-a81005b20dbed6b5300029468846d7c3',
+          'params': {}
+        });
+  
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = 'https://www.highperformanceformat.com/a81005b20dbed6b5300029468846d7c3/invoke.js';
+        document.head.appendChild(script);
+      }
+    }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-['Poppins',sans-serif]">
       <div className="fixed inset-0 -z-10">
@@ -102,15 +125,15 @@ const Index = () => {
       <main className="flex-grow">
         <HeroSection />
         
-        {/* Container do Adsterra após o Hero */}
-
-        <div style={{ width: '468px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
+        {/* Banner 1 */}
+        <div style={{ height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
         />
 
 
         <FeaturesSection />
 
-        <div style={{width: '300px', height: '160px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-d13b02aaa868c9af090742ae6b9f458d" 
+        {/* Banner 2 */}
+        <div style={{ height: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-a81005b20dbed6b5300029468846d7c3" 
         />
 
         <HowItWorksSection />
@@ -129,6 +152,14 @@ const Index = () => {
         
         {/* Social Bar antes do CTA final */}
         <div className="container mx-auto">
+        </div>
+
+        {/* Banner 3 */}
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+          <div
+            id="atContainer-d13b02aaa868c9af090742ae6b9f458d"
+            style={{ width: '160px', height: '300px' }}
+          />
         </div>
 
         <CtaSection />
