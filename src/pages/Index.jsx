@@ -110,7 +110,7 @@ const Index = () => {
 
         <FeaturesSection />
 
-        <div style={{width: '300px', height: '160px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-b531b9b24d24432ee23694a934d7e3c8" 
+        <div style={{width: '300px', height: '160px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} id="atContainer-d13b02aaa868c9af090742ae6b9f458d" 
         />
 
         <HowItWorksSection />
