@@ -169,8 +169,7 @@ const Blog = () => {
               Blog Escolha Meu Filme
             </h1>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Mergulhe no universo cinematográfico com nossas análises aprofundadas, críticas honestas e 
-              descobertas exclusivas do mundo dos filmes.
+              Críticas sinceras. Descobertas incríveis. O filme ideal te espera
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-white/80">
               <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
