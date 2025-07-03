@@ -7,6 +7,7 @@ import TestimonialsSection from '../assets/components/TestemonialSection';
 import CtaSection from '../components/CtaSection';
 import Footer from '../assets/components/Footer';
 import SeoHead from '../assets/components/SeoHead';
+import BlogCtaSection from '../components/BlogCtaSection';
 
 const Index = () => {
   const homeKeywords = 'recomendador de filmes, escolha meu filme, filmes gratuitos, filmes sem cadastro, ' +
@@ -17,7 +18,8 @@ const Index = () => {
     'filme para casal, filme em família, filme para assistir em casa, filme gratuito, filme sem cadastro, ' +
     'filme por gênero, filme por streaming, filme por categoria, filme por plataforma, filme por preferência, ' +
     'filme por gosto, filme por avaliação, filme por nota, filme por popularidade, filme por lançamento, ' +
-    'filme por idioma, filme dublado, filme legendado, filme nacional, filme internacional';
+    'filme por idioma, filme dublado, filme legendado, filme nacional, filme internacional, ' +
+    'blog de cinema, críticas de filmes, análises de filmes, resenhas de filmes, novidades cinema';
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground font-['Poppins',sans-serif]">
@@ -58,6 +60,8 @@ const Index = () => {
         <HowItWorksSection />
         
         <TestimonialsSection />
+
+        <BlogCtaSection />
 
         <CtaSection />
       </main>
